@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.1.1">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>0</y>
+      <w>280</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>/TypeObject/
+--
+#name: std::string
+#description: std::string
+--
++TypeObject()
+/+~TypeObject()/
++get_name(result: std::string&amp;): size_t
++get_description(result: std::string&amp;): size_t
++set_name(value: char_t*): size_t
++set_name(value: std::string): size_t
++set_description(value: char_t*): size_t
++set_description(value: std::string): size_t
+/+what(out: std::string&amp;): size_t/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>590</x>
+      <y>320</y>
+      <w>380</w>
+      <h>410</h>
+    </coordinates>
+    <panel_attributes>TypeBuilding
+--
+#max_employees: std::vector&lt;size_t&gt;
+#producable: std::vector&lt;bool&gt;
+#resources: std::vector&lt;bool&gt;
+#cost: std::vector&lt;size_t&gt;
+--
++TypeBuilding()
+/+~TypeBuilding()/
++get_max_employees(result: std::vector&lt;size_t&gt;&amp;): size_t
++get_max_employees(index: size_t, result: size_t&amp;): size_t
++get_producable(result: std::vector&lt;bool&gt;&amp;): size_t
++get_producable(index: size_t, result: bool&amp;): size_t
++get_resources(result: std::vector&lt;size_t&gt;&amp;): size_t
++get_resources(index: size_t, result: size_t&amp;): size_t
++get_cost(result: std::vector&lt;size_t&gt;&amp;): size_t
++get_cost(index: size_t, result: size_t&amp;): size_t
++set_max_employees(value: std::vector&lt;size_t&gt;): size_t
++set_max_employees(index: size_t, value: size_t): size_t
++set_producable(value: std::vector&lt;bool&gt;): size_t
++set_producable(index: size_t, value: bool): size_t
++set_resources(value: std::vector&lt;size_t&gt;): size_t
++set_resources(index: size_t, value: size_t): size_t
++set_cost(value: std::vector&lt;size_t&gt;): size_t
++set_cost(index: size_t, value: size_t): size_t
+/+what(out: std::string&amp;): size_t/</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>450</x>
+      <y>200</y>
+      <w>370</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;350.0;70.0;350.0;120.0</additional_attributes>
+  </element>
+</diagram>
