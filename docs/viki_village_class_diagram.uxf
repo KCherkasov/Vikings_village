@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>330</x>
+      <x>970</x>
       <y>0</y>
       <w>280</w>
       <h>210</h>
@@ -28,7 +28,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>590</x>
+      <x>1230</x>
       <y>320</y>
       <w>380</w>
       <h>410</h>
@@ -64,12 +64,259 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>450</x>
+      <x>1090</x>
       <y>200</y>
       <w>370</w>
       <h>140</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0;350.0;70.0;350.0;120.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>320</y>
+      <w>350</w>
+      <h>210</h>
+    </coordinates>
+    <panel_attributes>TypeProfession
+--
+#consumation: std::vector&lt;size_t&gt;
+#can_slave: bool
+--
++TypeProfession()
+/+~TypeProfession()/
++get_consumation(result: std::vector&lt;size_t&gt;&amp;): size_t
++get_consumation(index: size_t, result: size_t&amp;): size_t
++get_can_slave(result: bool&amp;): size_t
++set_consumation(value: std::vector&lt;size_t&gt;): size_t
++set_consumation(inde: size_t, value: size_t&gt;): size_t
++set_can_slave(value: bool): size_t
++what(out: std::string&amp;): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>260</y>
+      <w>280</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=-</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0;260.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1200</x>
+      <y>830</y>
+      <w>440</w>
+      <h>440</h>
+    </coordinates>
+    <panel_attributes>Building
+--
+#employees_id: std::vector&lt;signed size_t&gt;
+#production_queue: std::vector&lt;signed size_t&gt;
+#living_space: std::pair&lt;size_t, size_t&gt;
+#kind: TypeBuilding&amp;
+--
++Building(kind: TypeBuilding&amp;)
++~Building();
++get_employees_id(result: std::vector&lt;signed size_t&gt;&amp;): size_t
++get_employees_id(index: size_t, result: signed size_t&amp;): size_t
++get_production_queue(result: std::vector&lt;signed size_t&gt;&amp;): size_t
++get_production_queue(index: size_t, result: signed size_t&amp;): size_t
++add_to_queue(value: signed size_t): size_t
++remove_from_queue(): size_t
++remove_from_queue(index: size_t): size_t
++get_living_space(result: std::pair&lt;size_t, size_t&gt;&amp;): size_t
++get_living_space(index: size_t, result: size_t&amp;): size_t
++add_inhabitant(): size_t
++remove_inhabitant(): size_t
++set_employees_id(value: std::vector&lt;signed size_t&gt;): size_t
++set_employess_id(index: size_t, value: signed size_t): size_t
++set_production_queue(value: std::vactor&lt;signed size_t&gt;): size_t
++set_production_queue(index: size_t, value: signed size_t): size_t
++set_living_space(value: std::pair&lt;size_t, size_t&gt;): size_t
++set_living_space(index: size_t, value: size_t): size_t
++what(out: std::string&amp;): size_t
++produce(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1410</x>
+      <y>720</y>
+      <w>30</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;110.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>930</y>
+      <w>170</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>PersonalSaga
+--
++enemies_killed: size_t
++raids_count: size_t
++gold_looted: size_t
++people_enslaved: size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>640</y>
+      <w>440</w>
+      <h>900</h>
+    </coordinates>
+    <panel_attributes>Human
+--
+#name: std::string
+#profession: TypeProfession&amp;
+#skills: std::vector&lt;size_t&gt;
+#saga: PersonalSaga
+#combat_stats: CombatStats
+#gender: bool
+#house_id: signed size_t
+--
++Human()
++~Human()
++get_name(result: std::string&amp;): size_t
++get_profession(result: TypeProfession&amp;): size_t
++get_skills(result: std::vector&lt;size_t&gt;&amp;): size_t
++get_skills(index: size_t, result: size_t&amp;): size_t
++get_saga(result: PersonalSaga&amp;): size_t
++get_saga_killed(result: size_t&amp;): size_t
++get_saga_raids(result: size_t&amp;): size_t
++get_saga_looted(result: size_t&amp;): size_t
++get_saga_enslaved(result: size_t&amp;): size_t
++get_combat_stats(result: CombatStats&amp;): size_t
++get_combat_stats_wounds(result: std::pair&lt;size_t, size_t&gt;&amp;): size_t
++get_combat_stats_wounds(index:size_t, result: size_t&amp;): size_t
++get_combat_stats_melee(result: size_t&amp;): size_t
++get_combat_stats_ranged(result: size_t&amp;): size_t
++get_combat_stats_defense(result: size_t&amp;): size_t
++get_gender(result: bool&amp;): size_t
++get_house_id(result: signed size_t&amp;): size_t
++set_name(value: std::string&amp;): size_t
++set_profession(value: TypeProfession&amp;): size_t
++set_skills(value: std::vector&lt;size_t&gt;): size_t
++set_skills(index: size_t, value: size_t): size_t
++set_saga(value: PersonalSaga): size_t
++set_saga_killed(value: size_t): size_t
++set_saga_raids(value: size_t): size_t
++set_saga_looted(value: size_t): size_t
++set_saga_enslaved(value: size_t): size_t
++set_combat_stats(value: CombatStats): size_t
++set_combat_stats_wounds(value: std::pair&lt;size_t, size_t&gt;): size_t
++set_combat_stats_wounds(index: size_t, value: size_t): size_t
++set_combat_stats_melee(value: size_t): size_t
++set_combat_stats_ranged(value: size_t): size_t
++set_combat_stats_defense(value: size_t): size_t
++set_gender(value: bool): size_t
++set_house_id(value: signed size_t): size_t
++what(out: std::string&amp;): size_t
++consume(): size_t
++add_kill(): size_t
++add_raid(): size_t
++add_loot(value: size_t); size_t
++add_enslaved(value: size_t): size_t
++wound(): size_t
++raise_melee(): size_t
++raise_ranged(): size_t
++raise_defense(): size_t
++raise_skill(index: size_t): size_t
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>810</y>
+      <w>220</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>CombatStats
+--
++wounds: std::pair&lt;size_t, size_t&gt;
++melee_attack: size_t
++ranged_attack: size_t
++defense: size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>850</y>
+      <w>180</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>160.0;130.0;50.0;130.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>970</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;10.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>120</x>
+      <y>1050</y>
+      <w>370</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>Inventory
+--
+#items_id: std::vector&lt;signed size_t&gt;
+--
++Inventory()
++~Inventory()
++get_items_id(result: std::vector&lt;signed size_t&gt;&amp;): size_t
++get_items_id(index: size_t, result: signed size_t&amp;): size_t
++get_melee_bonus(result: size_t&amp;): size_t
++get_ranged_bonus(result: size_t&amp;): size_t
++get_defense_bonus(result: size_t&amp;): size_t
++set_items_id(value: std::vector&lt;signed size_t&gt;): size_t
++set_items_id(index: size_t, value: signed size_t): size_t
++what(out: std::string&amp;): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>480</x>
+      <y>970</y>
+      <w>70</w>
+      <h>220</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=1</panel_attributes>
+    <additional_attributes>10.0;190.0;50.0;190.0;50.0;10.0</additional_attributes>
   </element>
 </diagram>
