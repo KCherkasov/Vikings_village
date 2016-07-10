@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <diagram program="umlet" version="14.1.1">
-  <zoom_level>10</zoom_level>
+  <zoom_level>11</zoom_level>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>970</x>
-      <y>0</y>
-      <w>280</w>
-      <h>210</h>
+      <x>1485</x>
+      <y>165</y>
+      <w>308</w>
+      <h>231</h>
     </coordinates>
     <panel_attributes>/TypeObject/
 --
@@ -28,10 +28,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1230</x>
-      <y>320</y>
-      <w>380</w>
-      <h>410</h>
+      <x>1771</x>
+      <y>517</y>
+      <w>418</w>
+      <h>451</h>
     </coordinates>
     <panel_attributes>TypeBuilding
 --
@@ -64,10 +64,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1090</x>
-      <y>200</y>
-      <w>370</w>
-      <h>140</h>
+      <x>1617</x>
+      <y>385</y>
+      <w>407</w>
+      <h>154</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;-</panel_attributes>
     <additional_attributes>10.0;10.0;10.0;70.0;350.0;70.0;350.0;120.0</additional_attributes>
@@ -75,10 +75,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>680</x>
-      <y>320</y>
-      <w>350</w>
-      <h>210</h>
+      <x>1166</x>
+      <y>517</y>
+      <w>385</w>
+      <h>231</h>
     </coordinates>
     <panel_attributes>TypeProfession
 --
@@ -99,10 +99,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>840</x>
-      <y>260</y>
-      <w>280</w>
-      <h>80</h>
+      <x>1342</x>
+      <y>451</y>
+      <w>308</w>
+      <h>88</h>
     </coordinates>
     <panel_attributes>lt=-</panel_attributes>
     <additional_attributes>10.0;60.0;10.0;10.0;260.0;10.0</additional_attributes>
@@ -110,10 +110,10 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>1200</x>
-      <y>830</y>
-      <w>440</w>
-      <h>440</h>
+      <x>1738</x>
+      <y>1078</y>
+      <w>484</w>
+      <h>484</h>
     </coordinates>
     <panel_attributes>Building
 --
@@ -148,10 +148,10 @@
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>1410</x>
-      <y>720</y>
-      <w>30</w>
-      <h>130</h>
+      <x>1969</x>
+      <y>957</y>
+      <w>33</w>
+      <h>143</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;-
 m1=*
@@ -161,10 +161,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>320</x>
-      <y>930</y>
-      <w>170</w>
-      <h>100</h>
+      <x>770</x>
+      <y>1188</y>
+      <w>187</w>
+      <h>110</h>
     </coordinates>
     <panel_attributes>PersonalSaga
 --
@@ -177,10 +177,10 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>640</x>
-      <y>640</y>
-      <w>440</w>
-      <h>900</h>
+      <x>1122</x>
+      <y>869</y>
+      <w>484</w>
+      <h>1045</h>
     </coordinates>
     <panel_attributes>Human
 --
@@ -209,6 +209,7 @@ m2=1</panel_attributes>
 +get_combat_stats_melee(result: size_t&amp;): size_t
 +get_combat_stats_ranged(result: size_t&amp;): size_t
 +get_combat_stats_defense(result: size_t&amp;): size_t
++get_combat_stats_initiative(result: size_t&amp;): size_t
 +get_gender(result: bool&amp;): size_t
 +get_house_id(result: signed size_t&amp;): size_t
 +set_name(value: std::string&amp;): size_t
@@ -226,6 +227,7 @@ m2=1</panel_attributes>
 +set_combat_stats_melee(value: size_t): size_t
 +set_combat_stats_ranged(value: size_t): size_t
 +set_combat_stats_defense(value: size_t): size_t
++set_combat_stats_initiative(value: size_t): size_t
 +set_gender(value: bool): size_t
 +set_house_id(value: signed size_t): size_t
 +what(out: std::string&amp;): size_t
@@ -238,6 +240,7 @@ m2=1</panel_attributes>
 +raise_melee(): size_t
 +raise_ranged(): size_t
 +raise_defense(): size_t
++raise_initiative(): size_t
 +raise_skill(index: size_t): size_t
 </panel_attributes>
     <additional_attributes/>
@@ -245,26 +248,27 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>270</x>
-      <y>810</y>
-      <w>220</w>
-      <h>100</h>
+      <x>715</x>
+      <y>1045</y>
+      <w>242</w>
+      <h>121</h>
     </coordinates>
     <panel_attributes>CombatStats
 --
 +wounds: std::pair&lt;size_t, size_t&gt;
 +melee_attack: size_t
 +ranged_attack: size_t
-+defense: size_t</panel_attributes>
++defense: size_t
++initiative: size_t</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>850</y>
-      <w>180</w>
-      <h>160</h>
+      <x>946</x>
+      <y>1100</y>
+      <w>198</w>
+      <h>176</h>
     </coordinates>
     <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
 m1=1
@@ -274,10 +278,10 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>970</y>
-      <w>70</w>
-      <h>40</h>
+      <x>946</x>
+      <y>1232</y>
+      <w>77</w>
+      <h>44</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1</panel_attributes>
@@ -286,10 +290,10 @@ m1=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>120</x>
-      <y>1050</y>
-      <w>370</w>
-      <h>220</h>
+      <x>550</x>
+      <y>1320</y>
+      <w>407</w>
+      <h>242</h>
     </coordinates>
     <panel_attributes>Inventory
 --
@@ -310,13 +314,203 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>480</x>
-      <y>970</y>
-      <w>70</w>
-      <h>220</h>
+      <x>946</x>
+      <y>1232</y>
+      <w>77</w>
+      <h>242</h>
     </coordinates>
     <panel_attributes>lt=-
 m1=1</panel_attributes>
     <additional_attributes>10.0;190.0;50.0;190.0;50.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1342</x>
+      <y>737</y>
+      <w>33</w>
+      <h>154</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=*
+m2=1</panel_attributes>
+    <additional_attributes>10.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1166</y>
+      <w>330</w>
+      <h>517</h>
+    </coordinates>
+    <panel_attributes>Item
+--
+#name: std::string
+#description: std::string
+#cost: std::vector&lt;size_t&gt;
+#bonuses: CombatStats
+--
++Item()
+/+~Item()/
++get_name(result: std::string&amp;): size_t
++get_description(result: std::string&amp;): size_t
++get_cost(result: std::vector&lt;size_t&gt;&amp;): size_t
++get_cost(index: size_t, result: size_t&amp;): size_t
++get_bonuses(result: CombatStats&amp;): size_t
++get_bonuses_wounds(result: size_t&amp;): size_t
++get_bonuses_melee(result: size_t&amp;): size_t
++get_bonuses_ranged(result: size_t&amp;): size_t
++get_bonuses_defense(result: size_t&amp;): size_t
++get_bonuses_initiative(result: size_t&amp;): size_t
++set_name(value: std::string): size_t
++set_description(value: std::string): size_t
++set_bonuses(value: CombatStats): size_t
++set_bonuses_wounds(value: size_t): size_t
++set_bonuses_melee(value: size_t): size_t
++set_bonuses_ranged(value: size_t): size_t
++set_bonuses_defense(value: size_t): size_t
++set_bonuses_initiative(value: size_t): size_t
++set_cost(value: std::vector&lt;size_t&gt;): size_t
++set_cost(index: size_t, value: size_t): size_t
++what(out: std::string&amp;): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>264</x>
+      <y>1089</y>
+      <w>473</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0;410.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>649</x>
+      <y>748</y>
+      <w>88</w>
+      <h>594</h>
+    </coordinates>
+    <panel_attributes>lt=-
+provides
+item stat
+bonuses 
+     v
+
+
+
+            </panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;520.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>748</x>
+      <y>1551</y>
+      <w>396</w>
+      <h>99</h>
+    </coordinates>
+    <panel_attributes>lt=-
+provides stat bonuses &gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0;340.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>385</x>
+      <y>451</y>
+      <w>440</w>
+      <h>308</h>
+    </coordinates>
+    <panel_attributes>IngameStorage
+--
++items: std::vector&lt;Item&gt;
++professions: std::vector&lt;TypeProfession&gt;
++buildings: std::vector&lt;TypeBuilding&gt;
+#db_name: std::string
+--
++IngameStorage()
++IngameStorage(db: std::string)
++~IngameStorage()
++get_item(index: size_t, result: Item&amp;): size_t
++get_profession(index: size_t, result: TypeProfession&amp;): size_t
++get_building(index: size_t, result: TypeBuilding&amp;): size_t
++get_db_name(result: std::string&amp;): size_t
++set_item(value: Item): size_t
++set_profession(value: TypeProfession): size_t
++set_building(value: TypeBuilding): size_t
++set_db_name(value: std::string): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>209</x>
+      <y>583</y>
+      <w>198</w>
+      <h>605</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+contains
+ v</panel_attributes>
+    <additional_attributes>10.0;530.0;10.0;10.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>814</x>
+      <y>583</y>
+      <w>374</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+contains &gt;</panel_attributes>
+    <additional_attributes>320.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>770</x>
+      <y>0</y>
+      <w>1320</w>
+      <h>539</h>
+    </coordinates>
+    <panel_attributes>lt=-
+m1=*
+m2=1
+contains &gt;</panel_attributes>
+    <additional_attributes>1180.0;470.0;1180.0;20.0;10.0;20.0;10.0;410.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>561</x>
+      <y>748</y>
+      <w>88</w>
+      <h>594</h>
+    </coordinates>
+    <panel_attributes>lt=-
+     ^
+requests
+item stat 
+bonuses 
+
+
+
+
+
+
+            </panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;520.0</additional_attributes>
   </element>
 </diagram>
