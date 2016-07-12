@@ -152,3 +152,47 @@ size_t TypeBuilding::what(std::string& out) {
   //code to from pop-up text here
   return 0;
 }
+
+TypeProfession::TypeProfession(): TypeObject() {
+  _consumation.clear();
+  _can_slave = false;
+}
+
+size_t TypeProfession::get_consumation(std::vector<size_t>& result) {
+  result = _consumation;
+  return 0;
+}
+
+size_t TypeProfession::get_consumation(size_t index, size_t& result) {
+  if (index < _consumation.size()) {
+    result = _consumation[index];
+  }
+  return 0;
+}
+
+size_t TypeProfession::get_can_slave(bool& result) {
+  result = _can_slave;
+  return 0;
+}
+
+size_t TypeProfession::set_consumation(std::vector<size_t> value) {
+  _consumation = value;
+  return 0;
+}
+
+size_t TypeProfession::set_consumation(size_t index, size_t value) {
+  if (index < _consumation.size()) {
+    _consumation[index] = value;
+  }
+  return 0;
+}
+
+size_t TypeProfession::set_can_slave(bool value) {
+  _can_slave = value;
+  return 0;
+}
+
+size_t TypeProfession::what(std::string& out) {
+  //code to form pop-up text here
+  return 0;
+}

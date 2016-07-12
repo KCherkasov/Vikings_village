@@ -8,7 +8,7 @@
 class TypeObject {
   public:
     TypeObject() { _name.clear(); _description.clear(); }
-    ~TypeObject() {}
+    virtual ~TypeObject() {}
     size_t get_name(std::string& result);
     size_t get_description(std::string& result);
     size_t set_name(std::string value);
@@ -25,7 +25,7 @@ class TypeBuilding: public TypeObject {
   public:
     TypeBuilding();
     //TypeBuilding(TypeBuildingTable data);
-    ~TypeBuilding() {}
+    virtual ~TypeBuilding() {}
     size_t get_max_employees(std::vector<size_t>& result);
     size_t get_max_employees(size_t index, size_t& result);
     size_t get_resources(std::vector<size_t>& result);
@@ -51,6 +51,23 @@ class TypeBuilding: public TypeObject {
     std::vector<size_t> _cost;
     size_t _building_time;
     std::vector<bool> _producable;
+};
+
+class TypeProfession: public TypeObject {
+  public:
+    TypeProfession();
+    //TypeProfession(TypeProfessionTable data);
+    virtual ~TypeProfession() {}
+    size_t get_consumation(std::vector<size_t>& result);
+    size_t get_consumation(size_t index, size_t& result);
+    size_t get_can_slave(bool& result);
+    size_t set_consumation(std::vector<size_t> value);
+    size_t set_consumation(size_t index, size_t value);
+    size_t set_can_slave(bool value);
+    size_t what(std::string& out);
+  protected:
+    std::vector<size_t> _consumation;
+    bool _can_slave;
 };
 
 #endif

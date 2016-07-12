@@ -9,7 +9,8 @@
       <w>280</w>
       <h>210</h>
     </coordinates>
-    <panel_attributes>/TypeObject/
+    <panel_attributes>bg=green
+/TypeObject/
 --
 #name: std::string
 #description: std::string
@@ -33,7 +34,8 @@
       <w>380</w>
       <h>450</h>
     </coordinates>
-    <panel_attributes>TypeBuilding
+    <panel_attributes>bg=green
+TypeBuilding
 --
 #max_employees: std::vector&lt;size_t&gt;
 #producable: std::vector&lt;bool&gt;
@@ -83,7 +85,8 @@
       <w>350</w>
       <h>210</h>
     </coordinates>
-    <panel_attributes>TypeProfession
+    <panel_attributes>bg=green
+TypeProfession
 --
 #consumation: std::vector&lt;size_t&gt;
 #can_slave: bool
