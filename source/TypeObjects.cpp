@@ -42,6 +42,16 @@ TypeBuilding::TypeBuilding(): TypeObject() {
   _building_time = 0;
 }
 
+TypeBuilding::TypeBuilding(TypeBuildingTable data): TypeObject() {
+  _name =  data._name;
+  _description = data._description;
+  _max_employees = data._max_employees;
+  _resources = data._resources;
+  _cost = data._cost;
+  _producable = data._producable;
+  _building_time = data._building_time;
+}
+
 size_t TypeBuilding::get_max_employees(std::vector<size_t>& result) {
   result = _max_employees;
   return 0;
@@ -156,6 +166,13 @@ size_t TypeBuilding::what(std::string& out) {
 TypeProfession::TypeProfession(): TypeObject() {
   _consumation.clear();
   _can_slave = false;
+}
+
+TypeProfession::TypeProfession(TypeProfessionTable data): TypeObject() {
+  _name = data._name;
+  _description = data._description;
+  _consumation = data._consumation;
+  _can_slave = data._can_slave;
 }
 
 size_t TypeProfession::get_consumation(std::vector<size_t>& result) {
