@@ -25,7 +25,7 @@ class TypeObject {
 class TypeBuilding: public TypeObject {
   public:
     TypeBuilding();
-    TypeBuilding(TypeBuildingTable data);
+    TypeBuilding(prototypes::TypeBuildingTable data);
     virtual ~TypeBuilding() {}
     size_t get_max_employees(std::vector<size_t>& result);
     size_t get_max_employees(size_t index, size_t& result);
@@ -57,7 +57,7 @@ class TypeBuilding: public TypeObject {
 class TypeProfession: public TypeObject {
   public:
     TypeProfession();
-    TypeProfession(TypeProfessionTable data);
+    TypeProfession(prototypes::TypeProfessionTable data);
     virtual ~TypeProfession() {}
     size_t get_consumation(std::vector<size_t>& result);
     size_t get_consumation(size_t index, size_t& result);

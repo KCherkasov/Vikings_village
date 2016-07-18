@@ -27,6 +27,13 @@ class IngameStorage {
     std::vector<TypeBuilding> _building_kinds;
     std::vector<TypeProfession> _professions;
     std::vector<Item> _items;
+
+    size_t get_item_namedescr(size_t query_id, std::string& name, std::string& description);
+    size_t get_item_bonuses(size_t query_id, std::vector<size_t>& bonuses);
+    size_t get_item_penalties(size_t query_id, std::vector<size_t>& penalties);
+    size_t get_item_slots(size_t query_id, std::vector<bool>& slots);
+    size_t get_item_cost(size_t query_id, std::vector<size_t>& cost);
+    size_t form_item_record(size_t query_id, struct prototypes::ItemTable& data);
 };
 
 #endif

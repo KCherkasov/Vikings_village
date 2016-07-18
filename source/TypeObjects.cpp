@@ -42,7 +42,7 @@ TypeBuilding::TypeBuilding(): TypeObject() {
   _building_time = 0;
 }
 
-TypeBuilding::TypeBuilding(TypeBuildingTable data): TypeObject() {
+TypeBuilding::TypeBuilding(prototypes::TypeBuildingTable data): TypeObject() {
   _name =  data._name;
   _description = data._description;
   _max_employees = data._max_employees;
@@ -168,7 +168,7 @@ TypeProfession::TypeProfession(): TypeObject() {
   _can_slave = false;
 }
 
-TypeProfession::TypeProfession(TypeProfessionTable data): TypeObject() {
+TypeProfession::TypeProfession(prototypes::TypeProfessionTable data): TypeObject() {
   _name = data._name;
   _description = data._description;
   _consumation = data._consumation;

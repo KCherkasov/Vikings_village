@@ -5,37 +5,23 @@ Item::Item() {
   _description.clear();
   _cost.clear();
   _slots.clear();
-  _bonuses._wounds = 0;
-  _bonuses._melee = 0;
-  _bonuses._ranged = 0;
-  _bonuses._defense = 0;
-  _bonuses._initiative = 0;
-  _penalties._wounds = 0;
-  _penalties._melee = 0;
-  _penalties._ranged = 0;
-  _penalties._defense = 0;
-  _penalties._initiative = 0;
+  _bonuses.clear();
+  _penalties.clear();
 }
 
-Item::Item(ItemTable data) {
+Item::Item(prototypes::ItemTable data) {
   _name.clear();
   _description.clear();
   _cost.clear();
   _slots.clear();
+  _bonuses.clear();
+  _penalties.clear();
   _name = data._name;
   _description = data._description;
   _cost = data._cost;
   _slots = data._slots;
-  _bonuses._wounds = data._bonuses._wounds;
-  _bonuses._melee = data._bonuses._melee;
-  _bonuses._ranged = data._bonuses._ranged;
-  _bonuses._defense = data._bonuses._defense;
-  _bonuses._initiative = data._bonuses._initiative;
-  _penalties._wounds = data._penalties._wounds;
-  _penalties._melee = data._penalties._melee;
-  _penalties._ranged = data._penalties._ranged;
-  _penalties._defense = data._penalties._defense;
-  _penalties._initiative = data._penalties._initiative;
+  _bonuses = data._bonuses;
+  _penalties = data._penalties;
 }
 
 size_t Item::get_name(std::string& result) {
@@ -60,21 +46,27 @@ size_t Item::get_cost(size_t index, size_t& result) {
   return 0;
 }
 
-size_t Item::get_bonuses(CombatStats& result) {
-  result._wounds = _bonuses._wounds;
-  result._melee = _bonuses._melee;
-  result._ranged = _bonuses._ranged;
-  result._defense = _bonuses._defense;
-  result._initiative = _bonuses._initiative;
+size_t Item::get_bonuses(std::vector<size_t>& result) {
+  result = _bonuses;
   return 0;
 }
 
-size_t Item::get_penalties(CombatStats& result) {
-  result._wounds = _penalties._wounds;
-  result._melee = _penalties._melee;
-  result._ranged = _penalties._ranged;
-  result._defense = _penalties._defense;
-  result._initiative = _penalties._initiative;
+size_t Item::get_bonuses(size_t index, size_t& result) {
+  if (index < _bonuses.size()) {
+    result = _bonuses[index];
+  }
+  return 0;
+}
+
+size_t Item::get_penalties(std::vector<size_t>& result) {
+  result = _penalties;
+  return 0;
+}
+
+size_t Item::get_penalties(size_t index, size_t& result) {
+  if (index < _penalties.size()) {
+    result = _penalties[index];
+  }
   return 0;
 }
 
@@ -112,21 +104,27 @@ size_t Item::set_cost(size_t index, size_t value) {
   return 0;
 }
 
-size_t Item::set_bonuses(CombatStats value) {
-  _bonuses._wounds = value._wounds;
-  _bonuses._melee = value._melee;
-  _bonuses._ranged = value._ranged;
-  _bonuses._defense = value._defense;
-  _bonuses._initiative = value._initiative;
+size_t Item::set_bonuses(std::vector<size_t> value) {
+  _bonuses = value;
   return 0;
 }
 
-size_t Item::set_penalties(CombatStats value) {
-  _penalties._wounds = value._wounds;
-  _penalties._melee = value._melee;
-  _penalties._ranged = value._ranged;
-  _penalties._defense = value._defense;
-  _penalties._initiative = value._initiative;
+size_t Item::set_bonuses(size_t index, size_t value) {
+  if (index < _bonuses.size()) {
+    _bonuses[index] = value;
+  }
+  return 0;
+}
+
+size_t Item::set_penalties(std::vector<size_t> value) {
+  _penalties = value;
+  return 0;
+}
+
+size_t Item::set_penalties(size_t index, size_t value) {
+  if (index < _penalties.size()) {
+    _penalties[index] = value;
+  }
   return 0;
 }
 

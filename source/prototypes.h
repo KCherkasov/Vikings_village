@@ -6,6 +6,7 @@
 #include <string>
 #include <pair>
 
+
 const signed size_t FREE_INDEX = -1;
 
 const size_t BASE_WOUNDS = 1;
@@ -24,38 +25,36 @@ enum InventorySlots { IS_HEAD, IS_BODY, IS_ARMS, IS_LEGS, IS_RIGHT_HAND, IS_LEFT
 
 enum ResourcesIndexes { RI_GOLD, RI_FOOD, RI_WOOD, RI_IRON, RI_LEATHER, RI_SIZE };
 
-struct CombatStats {
-  size_t _wounds;
-  size_t _melee;
-  size_t _ranged;
-  size_t _defense;
-  size_t _initiative;
-};
+namespace prototypes {
 
-struct TypeBuildingTable {
-  std::string _name;
-  std::string _description;
-  std::vector<size_t> _cost;
-  std::vector<size_t> _max_employees;
-  std::vector<size_t> _resources;
-  size_t _building_time;
-  std::vector<bool> _producable;
-};
+  struct TypeBuildingTable {
+    std::string _name;
+    std::string _description;
+    std::vector<size_t> _cost;
+    std::vector<size_t> _max_employees;
+    std::vector<size_t> _resources;
+    size_t _building_time;
+    std::vector<bool> _producable;
+  };
 
-struct TypeProfessionTable {
-  std::string _name;
-  std::string _description;
-  std::vector<size_t> _consumation;
-  bool _can_slave;
-};
+  struct TypeProfessionTable {
+    std::string _name;
+    std::string _description;
+    std::vector<size_t> _consumation;
+    bool _can_slave;
+  };
 
-struct ItemTable {
-  std::string _name;
-  std::string _description;
-  std::vector<size_t> _cost;
-  CombatStats _bonuses;
-  CombatStats _penalties;
-  std::vector<bool> _slots;
-};
+  struct ItemTable {
+    std::string _name;
+    std::string _description;
+    std::vector<size_t> _cost;
+    std::vector<size_t> _bonuses;
+    std::vector<size_t> _penalties;
+    std::vector<bool> _slots;
+  };
+
+}
+
+using namespace prototypes;
 
 #endif
