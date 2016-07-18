@@ -96,7 +96,7 @@ size_t IngameStorage::get_item_bonuses(size_t query_id, std::vector<size_t>& bon
   response = sqlite3_prepare(_database, "select id, wounds, melee, ranged, defense, initiative from 'item_bonuses' where id=?", -1, &statement, 0);
   sqlite3_bind_int(statement, 1, query_id);
   sqlite3_step(statement);
-  for (size_t i = 0; i < CS_SIZE; ++i) {
+  for (size_t i = 0; i < SI_SIZE; ++i) {
     bonuses[i] = sqlite3_column_int(statement, i + 1);
   }
   return response;
@@ -110,7 +110,7 @@ size_t IngameStorage::get_item_penalties(size_t query_id, std::vector<size_t>& p
   response = sqlite3_prepare(_database, "select id, wounds, melee, ranged, defense, initiative from 'item_penalties' where id=?", -1, &statement, 0);
   sqlite3_bind_int(statement, 1, query_id);
   sqlite3_step(statement);
-  for (size_t i = 0; i < CS_SIZE; ++i) {
+  for (size_t i = 0; i < SI_SIZE; ++i) {
     penalties[i] = sqlite3_column_int(statement, i + 1);
   }
   return response;
@@ -154,5 +154,58 @@ size_t IngameStorage::form_item_record(size_t query_id, struct prototypes::ItemT
   response = get_item_penalties(query_id, data._penalties);
   response = get_item_slots(query_id, data._slots);
   response = get_item_cost(query_id, data._cost);
+  return response;
+}
+
+size_t IngameStorage::get_nameparts(size_t query_id, bool gender) {
+  size_t response = 0;
+  sqlite3_stmt* statement;
+  if (gender) {
+    response = sqlite3_prepare(_database, "select id, part_one, part_two from 'male_nameparts' where id=?", -1, &statement, 0);
+  } else {
+    response = sqlite3_prepare(_database, "select id, part_one, part_two from 'female_nameparts' where id=?", -1, &statement, 0);
+  }
+  sqlite3_bind_int(statement, 1, query_id);
+  sqlite3_step(statement);
+  unsigned char* tmp1 = NULL;
+  unsigned char* tmp2 = NULL;
+  tmp1 = sqlite3_column_text(statement, 1);
+  tmp2 = sqlite3_column_text(statement, 2);
+  if (gender) {
+    _male_nameparts_one.push_back();
+    _male_nameparts_two.push_back();
+    _male_nameparts_one[_male_nameparts_one.size() - 1].clear();
+    _male_nameparts_one[_male_nameparts_one.size() - 1].append(tmp1);
+    _male_nameparts_two[_male_nameparts_two.size() - 1].clear();
+    _male_nameparts_two[_male_nameparts_two.size() - 1].append(tmp2);
+  } else {
+    _female_nameparts_one.push_back();
+    _female_nameparts_two.push_back();
+    _female_nameparts_one[_female_nameparts_one.size() - 1].clear();
+    _female_nameparts_one[_female_nameparts_one.size() - 1].append(tmp1);
+    _female_nameparts_two[_female_nameparts_two.size() - 1].clear();
+    _female_nameparts_two[_female_nameparts_two.size() - 1].append(tmp2);
+  }
+  delete[] tmp1;
+  delete[] tmp2;
+  return response;
+}
+
+size_t IngameStorage::load_storage() {
+  size_t response = 0;
+  for (size_t i = 0; i < ITEMS_COUNT; ++i) {
+    prototypes::ItemTable tmp;
+    response = form_item_record(i+1, tmp);
+    Item item(tmp);
+    _items.push_back(item);
+  }
+  return response;
+}
+
+size_t IngameStorage::unload_storage() {
+  size_t response = 0;
+  _items.clear();
+  _building_kinds.clear();
+  _professions.clear();
   return response;
 }

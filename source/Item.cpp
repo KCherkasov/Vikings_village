@@ -145,3 +145,14 @@ size_t Item::what(std::string& out) {
   //code here to make pop-up text
   return 0;
 }
+
+size_t Item::import_from_table(prototypes::ItemTable data) {
+  size_t response = 0;
+  response = set_name(data._name);
+  response = set_description(data._description);
+  response = set_bonuses(data._bonuses);
+  response = set_penalties(data._penalties);
+  response = set_slots(data._slots);
+  response = set_cost(data._cost);
+  return response;
+}

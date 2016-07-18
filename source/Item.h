@@ -29,6 +29,7 @@ class Item {
     size_t set_slots(std::vector<bool> value);
     size_t set_slots(size_t index, size_t value);
     size_t what(std::string& out);
+    size_t import_from_table(prototypes::ItemTable data);
   protected:
     std::string _name;
     std::string _description;

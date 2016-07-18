@@ -1,13 +1,12 @@
 #ifndef PROTOTYPES_H
 #define PROTOTYPES_H
 
-#include <cstdint>
+#include <stdint.h>
 #include <vector>
 #include <string>
 #include <pair>
 
-
-const signed size_t FREE_INDEX = -1;
+const ssize_t FREE_INDEX = -1;
 
 const size_t BASE_WOUNDS = 1;
 const size_t DEATH_WOUND = 0;
@@ -19,7 +18,17 @@ const size_t BASE_SEED = 15;
 
 const size_t MAX_STAT_VALUE = 100;
 
+const size_t CHANCE_UPPER_CAP = 100;
+const size_t CHANCE_LOWER_CAP = 0;
+
+const size_t ITEMS_COUNT = 23;
+
+const bool MALE_GENDER = true;
+const bool FEMALE_GENDER = false;
+
+enum PersonalSaga { PS_RAIDS, PS_KILLED, PS_LOOTED, PS_ENSLAVED, RS_SIZE };
 enum StatsIndexes { SI_WOUNDS, SI_MELEE, SI_RANGED, SI_DEFENSE, SI_INITIATIVE, SI_SIZE };
+enum MiscIndexes { MI_SAILORSHIP, MI_LOYALTY, MI_MORALE, MI_SIZE };
 enum ProfessionIndexes { PI_UNEMPLOYED, PI_LUMBERJACK, PI_BLACKSMITH, PI_BUILDER, PI_LEATHERWORKER, PI_FISHER, PI_FARMER, PI_WARRIOR, PI_HUSCARL PI_MINER, PI_PRIEST, PI_SKALD, PI_TRADER, PI_SIZE };
 enum InventorySlots { IS_HEAD, IS_BODY, IS_ARMS, IS_LEGS, IS_RIGHT_HAND, IS_LEFT_HAND, IS_RANGED, IS_SIZE };
 
@@ -53,6 +62,17 @@ namespace prototypes {
     std::vector<bool> _slots;
   };
 
+  struct HumanTable {
+    std::string _name;
+    std::vector<size_t> _combat_stats;
+    std::vector<size_t> _misc_stats;
+    std::vector<size_t> _skills;
+    std::vector<size_t> _saga;
+    std::vector<size_t> _equipment;
+    ssize_t _house_id;
+    ssize_t _profession_id;
+    bool _gender;
+  };
 }
 
 using namespace prototypes;
