@@ -88,10 +88,10 @@ size_t IngameStorage::get_item_namedescr(size_t query_id, std::string& name, std
   return response;
 }
 
-size_t IngameStorage::get_item_bonuses(size_t query_id, std::vector<size_t>& bonuses) {
+size_t IngameStorage::get_item_bonuses(size_t query_id, size_t*& bonuses) {
   size_t response = 0;
-  bonuses.clear();
-  bonuses.resize(CS_SIZE);
+  delete[] bonuses;
+  bonuses = new size_t[SI_SIZE];
   sqlite3_stmt* statement;
   response = sqlite3_prepare(_database, "select id, wounds, melee, ranged, defense, initiative from 'item_bonuses' where id=?", -1, &statement, 0);
   sqlite3_bind_int(statement, 1, query_id);
@@ -102,10 +102,10 @@ size_t IngameStorage::get_item_bonuses(size_t query_id, std::vector<size_t>& bon
   return response;
 }
 
-size_t IngameStorage::get_item_penalties(size_t query_id, std::vector<size_t>& penalties) {
+size_t IngameStorage::get_item_penalties(size_t query_id, size_t*& penalties) {
   size_t response = 0;
-  penalties.clear();
-  penalties.resize(CS_SIZE);
+  delete[] penalties;
+  penalties = new size_t[SI_SIZE];
   sqlite3_stmt* statement;
   response = sqlite3_prepare(_database, "select id, wounds, melee, ranged, defense, initiative from 'item_penalties' where id=?", -1, &statement, 0);
   sqlite3_bind_int(statement, 1, query_id);
@@ -116,10 +116,10 @@ size_t IngameStorage::get_item_penalties(size_t query_id, std::vector<size_t>& p
   return response;
 }
 
-size_t IngameStorage::get_item_slots(size_t query_id, std::vector<bool>& slots) {
+size_t IngameStorage::get_item_slots(size_t query_id, bool*& slots) {
   size_t response = 0;
-  slots.clear();
-  slots.resize(IS_SIZE);
+  delete[] slots;
+  slots = new bool[IS_SIZE] ;
   sqlite3_stmt* statement;
   response = sqlite3_prepare(_database, "select id, head, body, arms, legs, left_arm, right_arm, ranged from 'items_slots' where id=?", -1, &statement, 0);
   sqlite3_bind_int(statement, 1, query_id);
@@ -135,8 +135,8 @@ size_t IngameStorage::get_item_slots(size_t query_id, std::vector<bool>& slots) 
 
 size_t IngameStorage::get_item_cost(size_t query_id, std::vector<size_t>& cost) {
   size_t response = 0;
-  cost.clear();
-  cost.resize(RI_SIZE);
+  delete[] cost;
+  cost = new size_t[RI_SIZE];
   sqlite3_stmt* statement;
   response = sqlite3_prepare(_database, "select id, gold, food, wood, iron, leather from 'item_costs' where id=?", -1, &statement, 0);
   sqlite3_bind_int(statement, 1, query_id);
@@ -154,6 +154,7 @@ size_t IngameStorage::form_item_record(size_t query_id, struct prototypes::ItemT
   response = get_item_penalties(query_id, data._penalties);
   response = get_item_slots(query_id, data._slots);
   response = get_item_cost(query_id, data._cost);
+  data._quality = IQ_COMMON;
   return response;
 }
 
@@ -196,8 +197,7 @@ size_t IngameStorage::load_storage() {
   for (size_t i = 0; i < ITEMS_COUNT; ++i) {
     prototypes::ItemTable tmp;
     response = form_item_record(i+1, tmp);
-    Item item(tmp);
-    _items.push_back(item);
+    _items.push_back(tmp);
   }
   return response;
 }
