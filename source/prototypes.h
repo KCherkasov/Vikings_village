@@ -6,6 +6,10 @@
 #include <string>
 #include <pair>
 
+const size_t SIZE_T_DEFAULT_VALUE = 0;
+const ssize_t SSIZE_T_DEFAULT_VALUE = -1;
+const bool BOOL_DEFAULT_VALUE = false;
+
 const ssize_t FREE_INDEX = -1;
 
 const size_t BASE_WOUNDS = 1;
@@ -16,6 +20,7 @@ const size_t BASE_FEMALE_COMBAT_STAT = 15;
 
 const size_t BASE_SEED = 15;
 
+const size_t MIN_STAT_VALUE = 0;
 const size_t MAX_STAT_VALUE = 100;
 
 const size_t CHANCE_UPPER_CAP = 100;
@@ -25,6 +30,10 @@ const size_t ITEMS_COUNT = 23;
 
 const bool MALE_GENDER = true;
 const bool FEMALE_GENDER = false;
+
+const size_t MALE_GENDER_CHANCE = 50;
+
+enum ItemQuality { IQ_THRASH, IQ_COMMON, IQ_GOOD, IQ_RARE, IQ_EPIC, IQ_LEGENDARY, IQ_SIZE };
 
 enum PersonalSaga { PS_RAIDS, PS_KILLED, PS_LOOTED, PS_ENSLAVED, RS_SIZE };
 enum StatsIndexes { SI_WOUNDS, SI_MELEE, SI_RANGED, SI_DEFENSE, SI_INITIATIVE, SI_SIZE };
@@ -59,7 +68,9 @@ namespace prototypes {
     std::vector<size_t> _cost;
     std::vector<size_t> _bonuses;
     std::vector<size_t> _penalties;
+    size_t _quality;
     std::vector<bool> _slots;
+    bool _is_players;
   };
 
   struct HumanTable {
@@ -68,7 +79,7 @@ namespace prototypes {
     std::vector<size_t> _misc_stats;
     std::vector<size_t> _skills;
     std::vector<size_t> _saga;
-    std::vector<size_t> _equipment;
+    std::vector<ItemTable> _equipment;
     ssize_t _house_id;
     ssize_t _profession_id;
     bool _gender;
