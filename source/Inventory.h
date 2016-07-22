@@ -22,6 +22,19 @@ class Inventory {
     size_t set_equipped(size_t index, Item* value);
     size_t set_equipped(size_t index, prototypes::ItemTable value);
     size_t what(std::string& out);
+
+    Inventory& operator = (Inventory& lhs, const Inventory& rhs) {
+      if (!lhs._equipped.empty()) {
+        for (size_t i = 0; i < lhs._equipped.size(); ++i) {
+          if (_equipped[i] != NULL) {
+            delete _equipped[i];
+          }
+        }
+      }
+      lhs._equipped = rhs._equipped;
+      return lhs;
+    }
+
   protected:
     std::vector<Item*> _equipped;
 };

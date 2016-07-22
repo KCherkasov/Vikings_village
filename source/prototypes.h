@@ -12,6 +12,8 @@ const bool BOOL_DEFAULT_VALUE = false;
 
 const ssize_t FREE_INDEX = -1;
 
+const size_t DIGIT_STRING_SIZE = 3;
+
 const size_t BASE_WOUNDS = 1;
 const size_t DEATH_WOUND = 0;
 
@@ -46,50 +48,168 @@ enum ResourcesIndexes { RI_GOLD, RI_FOOD, RI_WOOD, RI_IRON, RI_LEATHER, RI_SIZE 
 namespace prototypes {
 
   struct TypeBuildingTable {
-    size_t _name_size;
-    std::string _name;
-    size_t _description_size;
-    std::string _description;
-    std::vector<size_t> _cost;
-    std::vector<size_t> _max_employees;
-    std::vector<size_t> _resources;
-    size_t _building_time;
-    std::vector<bool> _producable;
+    public:
+      size_t _name_size;
+      std::string _name;
+      size_t _description_size;
+      std::string _description;
+      std::vector<size_t> _cost;
+      std::vector<size_t> _max_employees;
+      std::vector<size_t> _resources;
+      size_t _building_time;
+      std::vector<bool> _producable;
+
+      TypeBuildingTable& operator = (TypeBuildingTable& lhs, const TypeBuildingTable& rhs) {
+        lhs._name_size = rhs._name_size;
+        if (!lhs._name.empty()) {
+          lhs._name.clear();
+        }
+        lhs._name = rhs._name;
+        lhs._description_size = rhs._description_size;
+        if (!lhs._description.empty()) {
+          lhs._description.clear();
+        }
+        lhs._description = rhs._description;
+        if(!lhs._cost.empty()) {
+          lhs._cost.clear();
+        }
+        lhs._cost = rhs._cost;
+        if(!lhs._max_employees.empty()) {
+          lhs._max_employees.clear();
+        }
+        lhs._max_employees = rhs._max_employees;
+        if (!lhs._resources.empty()) {
+          lhs._resources.clear();
+        }
+        lhs._resources = rhs._resources;
+        lhs._building_time = rhs._building_time;
+        if (!lhs._producable.empty()) {
+          lhs._producable.clear();
+        }
+        lhs._producable = rhs._producable;
+        return lhs;
+      }
   };
 
   struct TypeProfessionTable {
-    size_t _name_size;
-    std::string _name;
-    size_t _description_size;
-    std::string _description;
-    std::vector<size_t> _consumation;
-    bool _can_slave;
+    public:
+      size_t _name_size;
+      std::string _name;
+      size_t _description_size;
+      std::string _description;
+      std::vector<size_t> _consumation;
+      bool _can_slave;
+
+      TypeProfessionTable& operator = (TypeProfessionTable& lhs, const TypeProfessionTable& rhs) {
+        lhs._name_size = rhs._name_size;
+        if (!lhs._name.empty()) {
+          lhs._name.clear();
+        }
+        lhs._name = rhs._name;
+        lhs._description_size = rhs._description_size;
+        if (!lhs._description.empty()) {
+          lhs._description.clear();
+        }
+        lhs._description = rhs._description;
+        if (!lhs._consumation.empty()) {
+          lhs._consumation.clear();
+        }
+        lhs._consumation = rhs._consumation;
+        lhs._can_slave = rhs._can_slave;
+        return lhs;
+      }
   };
 
   struct ItemTable {
-    size_t _name_size;
-    std::string _name;
-    size_t _description_size;
-    std::string _description;
-    std::vector<size_t> _cost;
-    std::vector<size_t> _bonuses;
-    std::vector<size_t> _penalties;
-    size_t _quality;
-    std::vector<bool> _slots;
-    bool _is_players;
+    public:
+      size_t _name_size;
+      std::string _name;
+      size_t _description_size;
+      std::string _description;
+      std::vector<size_t> _cost;
+      std::vector<size_t> _bonuses;
+      std::vector<size_t> _penalties;
+      size_t _quality;
+      std::vector<bool> _slots;
+      bool _is_players;
+
+      ItemTable& operator = (ItemTable& lhs, const ItemTable& rhs) {
+        lhs._name_size = rhs._name_size;
+        if (!lhs._name.empty()) {
+          lhs._name.clear();
+        }
+        lhs._name =rhs._name;
+        lhs._description_size = rhs._description_size;
+        is (!lhs._description.empty()) {
+          lhs._description.clear();
+        }
+        lhs._description = rhs._description;
+        if (!lhs._cost.empty()) {
+          lhs._cost.clear();
+        }
+        lhs._cost = rhs._cost;
+        if (!lhs._bonuses.empty()) {
+          lhs._bonuses.clear();
+        }
+        lhs._bonuses = rhs._bonuses;
+        if (!lhs._penalties.empty()) {
+          lhs._penalties.clear();
+        }
+        lhs._penalties = rhs._penalties;
+        lhs._quality = rhs._quality;
+        if (!lhs._slots.empty()) {
+          lhs._slots.clear();
+        }
+        lhs._slots = rhs._slots;
+        lhs._is_players = rhs._is_players;
+        return lhs;
+      }
   };
 
   struct HumanTable {
-    size_t _name_size;
-    std::string _name;
-    std::vector<size_t> _combat_stats;
-    std::vector<size_t> _misc_stats;
-    std::vector<size_t> _skills;
-    std::vector<size_t> _saga;
-    std::vector<ItemTable> _equipment;
-    ssize_t _house_id;
-    ssize_t _profession_id;
-    bool _gender;
+    public:
+      size_t _name_size;
+      std::string _name;
+      std::vector<size_t> _combat_stats;
+      std::vector<size_t> _misc_stats;
+      std::vector<size_t> _skills;
+      std::vector<size_t> _saga;
+      std::vector<ItemTable> _equipment;
+      ssize_t _house_id;
+      ssize_t _profession_id;
+      bool _gender;
+
+      HumanTable& operator = (HumanTable& lhs, const HumanTable& rhs) {
+        lhs._name_size = rhs._name_size;
+        if (!lhs._name.empty()) {
+          lhs._name.clear();
+        }
+        lhs._name = rhs._name;
+        if (!lhs._combat_stats.empty()) {
+          lhs._combat_stats.clear();
+        }
+        lhs._combat_stats = rhs._combat_stats;
+        if (!lhs._misc_stats.empty()) {
+          lhs._misc_stats.clear();
+        }
+        lhs._misc_stats = rhs._misc_stats;
+        if (!lhs._skills.empty()) {
+          lhs._skills.clear();
+        }
+        lhs._skills = rhs._skills;
+        if (!lhs._saga.empty()) {
+          lhs._saga.clear();
+        }
+        lhs._saga = rhs._saga;
+        if (!lhs._equipment.empty()) {
+          lhs._equipment.clear();
+        }
+        lhs._equipment = rhs._equipment;
+        lhs._house_id = rhs._house_id;
+        lhs._profession_id = rhs._profession_id;
+        lhs._gender = rhs._gender;
+        return lhs;
+      }
   };
 }
 

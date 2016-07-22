@@ -1,6 +1,7 @@
 #ifndef ITEM_H
 #define ITEM_H
 
+#include <cmath>
 #include "prototypes.h"
 
 class Item {
@@ -40,8 +41,31 @@ class Item {
 
     Item& operator = (Item& lhs, const Item& rhs) {
       if (!lhs._name.empty()) {
-
+        lhs._name.clear();
       }
+      lhs._name = rhs._name;
+      if (!lhs._description.empty()) {
+        lhs._description.clear();
+      }
+      lhs._description = rhs._description;
+      if (!lhs._cost.empty()) {
+        lhs._cost.clear();
+      }
+      lhs._cost = rhs._cost;
+      if (!lhs._bonuses.empty()) {
+        lhs._bonuses.clear();
+      }
+      lhs._bonuses = rhs._bonuses;
+      if (!lhs._penalties.empty()) {
+        lhs._penalties.clear();
+      }
+      lhs._penalties = rhs._penalties;
+      lhs._quality = rhs._quality;
+      if (!lhs._slots.empty()) {
+        lhs._slots.clear();
+      }
+      lhs._slots = rhs._slots;
+      lhs._is_players =rhs._is_players;
       return lhs;
     }
 

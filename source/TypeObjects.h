@@ -48,6 +48,36 @@ class TypeBuilding: public TypeObject {
     size_t set_producable(size_t index, bool value);
     size_t what(std::string& out);
     size_t import_from_table(prototypes::TypeBuildingTable data);
+
+    TypeBuilding& operator = (TypeBuilding& lhs, const TypeBuilding& rhs) {
+      if(!lhs._name.empty()) {
+        lhs._name.clear();
+      }
+      lhs._name = rhs._name;
+      if (!lhs._description.empty()) {
+        lhs._description.clear();
+      }
+      lhs._description = rhs._description;
+      if (!lhs._max_employees.empty()) {
+        lhs._max_employees.clear();
+      }
+      lhs._max_employees = rhs._max_employees;
+      if (!lhs._resources.empty()) {
+        lhs._resources.clear();
+      }
+      lhs._resources = rhs._resources;
+      if (!lhs._cost.empty()) {
+        lhs._cost.clear();
+      }
+      lhs._cost = rhs._cost;
+      lhs._building_time = rhs._building_time;
+      if (!lhs._producable.empty()) {
+        lhs._producable.clear();
+      }
+      lhs._producable = rhs._producable;
+      return lhs;
+    }
+
   protected:
     std::vector<size_t> _max_employees;
     std::vector<size_t> _resources;
@@ -70,6 +100,24 @@ class TypeProfession: public TypeObject {
     size_t set_can_slave(bool value);
     size_t what(std::string& out);
     size_t import_from_table(prototypes::TypeProfessionTable data);
+
+    TypeProfession& operator = (TypeProfession& lhs, const TypeProfession& rhs) {
+      if (!lhs._name.empty()) {
+        lhs._name.clear();
+      }
+      lhs._name = rhs._name;
+      if (!lhs._description.empty()) {
+        lhs._description.clear();
+      }
+      lhs._description = rhs._description;
+      if (!lhs._consumation.empty()) {
+        lhs._consumation.clear();
+      }
+      lhs._consumation = rhs._consumation;
+      lhs._can_slave = rhs._can_slave;
+      return lhs;
+    }
+
   protected:
     std::vector<size_t> _consumation;
     bool _can_slave;

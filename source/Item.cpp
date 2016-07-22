@@ -257,11 +257,59 @@ size_t Item::set_is_players(bool value) {
 }
 
 size_t Item::what(std::string& out) {
+  char* digit = new char[DIGIT_STRING_SIZE];
+  std::string resource_names[RI_SIZE] { "Gold: ", "Food: ", "Wood: ", "Iron: ", "Leather: " };
+  std::string combat_stat_names[SI_SIZE] { "Wounds: ", "Melee skill: ", "Ranged skill: ", "Defense: ", "Initiative: " };
+  std::string equipment_slot_names[IS_SIZE] { "Head ", "Body ", "Arms ", "Legs ", "Right hand ", "Left hand ", "Ranged " };
+  std::string quality_names[IQ_SIZE] { "Thrash ", "Common ", "Good ", "Rare ", "Epic ", "Legendary " };
   if (!out.empty()) {
     out.clear();
   }
-
-  //code here to make pop-up text
+  out.append("\nName: ");
+  out += _name;
+  out.append("\nDescription: ");
+  out += _description;
+  out.append("\n--\n");
+  out.append("Cost:\n");
+  for (size_t i = 0; i < RI_SIZE; ++i) {
+    out += resource_names[i];
+    out.append(itoa(_cost[i], digit, 10));
+    out.append("\n");
+  }
+  out.append("--\n");
+  out.append("Wielder bonuses:\n");
+  for (size_t i = 0; i < SI_SIZE; ++i) {
+    out += combat_stat_names[i];
+    out.append(itoa(_bonuses[i], digit, 10));
+    out.append("\n");
+  }
+  out.append("--\n");
+  out.append("Target penalties:\n");
+  for (size_t i = 0; i < SI_SIZE; ++i) {
+    out += combat_stat_names[i];
+    out.append(itoa(_penalties[i], digit, 10));
+    out.append("\n");
+  }
+  out.append("--\n");
+  out.append("Quality: ");
+  out += quality_names[_quality];
+  out.append("--\n");
+  out.append("Equipable slots:\n");
+  for (size_t i = 0; i < IS_SIZE; ++i) {
+    if (_slots[i]) {
+      out += equipment_slot_names[i];
+      out.append("\n");
+    }
+  }
+  out.append("--\n");
+  out.append("Belongs to player: ");
+  if (_is_players) {
+    out.append("Yes\n");
+  } else {
+    out.append("No\n");
+  }
+  out.append("\n<====>\n");
+  delete[] digit;
   return 0;
 }
 

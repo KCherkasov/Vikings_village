@@ -8,11 +8,12 @@
 #include "prototypes.h"
 #include "TypeObjects.h"
 #include "Inventory.h"
+#include "IngameStorage.h"
 
 class Human {
   public:
     Human(TypeProfession& profession);
-    Human(prototypes::HumanTable data);
+    Human(prototypes::HumanTable data, IngameStorage& storage);
     ~Human() {}
     size_t get_name(std::string& result);
     size_t get_combat_stats(bool with_items, std::vector<size_t>& result);
@@ -61,6 +62,34 @@ class Human {
     size_t decrease_misc_stat(size_t index, size_t value);
     size_t raise_skill(size_t index);
     size_t raise_skill(size_t index, size_t value);
+
+    Human& operator = (Human& lhs, const Human& rhs) {
+      if (!lhs._name.empty()) {
+        lhs._name.clear();
+      }
+      lhs._name = rhs._name;
+      if (!lhs._combat_stats.empty()) {
+        lhs._combat_stats.clear();
+      }
+      lhs._combat_stats = rhs._combat_stats;
+      if (!lhs._misc_stats.empty()) {
+        lhs._misc_stats.clear();
+      }
+      lhs._misc_stats = rhs._misc_stats;
+      if (!lhs._skills.empty()) {
+        lhs._skills.clear();
+      }
+      lhs._skills = rhs._skills;
+      if (!lhs._saga.empty()) {
+        lhs._saga.clear();
+      }
+      lhs._saga = rhs._saga;
+      lhs._house_id = rhs._house_id;
+      lhs._profession = rhs._profession;
+      lhs._inventory = rhs._inventory;
+      lhs._gender = rhs._gender;
+      return lhs;
+    }
 
   protected:
     std::string _name;
