@@ -8,16 +8,15 @@
 #include "prototypes.h"
 #include "TypeObjects.h"
 #include "Inventory.h"
-#include "IngameStorage.h"
 
 class Human {
   public:
-    Human(IngameStorage& storage);
+    Human(TypeProfession& profession);
     Human(prototypes::HumanTable data);
     ~Human() {}
     size_t get_name(std::string& result);
-    size_t get_combat_stats(bool with_items, IngameStorage& storage, std::vector<size_t>& result);
-    size_t get_combat_stats(bool with_items, IngameStorage& storage, size_t index, size_t& result);
+    size_t get_combat_stats(bool with_items, std::vector<size_t>& result);
+    size_t get_combat_stats(bool with_items, size_t index, size_t& result);
     size_t get_misc_stats(std::vector<size_t>& result);
     size_t get_misc_stats(size_t index, size_t& result);
     size_t get_skills(std::vector<size_t>& result);
@@ -42,8 +41,10 @@ class Human {
     size_t set_saga(size_t index, size_t value);
     size_t set_house_id(ssize_t value);
     size_t set_inventory(Inventory value);
-    size_t set_inventory(std::vector<ssize_t> value);
-    size_t set_inventory(size_t index, ssize_t value);
+    size_t set_inventory(std::vector<prototypes::ItemTable> value);
+    size_t set_inventory(size_t index, prototypes::ItemTable value);
+    size_t set_inventory(size_t index, Item* value);
+    size_t set_inventory(std::vector<Item*> value);
     size_t set_gender(bool value);
     size_t what(std::string& out);
     size_t change_equipment(size_t slot, ssize_t item_index);

@@ -37,6 +37,14 @@ class Item {
     size_t set_is_players(bool value)
     size_t what(std::string& out);
     size_t import_from_table(prototypes::ItemTable data);
+
+    Item& operator = (Item& lhs, const Item& rhs) {
+      if (!lhs._name.empty()) {
+
+      }
+      return lhs;
+    }
+
   protected:
     std::string _name;
     std::string _description;

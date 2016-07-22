@@ -118,4 +118,20 @@ size_t Inventory::set_equipped(size_t index, prototypes::ItemTable value) {
 }
 
 size_t Inventory::what(std::string& out) {
+  size_t response = SIZE_T_DEFAULT_VALUE;
+  if (!out.empty()) {
+    out.clear();
+  }
+  std::string tmp;
+  tmp.clear();
+  if (!_equipped.empty()) {
+    for (size_t i = 0; i < _equipped.size(); ++i) {
+      if (_equipped[i] != NULL) {
+        response = _equipped[i]->what(tmp);
+        out += tmp;
+        out.append("\n\n--\n\n");
+      }
+    }
+  }
+  return 0;
 }

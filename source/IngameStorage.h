@@ -8,7 +8,6 @@
 #include "sqlite3.h"
 #include "prototypes.h"
 #include "TypeObjects.h"
-#include "Item.h"
 
 class IngameStorage {
   public:
@@ -19,14 +18,14 @@ class IngameStorage {
     size_t close_database();
     size_t load_storage();
     size_t unload_storage();
-    size_t get_item(size_t index, Item& result);
+    size_t get_item_table(size_t index, prototypes::ItemTable& result);
     size_t get_building_kind(size_t index, TypeBuilding& result);
     size_t get_profession(size_t index, TypeProfession& result);
     size_t form_name(bool gender, std::string& result);
 
     std::vector<TypeBuilding> _building_kinds;
     std::vector<TypeProfession> _professions;
-    std::vector<Item> _items;
+    std::vector<prototypes::ItemTable> _items;
 
   protected:
     sqlite3* _database;

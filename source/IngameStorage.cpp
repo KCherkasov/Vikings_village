@@ -196,8 +196,7 @@ size_t IngameStorage::load_storage() {
   for (size_t i = 0; i < ITEMS_COUNT; ++i) {
     prototypes::ItemTable tmp;
     response = form_item_record(i+1, tmp);
-    Item item(tmp);
-    _items.push_back(item);
+    _items.push_back(tmp);
   }
   return response;
 }

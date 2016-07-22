@@ -7,7 +7,6 @@
 
 #include "prototypes.h"
 #include "Item.h"
-#include "IngameStorage.h"
 
 class Inventory {
   public:

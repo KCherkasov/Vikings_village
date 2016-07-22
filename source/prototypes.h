@@ -35,7 +35,7 @@ const size_t MALE_GENDER_CHANCE = 50;
 
 enum ItemQuality { IQ_THRASH, IQ_COMMON, IQ_GOOD, IQ_RARE, IQ_EPIC, IQ_LEGENDARY, IQ_SIZE };
 
-enum PersonalSaga { PS_RAIDS, PS_KILLED, PS_LOOTED, PS_ENSLAVED, RS_SIZE };
+enum PersonalSaga { PS_RAIDS, PS_KILLED, PS_LOOTED, PS_ENSLAVED, PS_SIZE };
 enum StatsIndexes { SI_WOUNDS, SI_MELEE, SI_RANGED, SI_DEFENSE, SI_INITIATIVE, SI_SIZE };
 enum MiscIndexes { MI_SAILORSHIP, MI_LOYALTY, MI_MORALE, MI_SIZE };
 enum ProfessionIndexes { PI_UNEMPLOYED, PI_LUMBERJACK, PI_BLACKSMITH, PI_BUILDER, PI_LEATHERWORKER, PI_FISHER, PI_FARMER, PI_WARRIOR, PI_HUSCARL PI_MINER, PI_PRIEST, PI_SKALD, PI_TRADER, PI_SIZE };
@@ -46,7 +46,9 @@ enum ResourcesIndexes { RI_GOLD, RI_FOOD, RI_WOOD, RI_IRON, RI_LEATHER, RI_SIZE 
 namespace prototypes {
 
   struct TypeBuildingTable {
+    size_t _name_size;
     std::string _name;
+    size_t _description_size;
     std::string _description;
     std::vector<size_t> _cost;
     std::vector<size_t> _max_employees;
@@ -56,14 +58,18 @@ namespace prototypes {
   };
 
   struct TypeProfessionTable {
+    size_t _name_size;
     std::string _name;
+    size_t _description_size;
     std::string _description;
     std::vector<size_t> _consumation;
     bool _can_slave;
   };
 
   struct ItemTable {
+    size_t _name_size;
     std::string _name;
+    size_t _description_size;
     std::string _description;
     std::vector<size_t> _cost;
     std::vector<size_t> _bonuses;
@@ -74,6 +80,7 @@ namespace prototypes {
   };
 
   struct HumanTable {
+    size_t _name_size;
     std::string _name;
     std::vector<size_t> _combat_stats;
     std::vector<size_t> _misc_stats;

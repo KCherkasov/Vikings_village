@@ -145,10 +145,12 @@ size_t Item::get_is_players(bool& result) {
 }
 
 size_t Item::get_save_data(prototypes::ItemTable& result) {
+  result._name_size = _name.size();
   if (!result._name.empty()) {
     result._name.clear();
   }
   result._name = _name;
+  result._description_size = _description.size();
   if (!result._description.empty()) {
     result._description.clear();
   }
@@ -175,17 +177,23 @@ size_t Item::get_save_data(prototypes::ItemTable& result) {
 }
 
 size_t Item::set_name(std::string value) {
-  _name = value;
+  if (!value.empty()) {
+    _name = value;
+  }
   return 0;
 }
 
 size_t Item::set_description(std::string value) {
-  _description = value;
+  if (!value.empty()) {
+    _description = value;
+  }
   return 0;
 }
 
 size_t Item::set_cost(std::vector<size_t> value) {
-  _cost = value;
+  if (!value.empty()) {
+    _cost = value;
+  }
   return 0;
 }
 
@@ -197,7 +205,9 @@ size_t Item::set_cost(size_t index, size_t value) {
 }
 
 size_t Item::set_bonuses(std::vector<size_t> value) {
-  _bonuses = value;
+  if (!value.empty()) {
+    _bonuses = value;
+  }
   return 0;
 }
 
@@ -209,7 +219,9 @@ size_t Item::set_bonuses(size_t index, size_t value) {
 }
 
 size_t Item::set_penalties(std::vector<size_t> value) {
-  _penalties = value;
+  if (!value.empty()) {
+    _penalties = value;
+  }
   return 0;
 }
 
@@ -226,7 +238,9 @@ size_t Item::set_quality(size_t value) {
 }
 
 size_t Item::set_slots(std::vector<bool> value) {
-  _slots = value;
+  if (!value.empty()) {
+    _slots = value;
+  }
   return 0;
 }
 
@@ -243,7 +257,10 @@ size_t Item::set_is_players(bool value) {
 }
 
 size_t Item::what(std::string& out) {
-  out.clear();
+  if (!out.empty()) {
+    out.clear();
+  }
+
   //code here to make pop-up text
   return 0;
 }

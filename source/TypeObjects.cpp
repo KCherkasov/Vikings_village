@@ -105,6 +105,37 @@ size_t TypeBuilding::get_building_time(size_t& result) {
   return 0;
 }
 
+size_t TypeBuilding::get_save_data(prototypes::TypeBuildingTable& result) {
+  result._name_size = _name.size();
+  if (!result._name.empty()) {
+    result._name.clear();
+  }
+  result._name = _name;
+  result._description_size = _description.size();
+  if (!result._description.empty()) {
+    result._description.clear();
+  }
+  result._description = _description;
+  if (!result._cost.empty()) {
+    result._cost.clear();
+  }
+  result._cost = _cost;
+  if (!result._max_employees.empty()) {
+    result._max_employees.clear();
+  }
+  result._max_employees = _max_employees;
+  if (!result._resources.empty()) {
+    result._resources.clear();
+  }
+  result._resources = _resources;
+  result._building_time;
+  if (!result._producable.empty()) {
+    result._producable.clear();
+  }
+  result._producable = _producable;
+  return 0;
+}
+
 size_t TypeBuilding::set_max_employees(std::vector<size_t> value) {
   _max_employees = value;
 }
@@ -163,14 +194,27 @@ size_t TypeBuilding::what(std::string& out) {
   return 0;
 }
 
+size_t TypeBuilding::import_from_table(prototypes::TypeBuildingTable data) {
+  _name = data._name;
+  _description = data._description;
+  _cost = data._cost;
+  _max_employees = data._max_employees;
+  _resources = data._resources;
+  _building_time = data._building_time;
+  _producable = data._producable;
+  return 0;
+}
+
 TypeProfession::TypeProfession(): TypeObject() {
   _consumation.clear();
-  _can_slave = false;
+  _consumation.resize(RI_SIZE);
+  _can_slave = BOOL_DEFAULT_VALUE;
 }
 
 TypeProfession::TypeProfession(prototypes::TypeProfessionTable data): TypeObject() {
   _name = data._name;
   _description = data._description;
+  _consumation.clear();
   _consumation = data._consumation;
   _can_slave = data._can_slave;
 }
@@ -189,6 +233,25 @@ size_t TypeProfession::get_consumation(size_t index, size_t& result) {
 
 size_t TypeProfession::get_can_slave(bool& result) {
   result = _can_slave;
+  return 0;
+}
+
+size_t TypeProfession::get_save_data(prototypes::TypeProfessionTable& result) {
+  result._name_size = _name.size();
+  if (!result._name.empty()) {
+    result._name.clear();
+  }
+  result._name = _name;
+  result._description_size = _description.size();
+  if (!result._description.empty()) {
+    result._description.clear();
+  }
+  result._description = _description;
+  if (!result._consumation.empty()) {
+    result._consumation.clear();
+  }
+  result._consumation = _consumation;
+  result._can_slave = _can_slave;
   return 0;
 }
 
@@ -211,5 +274,13 @@ size_t TypeProfession::set_can_slave(bool value) {
 
 size_t TypeProfession::what(std::string& out) {
   //code to form pop-up text here
+  return 0;
+}
+
+size_t TypeProfession::import_from_table(prototypes::TypeProfessionTable data) {
+  _name = data._name;
+  _description = data._description;
+  _consumation = data._consumation;
+  _can_slave = data._can_slave;
   return 0;
 }
