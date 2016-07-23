@@ -98,6 +98,7 @@ namespace prototypes {
       size_t _description_size;
       std::string _description;
       std::vector<size_t> _consumation;
+      size_t _id;
       bool _can_slave;
 
       TypeProfessionTable& operator = (TypeProfessionTable& lhs, const TypeProfessionTable& rhs) {
@@ -115,6 +116,7 @@ namespace prototypes {
           lhs._consumation.clear();
         }
         lhs._consumation = rhs._consumation;
+        lhs._id = rhs._id;
         lhs._can_slave = rhs._can_slave;
         return lhs;
       }

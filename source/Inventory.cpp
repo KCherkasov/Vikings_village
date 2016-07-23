@@ -34,6 +34,11 @@ Inventory::~Inventory() {
   }
 }
 
+size_t Inventory::get_size(size_t& result) {
+  result = _equipped.size();
+  return 0;
+}
+
 size_t Inventory::get_equipped(std::vector<Item*>& result) {
   result = _equipped;
   return 0;

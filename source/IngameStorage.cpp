@@ -35,16 +35,6 @@ size_t IngameStorage::close_database() {
   return response;
 }
 
-size_t IngameStorage::load_storage() {
-
-  return 0;
-}
-
-size_t IngameStorage::unload_storage() {
-
-  return 0;
-}
-
 size_t IngameStorage::get_item(size_t index, Item& result) {
   if (index < _items.size()) {
     result = _items[index];

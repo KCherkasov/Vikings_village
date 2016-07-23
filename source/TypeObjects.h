@@ -93,10 +93,12 @@ class TypeProfession: public TypeObject {
     virtual ~TypeProfession() {}
     size_t get_consumation(std::vector<size_t>& result);
     size_t get_consumation(size_t index, size_t& result);
+    size_t get_id(size_t& result);
     size_t get_can_slave(bool& result);
     size_t get_save_data(prototypes::TypeProfessionTable& result);
     size_t set_consumation(std::vector<size_t> value);
     size_t set_consumation(size_t index, size_t value);
+    size_t set_id(size_t value);
     size_t set_can_slave(bool value);
     size_t what(std::string& out);
     size_t import_from_table(prototypes::TypeProfessionTable data);
@@ -114,12 +116,14 @@ class TypeProfession: public TypeObject {
         lhs._consumation.clear();
       }
       lhs._consumation = rhs._consumation;
+      lhs._id = rhs._id;
       lhs._can_slave = rhs._can_slave;
       return lhs;
     }
 
   protected:
     std::vector<size_t> _consumation;
+    size_t _id;
     bool _can_slave;
 };
 

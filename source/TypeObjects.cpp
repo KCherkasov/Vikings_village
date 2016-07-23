@@ -231,6 +231,11 @@ size_t TypeProfession::get_consumation(size_t index, size_t& result) {
   return 0;
 }
 
+size_t TypeProfession::get_id(size_t& result) {
+  result = _id;
+  return 0;
+}
+
 size_t TypeProfession::get_can_slave(bool& result) {
   result = _can_slave;
   return 0;
@@ -251,6 +256,7 @@ size_t TypeProfession::get_save_data(prototypes::TypeProfessionTable& result) {
     result._consumation.clear();
   }
   result._consumation = _consumation;
+  result._id = _id;
   result._can_slave = _can_slave;
   return 0;
 }
@@ -264,6 +270,11 @@ size_t TypeProfession::set_consumation(size_t index, size_t value) {
   if (index < _consumation.size()) {
     _consumation[index] = value;
   }
+  return 0;
+}
+
+size_t TypeProfession::set_id(size_t value) {
+  _id = value;
   return 0;
 }
 

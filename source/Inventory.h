@@ -13,6 +13,7 @@ class Inventory {
     Inventory();
     Inventory(std::vector<prototypes::ItemTable> equipped);
     ~Inventory();
+    size_t get_size(size_t& result);
     size_t get_equipped(std::vector<Item*>& result);
     size_t get_equipped(size_t index, Item*& result);
     size_t get_bonuses(std::vector<size_t> result);
