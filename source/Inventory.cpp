@@ -134,7 +134,6 @@ size_t Inventory::what(std::string& out) {
       if (_equipped[i] != NULL) {
         response = _equipped[i]->what(tmp);
         out += tmp;
-        out.append("\n\n--\n\n");
       }
     }
   }

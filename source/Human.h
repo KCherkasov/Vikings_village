@@ -1,6 +1,8 @@
 #ifndef HUMAN_H
 #define HUMAN_H
 
+#include <cmath>
+#include <cstdlib>
 #include <stdint.h>
 #include <vector>
 #include <string>

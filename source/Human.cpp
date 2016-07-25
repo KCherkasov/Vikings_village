@@ -1,16 +1,43 @@
 #include "Human.h"
 
 Human::Human(TypeProfession& profession, bool gender, ssize_t house_id, std::string& name) {
+  srand(static_cast<unsigned int>(time(0)));
   _name.clear();
   _name = name;
   _combat_stats.clear();
-  _misc_stats.clear();
-  _skills.clear();
-  _saga.clear();
   _combat_stats.resize(SI_SIZE);
+  for (size_t i = 0; i < _combat_stats.size(); ++i) {
+    if (i != SI_WOUNDS) {
+      if (gender == MALE_GENDER) {
+        _combat_stats[i] = BASE_MALE_COMBAT_STAT;
+      } else {
+        _combat_stats[i] = BASE_FEMALE_COMBAT_STAT;
+      }
+      size_t rnd = rand() % BASE_SEED - BASE_SEED / 2; //possibly needs tuning after play tests (in current form maximal add to stat is only BAS_SEED / 2)
+      _combat_stats[i] += rnd;
+    } else {
+      _combat_stats[i] = BASE_WOUNDS; //needs future review (possibly units need more than one wound))
+    }
+  }
+  _misc_stats.clear();
   _misc_stats.resize(MI_SIZE);
+  for (size_t i = 0; i < _misc_stats.size(); ++i) {
+    _misc_stats[i] = BASE_MISC_STAT;
+    size_t rnd = rand() % BASE_SEED - BASE_SEED / 2; //possibly needs tuning after play tests
+    _misc_stats[i] += rnd;
+  }
+  _skills.clear();
   _skills.resize(PI_SIZE);
+  for (size_t i = 0; i < _skills.size(); ++i) {
+    _skills[i] = BASE_SKILL;
+    size_t rnd = rand() % BASE_SEED; //possibly need tuning after play tests;
+    _skills[i] += rnd;
+  }
+  _saga.clear();
   _saga.resize(PS_SIZE);
+  for (size_t i = 0; i < _saga.size(); ++i) {
+    _saga[i] = SIZE_T_DEFAULT_VALUE;
+  }
   _house_id = house_id;
   _profession = profession;
   _inventory();

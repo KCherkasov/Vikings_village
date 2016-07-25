@@ -20,6 +20,9 @@ const size_t DEATH_WOUND = 0;
 const size_t BASE_MALE_COMBAT_STAT = 20;
 const size_t BASE_FEMALE_COMBAT_STAT = 15;
 
+const size_t BASE_MISC_STAT = 30;
+const size_t BASE_SKILL = 10;
+
 const size_t BASE_SEED = 15;
 
 const size_t MIN_STAT_VALUE = 0;
