@@ -2,6 +2,7 @@
 #define HUMAN_H
 
 #include <cmath>
+#include <ctime>
 #include <cstdlib>
 #include <stdint.h>
 #include <vector>
@@ -30,7 +31,7 @@ class Human {
     size_t get_profession(TypeProfession& result);
     size_t get_inventory(Inventory& result);
     size_t get_inventory(std::vector<prototypes::ItemTable>& result);
-    size_t get_inventory(size_t index, prototypes::ItemTable& result)
+    size_t get_inventory(size_t index, prototypes::ItemTable& result);
     size_t get_gender(bool& result);
     size_t get_save_data(prototypes::HumanTable& result);
     size_t set_name(std::string value);

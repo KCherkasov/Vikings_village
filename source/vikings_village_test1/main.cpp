@@ -977,7 +977,7 @@ size_t make_type_profession_table(prototypes::TypeProfessionTable& result) {
     result._consumation.clear();
   }
   result._consumation.resize(RI_SIZE);
-  for (size_t i = 0; i < result._consumation.size()) {
+  for (size_t i = 0; i < result._consumation.size(); ++i) {
     size_t rnd = rand() % MAX_STAT_VALUE + 1;
     result._consumation[i] = rnd;
   }
@@ -1051,7 +1051,7 @@ size_t make_type_profession_test(size_t& error_count, std::ofstream& out) {
 	}
 	test_profession->get_name(string_buffer);
 	if (!string_buffer.empty()) {
-      if (string_buffer = source_table._name) {
+      if (string_buffer == source_table._name) {
         printf("OK.\n");
         out << "OK.\n";
 	  } else {
@@ -1127,15 +1127,15 @@ size_t make_type_profession_test(size_t& error_count, std::ofstream& out) {
 	}
 	printf("\tget_id() method test: ");
 	out << "\tget_id() method test: ";
-	elem_buffer = SIZE_T_DEFAULT_VALUE;
-	test_profession->get_id(elem_buffer);
-	if (elem_buffer != SIZE_T_DEFAULT_VALUE) {
-      if (elem_buffer == source_table._id) {
+	ssize_t selem_buffer = SSIZE_T_DEFAULT_VALUE;
+	test_profession->get_id(selem_buffer);
+	if (selem_buffer != SSIZE_T_DEFAULT_VALUE) {
+      if (selem_buffer == source_table._id) {
         printf("OK.\n");
         out << "OK.\n";
 	  } else {
         printf("object data is not equal to the source data.\n");
-        out << "object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
         ++error_count;
 	  }
 	} else {
@@ -1143,7 +1143,7 @@ size_t make_type_profession_test(size_t& error_count, std::ofstream& out) {
       out << "failed to retrieve the field data.\n";
       ++error_count;
 	}
-	pritnf("\tget_can_slave() method test: ");
+	printf("\tget_can_slave() method test: ");
 	out << "\tget_can_slave() method test: ";
 	bool bool_buffer;
 	test_profession->get_can_slave(bool_buffer);
@@ -1207,7 +1207,48 @@ size_t make_type_profession_test(size_t& error_count, std::ofstream& out) {
       out << "failed to retrieve the field data.\n";
       ++error_count;
 	}
-	
+	printf("\t\t_description field test: ");
+	out << "\t\t_description field test: ";
+	if (!table_buffer._description.empty()) {
+      if (table_buffer._description == source_table._description) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+    printf("\t\t_consumation field test: ");
+    out << "\t\t_consumation field test: ";
+    if (!table_buffer._consumation.empty()) {
+      if (table_buffer._consumation == source_table._consumation) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+    } else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+    }
+    printf("\t\t_can_slave field test: ");
+    out << "\t\t_can_slave field test: ";
+    if (table_buffer._can_slave == source_table._can_slave) {
+      printf("OK.\n");
+      out << "OK.\n";
+    } else {
+      printf("object data is not equal to the source data.\n");
+      out << "object data is not equal to the source data.\n";
+      ++error_count;
+    }	
   } else {
     printf("failed to create an object.\n");
     out << "failed to create an object.\n";
@@ -1216,6 +1257,72 @@ size_t make_type_profession_test(size_t& error_count, std::ofstream& out) {
   delete test_profession;
   return 0;
 } 
+
+size_t make_type_building_test(size_t& errors_count, std::ofstream& out) {
+  TypeBuilding* test_building = NULL;
+  prototypes::TypeBuildingTable source_table;
+  make_type_building_table(source_table);
+  printf("\tTypeBuilding(prototypes::TypeBuildingTable) constructor test: ");
+  out << "\tTypeBuilding(prototypes::TypeBuildingTable) construtor test: ";
+  test_building = new TypeBuilding(source_table);
+  if (test_building != NULL) {
+    printf("OK.\n");
+    out << "OK.\n";
+    printf("\tget_name() method test: ");
+    out << "\tget_name() method test: ";
+    std::string string_buffer;
+    if (!string_buffer.empty()) {
+      string_buffer.clear();
+	}
+	test_building->get_name(string_buffer);
+	if (!string_buffer.empty()) {
+      if (string_buffer == source_table._name) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	  string_buffer.clear();
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\tget_description() method test: ");
+	out << "\tget_description() method test: ";
+	test_building->get_description(string_buffer);
+	if (!string_buffer.empty()) {
+      if (string_buffer == source_table._description) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	  string_buffer.clear();
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\tget_max_employees(vector mode) method test: ");
+	out << "\tget_max_employees(vector mode) method test: ";
+	std::vector<size_t> vector_buffer;
+	if (!vector_buffer.empty()) {
+      vector_buffer.clear();
+	}
+	
+  } else {
+    printf("failed to create an object.\n");
+    out << "failed to create an object.\n";
+    ++error_count;
+  }
+  delete test_building;
+  return 0;
+}
 
 size_t make_human_test(size_t& error_count, std::ofstream& out) {
   Human* test_human = NULL;
@@ -1271,6 +1378,24 @@ int main()
   } 
   printf("\ntotal errors: %d\n", errors);
   out << "\n\ntotal errors: " << errors << "\n";
+  printf("\n\n\n");
+  out << "\n\n\n";
+  printf("TypeProfession class testing:\n\n");
+  out << "TypeProfession class testing:\n\n";
+  tests_count = rand() % 150 + 300;
+  for (size_t i = 0; i < tests_count; ++i) {
+    printf("<==============================>\n");
+    out << "<==============================>\n";
+    printf("test %d:\n\n", i);
+    out << "test " << i << ":\n\n";
+    make_type_profession_test(errors, out);
+    printf("<==============================>\n\n");
+    out << "<==============================>\n\n";
+  }
+  printf("\ntotal errors: %d\n", errors);
+  out << "\n\ntotal errors: " << errors << "\n";
+  printf("\n\n\n");
+  out << "\n\n\n";
   out.close();
   system("pause");
   return 0;

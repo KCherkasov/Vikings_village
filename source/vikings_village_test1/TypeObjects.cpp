@@ -216,6 +216,7 @@ TypeProfession::TypeProfession(prototypes::TypeProfessionTable data): TypeObject
   _description = data._description;
   _consumation.clear();
   _consumation = data._consumation;
+  _id = data._id;
   _can_slave = data._can_slave;
 }
 
@@ -231,7 +232,7 @@ size_t TypeProfession::get_consumation(size_t index, size_t& result) {
   return 0;
 }
 
-size_t TypeProfession::get_id(size_t& result) {
+size_t TypeProfession::get_id(ssize_t& result) {
   result = _id;
   return 0;
 }

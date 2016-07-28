@@ -1,6 +1,6 @@
 #include "Human.h"
 
-Human::Human(TypeProfession& profession, bool gender, ssize_t house_id, std::string& name) {
+Human::Human(TypeProfession& profession, bool gender, ssize_t house_id, std::string& name): _inventory(), _profession(profession) {
   srand(static_cast<unsigned int>(time(0)));
   _name.clear();
   _name = name;
@@ -39,14 +39,12 @@ Human::Human(TypeProfession& profession, bool gender, ssize_t house_id, std::str
     _saga[i] = SIZE_T_DEFAULT_VALUE;
   }
   _house_id = house_id;
-  _profession = profession;
-  _inventory();
   _gender = gender;
 }
 
-Human::Human(prototypes::HumanTable data, TypeProfession& profession) {
+Human::Human(prototypes::HumanTable data, TypeProfession& profession): _inventory(data._equipment), _profession(profession) {
   _name.clear();
-  _name = name;
+  _name = data._name;
   _combat_stats.clear();
   _combat_stats = data._combat_stats;
   _misc_stats.clear();
@@ -56,8 +54,6 @@ Human::Human(prototypes::HumanTable data, TypeProfession& profession) {
   _saga.clear();
   _saga = data._saga;
   _house_id = data._house_id;
-  _profession = profession;
-  _inventory(data._equipment);
   _gender = data._gender;
 }
 
@@ -174,7 +170,7 @@ size_t Human::get_inventory(size_t index, prototypes::ItemTable& result) {
     Item* item = NULL;
     _inventory.get_equipped(index, item);
     item->get_save_data(result);
-    Item* item = NULL;
+    item = NULL;
   }
   return 0;
 }

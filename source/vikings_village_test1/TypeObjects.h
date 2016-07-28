@@ -93,7 +93,7 @@ class TypeProfession: public TypeObject {
     virtual ~TypeProfession() {}
     size_t get_consumation(std::vector<size_t>& result);
     size_t get_consumation(size_t index, size_t& result);
-    size_t get_id(size_t& result);
+    size_t get_id(ssize_t& result);
     size_t get_can_slave(bool& result);
     size_t get_save_data(prototypes::TypeProfessionTable& result);
     size_t set_consumation(std::vector<size_t> value);
