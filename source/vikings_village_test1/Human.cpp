@@ -53,6 +53,7 @@ Human::Human(prototypes::HumanTable data, TypeProfession& profession): _inventor
   _skills = data._skills;
   _saga.clear();
   _saga = data._saga;
+  _age = data._age;
   _house_id = data._house_id;
   _gender = data._gender;
 }

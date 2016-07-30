@@ -180,6 +180,7 @@ namespace prototypes {
       std::vector<size_t> _skills;
       std::vector<size_t> _saga;
       std::vector<ItemTable> _equipment;
+      size_t _age;
       ssize_t _house_id;
       ssize_t _profession_id;
       bool _gender;
@@ -209,6 +210,7 @@ namespace prototypes {
         if (!_equipment.empty()) {
           _equipment.clear();
         }
+        _age = rhs._age;
         _equipment = rhs._equipment;
         _house_id = rhs._house_id;
         _profession_id = rhs._profession_id;

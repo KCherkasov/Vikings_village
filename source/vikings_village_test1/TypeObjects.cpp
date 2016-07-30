@@ -128,7 +128,7 @@ size_t TypeBuilding::get_save_data(prototypes::TypeBuildingTable& result) {
     result._resources.clear();
   }
   result._resources = _resources;
-  result._building_time;
+  result._building_time = _building_time;
   if (!result._producable.empty()) {
     result._producable.clear();
   }
