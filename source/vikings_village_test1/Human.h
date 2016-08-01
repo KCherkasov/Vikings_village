@@ -29,7 +29,9 @@ class Human {
     size_t get_age(size_t& result);
     size_t get_house_id(ssize_t& result);
     size_t get_profession(TypeProfession& result);
+    TypeProfession& get_profession() { return _profession; }
     size_t get_inventory(Inventory& result);
+    Inventory& get_inventory() { return _inventory; }
     size_t get_inventory(std::vector<prototypes::ItemTable>& result);
     size_t get_inventory(size_t index, prototypes::ItemTable& result);
     size_t get_gender(bool& result);
