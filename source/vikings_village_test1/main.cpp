@@ -953,7 +953,7 @@ size_t make_human_table(prototypes::HumanTable& result) {
     make_item_table(table);
     result._equipment.push_back(table);
   }
-  _age = rand() % MALE_GENDER_CHANCE + 1;
+  result._age = rand() % MALE_GENDER_CHANCE + 1;
   ssize_t rnd = rand() % MAX_STAT_VALUE;
   result._house_id = rnd;
   rnd = rand() % PI_SIZE;
@@ -1784,7 +1784,7 @@ size_t make_human_test(size_t& error_count, std::ofstream& out) {
 	out << "\tget_skills(element mode) method test:\n";
 	for (size_t i = 0; i < source_table._skills.size(); ++i) {
       size_t elem_buffer = SIZE_T_DEFAULT_VALUE;
-      pritnf("\t\telement %d test: ", i);
+      printf("\t\telement %d test: ", i);
       out << "\t\telement " << i << " test: ";
       test_human->get_skills(i, elem_buffer);
       if (elem_buffer != SIZE_T_DEFAULT_VALUE) {
@@ -2091,7 +2091,7 @@ size_t make_human_test(size_t& error_count, std::ofstream& out) {
 			}
 		  } else {
             printf("failed to retrieve the field data.\n");
-            out << "failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
             ++error_count;
 		  }
 		  printf("\t\t\t_penalties field test: ");
@@ -2109,17 +2109,216 @@ size_t make_human_test(size_t& error_count, std::ofstream& out) {
             printf("failed to retrieve the field data.\n");
             out << "failed to retrieve the field data.\n";
             ++error_count;
+		  }  
+		  printf("\t\t\t_quality field test: ");
+		  out << "\t\t\t_quality field test: ";
+		  if (inv_buffer[i]._quality != IQ_SIZE) {
+            if (inv_buffer[i]._quality == source_table._equipment[i]._quality) {
+              printf("OK.\n");
+              out << "OK.\n";
+		    } else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+		    }
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
 		  }
-		  
-		} else {
-          printf("failed to retrieve the field data.\n");
-          out << "failed to retrieve the field data.\n";
-          ++error_count;
-		}
-		printf("\t\t\t_quality field test: ");
-		out << "\t\t\t_quality field test: ";
-		if (inv_buffer[i]._quality != IQ_SIZE) {
-          if (inv_buffer[i]._quality == source_table._equipment[i]._quality) {
+		  printf("\t\t\t_slots field test: ");
+		  out << "\t\t\t_slots field test: ";
+		  if (!inv_buffer[i]._slots.empty()) {
+            if (inv_buffer[i]._slots == source_table._equipment[i]._slots) {
+              printf("OK.\n");
+              out << "OK.\n";
+		    } else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+		    }
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t_is_players field test: ");
+		  out << "\t\t\t_is_players field test: ";
+		  if (inv_buffer[i]._is_players == source_table._equipment[i]._is_players) {
+            printf("OK.\n");
+            out << "OK.\n";
+		  } else {
+            printf("object data is not equal to the source data.\n");
+            out << "object data is not equal to the source data.\n";
+            ++error_count;
+	      }
+	    }
+	  } else {
+        printf("\t\tfailed to retrieve the data.\n");
+        out << "\t\tfailed to retrieve the data.\n";
+        ++error_count;
+	  }
+	  inv_buffer.clear();
+	} else {
+      printf("\t\t\tfailed to retrieve the field data.\n");
+      out << "\t\t\tfailed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\tget_inventory(std::vector<prototypes::ItemTable>&) method test:\n");
+	out << "\tget_inventory(std::vector<prototypes::ItemTable>&) method test:\n";
+	test_human->get_inventory(inv_buffer);
+	if (!inv_buffer.empty()) {
+      if (inv_buffer.size() == source_table._equipment.size()) {
+        for (size_t i = 0; i < source_table._equipment.size(); ++i) {
+          printf("\t\telement %d test:\n", i);
+          out << "\t\telement " << i << " test:\n";
+          printf("\t\t\t_name_size field test: ");
+          out << "\t\t\t_name_size field test: ";
+          if (inv_buffer[i]._name_size != SIZE_T_DEFAULT_VALUE) {
+            if (inv_buffer[i]._name_size == source_table._equipment[i]._name_size) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t_name field test: ");
+		  out << "\t\t\t_name field test: ";
+		  if (!inv_buffer[i]._name.empty()) {
+            if (inv_buffer[i]._name == source_table._equipment[i]._name) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t_description_size field test: ");
+		  out << "\t\t\t_description_size field test: ";
+		  if (inv_buffer[i]._description_size != SIZE_T_DEFAULT_VALUE) {
+            if (inv_buffer[i]._description == source_table._equipment[i]._description) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t_description field test: ");
+		  out << "\t\t\t_description field test: ";
+		  if (!inv_buffer[i]._description.empty()) {
+            if (inv_buffer[i]._description == source_table._equipment[i]._description) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t_cost field test: ");
+		  out << "\t\t\t_cost field test: ";
+		  if (!inv_buffer[i]._cost.empty()) {
+            if (inv_buffer[i]._cost == source_table._equipment[i]._cost) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t_bonuses field test: ");
+		  out << "\t\t\t_bonuses field test: ";
+		  if (!inv_buffer[i]._bonuses.empty()) {
+            if (inv_buffer[i]._bonuses == source_table._equipment[i]._bonuses) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t_penalties field test: ");
+		  out << "\t\t\t_penalties field test: ";
+		  if (!inv_buffer[i]._penalties.empty()) {
+            if (inv_buffer[i]._penalties == source_table._equipment[i]._penalties) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }  
+		  printf("\t\t\t_quality field test: ");
+		  out << "\t\t\t_quality field test: ";
+		  if (inv_buffer[i]._quality != IQ_SIZE) {
+            if (inv_buffer[i]._quality == source_table._equipment[i]._quality) {
+              printf("OK.\n");
+              out << "OK.\n";
+		    } else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+		    }
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t_slots field test: ");
+		  out << "\t\t\t_slots field test: ";
+		  if (!inv_buffer[i]._slots.empty()) {
+            if (inv_buffer[i]._slots == source_table._equipment[i]._slots) {
+              printf("OK.\n");
+              out << "OK.\n";
+		    } else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+		    }
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+	   	  }
+		  printf("\t\t\t_is_players field test: ");
+		  out << "\t\t\t_is_players field test: ";
+		  if (inv_buffer[i]._is_players == source_table._equipment[i]._is_players) {
             printf("OK.\n");
             out << "OK.\n";
 		  } else {
@@ -2127,30 +2326,29 @@ size_t make_human_test(size_t& error_count, std::ofstream& out) {
             out << "object data is not equal to the source data.\n";
             ++error_count;
 		  }
-		} else {
-          printf("failed to retrieve the field data.\n");
-          out << "failed to retrieve the field data.\n";
-          ++error_count;
-		}
-		printf("\t\t\t_slots field test: ");
-		out << "\t\t\t_slots field test: ";
-		if (!inv_buffer[i]._slots.empty()) {
-          if (inv_buffer[i]._slots == source_table._equipment[i]._slots) {
-            printf("OK.\n");
-            out << "OK.\n";
-		  } else {
-            printf("object data is not equal to the source data.\n");
-            out << "object data is not equal to the source data.\n";
-            ++error_count;
-		  }
-		} else {
-          printf("failed to retrieve the field data.\n");
-          out << "failed to retrieve the field data.\n";
-          ++error_count;
-		}
-		printf("\t\t\t_is_players field test: ");
-		out << "\t\t\t_is_players field test: ";
-		if (inv_buffer[i]._is_players == source_table._equipment[i]._is_players) {
+	    }
+	  } else {
+        printf("\t\tfailed to retrieve the data.\n");
+        out << "\t\tfailed to retrieve the data.\n";
+        ++error_count;
+	  }
+	  inv_buffer.clear();
+	} else {
+      printf("\t\t\tfailed to retrieve the field data.\n");
+      out << "\t\t\tfailed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\tget_inventory(size_t index, prototypes::ItemTable&) method test:\n");
+	out << "\tget_inventory(size_t index, prototypes::ItemTable&) method test:\n";
+	for (size_t i = 0; i < source_table._equipment.size(); ++i) {
+      prototypes::ItemTable table_buffer;
+      test_human->get_inventory(i, table_buffer);
+      printf("\t\telement %d test:\n", i);
+      out << "\t\telement " << i << " test:\n";
+      printf("\t\t\t_name_size field test: ");
+      out << "\t\t\t_name_size field test: ";
+      if (table_buffer._name_size != SIZE_T_DEFAULT_VALUE) {
+        if (table_buffer._name_size == source_table._equipment[i]._name_size) {
           printf("OK.\n");
           out << "OK.\n";
 		} else {
@@ -2158,15 +2356,492 @@ size_t make_human_test(size_t& error_count, std::ofstream& out) {
           out << "object data is not equal to the source data.\n";
           ++error_count;
 		}
-		inv_buffer.clear();
+	  } else {
+        printf("failed to retrieve the field data.\n");
+        out << "failed to retrieve the field data.\n";
+        ++error_count;
 	  }
+	  printf("\t\t\t_name field test: ");
+	  out << "\t\t\t_name field test: ";
+	  if (!table_buffer._name.empty()) {
+        if (table_buffer._name == source_table._equipment[i]._name) {
+          printf("OK.\n");
+          out << "OK.\n";
+		} else {
+          printf("object data is not equal to the source data.\n");
+          out << "object data is not equal to the source data.\n";
+          ++error_count;
+		}
+	  } else {
+        printf("failed to retrieve the field data.\n");
+        out << "failed to retrieve the field data.\n";
+        ++error_count;
+	  }
+	  printf("\t\t\t_description_size field test: ");
+	  out << "\t\t\t_description_size field test: ";
+	  if (table_buffer._description_size != SIZE_T_DEFAULT_VALUE) {
+        if (table_buffer._description == source_table._equipment[i]._description) {
+          printf("OK.\n");
+          out << "OK.\n";
+		} else {
+          printf("object data is not equal to the source data.\n");
+          out << "object data is not equal to the source data.\n";
+          ++error_count;
+		}
+	  } else {
+        printf("failed to retrieve the field data.\n");
+        out << "failed to retrieve the field data.\n";
+        ++error_count;
+	  }
+	  printf("\t\t\t_description field test: ");
+	  out << "\t\t\t_description field test: ";
+	  if (!table_buffer._description.empty()) {
+        if (table_buffer._description == source_table._equipment[i]._description) {
+          printf("OK.\n");
+          out << "OK.\n";
+		} else {
+          printf("object data is not equal to the source data.\n");
+          out << "object data is not equal to the source data.\n";
+          ++error_count;
+		}
+	  } else {
+        printf("failed to retrieve the field data.\n");
+        out << "failed to retrieve the field data.\n";
+        ++error_count;
+	  }
+	  printf("\t\t\t_cost field test: ");
+	  out << "\t\t\t_cost field test: ";
+	  if (!table_buffer._cost.empty()) {
+        if (table_buffer._cost == source_table._equipment[i]._cost) {
+          printf("OK.\n");
+          out << "OK.\n";
+		} else {
+          printf("object data is not equal to the source data.\n");
+          out << "object data is not equal to the source data.\n";
+          ++error_count;
+		}
+	  } else {
+        printf("failed to retrieve the field data.\n");
+        out << "failed to retrieve the field data.\n";
+        ++error_count;
+	  }
+	  printf("\t\t\t_bonuses field test: ");
+	  out << "\t\t\t_bonuses field test: ";
+	  if (!table_buffer._bonuses.empty()) {
+        if (table_buffer._bonuses == source_table._equipment[i]._bonuses) {
+          printf("OK.\n");
+          out << "OK.\n";
+		} else {
+          printf("object data is not equal to the source data.\n");
+          out << "object data is not equal to the source data.\n";
+          ++error_count;
+		}
+	  } else {
+        printf("failed to retrieve the field data.\n");
+        out << "failed to retrieve the field data.\n";
+        ++error_count;
+	  }
+	  printf("\t\t\t_penalties field test: ");
+	  out << "\t\t\t_penalties field test: ";
+	  if (!table_buffer._penalties.empty()) {
+        if (table_buffer._penalties == source_table._equipment[i]._penalties) {
+          printf("OK.\n");
+          out << "OK.\n";
+		} else {
+          printf("object data is not equal to the source data.\n");
+          out << "object data is not equal to the source data.\n";
+          ++error_count;
+		}
+	  } else {
+        printf("failed to retrieve the field data.\n");
+        out << "failed to retrieve the field data.\n";
+        ++error_count;
+	  }
+	  printf("\t\t\t_quality field test: ");
+	  out << "\t\t\t_quality field test: ";
+	  if (table_buffer._quality != IQ_SIZE) {
+        if (table_buffer._quality == source_table._equipment[i]._quality) {
+          printf("OK.\n");
+          out << "OK.\n";
+	    } else {
+          printf("object data is not equal to the source data.\n");
+          out << "object data is not equal to the source data.\n";
+          ++error_count;
+	    }
+	  } else {
+        printf("failed to retrieve the field data.\n");
+        out << "failed to retrieve the field data.\n";
+        ++error_count;
+	  }
+	  printf("\t\t\t_slots field test: ");
+	  out << "\t\t\t_slots field test: ";
+	  if (!table_buffer._slots.empty()) {
+        if (table_buffer._slots == source_table._equipment[i]._slots) {
+          printf("OK.\n");
+          out << "OK.\n";
+	    } else {
+          printf("object data is not equal to the source data.\n");
+          out << "object data is not equal to the source data.\n";
+          ++error_count;
+	    }
+	  } else {
+        printf("failed to retrieve the field data.\n");
+        out << "failed to retrieve the field data.\n";
+        ++error_count;
+	  }
+	  printf("\t\t\t_is_players field test: ");
+	  out << "\t\t\t_is_players field test: ";
+	  if (table_buffer._is_players == source_table._equipment[i]._is_players) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	}
+	printf("\tget_gender() method test: ");
+	out << "\tget_gender() method test: ";
+	bool belem_buffer;
+	test_human->get_gender(belem_buffer);
+	if (belem_buffer == source_table._gender) {
+      printf("OK.\n");
+      out << "OK.\n";
 	} else {
-      printf("\t\t\tfailed to retrieve the field data.\n");
-      out << "\t\t\tfailed to retrieve the field data.\n";
+      printf("object data is not equal to the source data.\n");
+      out << "object data is not equal to the source data.\n";
       ++error_count;
 	}
-	printf("\tget_inventory() method test:\n");
-	out << "\tget_inventory() method test:\n";
+	printf("\tget_save_data() method test:\n");
+	out << "\tget_save_data() method test:\n";
+	prototypes::HumanTable table_buffer;
+	test_human->get_save_data(table_buffer);
+	printf("\t\t_name_size field test: ");
+	out << "\t\t_name_size field test: ";
+	if (table_buffer._name_size != SIZE_T_DEFAULT_VALUE) {
+      if (table_buffer._name_size == source_table._name_size) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\t\t_name field test: ");
+	out << "\t\t_name field test: ";
+	if (!table_buffer._name.empty()) {
+      if (table_buffer._name == source_table._name) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\t\t_combat_stats field test: ");
+	out << "\t\t_combat_stats field test: ";
+	if (!table_buffer._combat_stats.empty()) {
+      if (table_buffer._combat_stats == source_table._combat_stats) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\t\t_misc_stats field test: ");
+	out << "\t\t_misc_stats field test: ";
+	if (!table_buffer._misc_stats.empty()) {
+      if (table_buffer._misc_stats == source_table._misc_stats) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\t\t_skills field test: ");
+	out << "\t\t_skills field test: ";
+	if (!table_buffer._skills.empty()) {
+      if (table_buffer._skills == source_table._skills) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\t\t_saga field test: ");
+	out << "\t\t_saga field test: ";
+	if (!table_buffer._saga.empty()) {
+      if (table_buffer._saga == source_table._saga) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\t\t_equipment field test:\n");
+	out << "\t\t_equipment field test:\n";
+    if (!table_buffer._equipment.empty()) {
+      if (table_buffer._equipment.size() == source_table._equipment.size()) {
+        for (size_t i = 0; i < source_table._equipment.size(); ++i) {
+          printf("\t\t\telement %d test:\n", i);
+          out << "\t\t\telement " << i << " test:\n";
+          printf("\t\t\t\t_name_size field test: ");
+          out << "\t\t\t\t_name_size field test: ";
+          if (table_buffer._equipment[i]._name_size != SIZE_T_DEFAULT_VALUE) {
+            if (table_buffer._equipment[i]._name_size == source_table._equipment[i]._name_size) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+	          printf("object data is not equal to the source data.\n");
+	          out << "object data is not equal to the source data.\n"; 
+	          ++error_count;
+			}
+		  } else {
+		  	printf("failed to retrieve the field data.\n");
+		  	out << "failed to retrieve the field data.\n";
+		  	++error_count;
+		  }
+		  printf("\t\t\t\t_name field test: ");
+		  out << "\t\t\t\t_name field test: ";
+		  if (!table_buffer._equipment[i]._name.empty()) {
+            if (table_buffer._equipment[i]._name == source_table._equipment[i]._name) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t\t_description_size field test: ");
+          out << "\t\t\t\t_description_size field test: ";
+          if (table_buffer._equipment[i]._description_size != SIZE_T_DEFAULT_VALUE) {
+            if (table_buffer._equipment[i]._description_size == source_table._equipment[i]._description_size) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+	          printf("object data is not equal to the source data.\n");
+	          out << "object data is not equal to the source data.\n"; 
+	          ++error_count;
+			}
+		  } else {
+		  	printf("failed to retrieve the field data.\n");
+		  	out << "failed to retrieve the field data.\n";
+		  	++error_count;
+		  }
+		  printf("\t\t\t\t_description field test: ");
+		  out << "\t\t\t\t_description field test: ";
+		  if (!table_buffer._equipment[i]._description.empty()) {
+            if (table_buffer._equipment[i]._description == source_table._equipment[i]._description) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t\t_cost field test: ");
+		  out << "\t\t\t\t_cost field test: ";
+		  if (!table_buffer._equipment[i]._cost.empty()) {
+            if (table_buffer._equipment[i]._cost == source_table._equipment[i]._cost) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t\t_bonuses field test: ");
+		  out << "\t\t\t\t_bonuses field test: ";
+		  if (!table_buffer._equipment[i]._bonuses.empty()) {
+            if (table_buffer._equipment[i]._bonuses == source_table._equipment[i]._bonuses) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t\t_penalties field test: ");
+		  out << "\t\t\t\t_penalties field test: ";
+		  if (!table_buffer._equipment[i]._penalties.empty()) {
+            if (table_buffer._equipment[i]._penalties == source_table._equipment[i]._penalties) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t\t_quality field test: ");
+          out << "\t\t\t\t_quality field test: ";
+          if (table_buffer._equipment[i]._quality != IQ_SIZE) {
+            if (table_buffer._equipment[i]._quality == source_table._equipment[i]._quality) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+	          printf("object data is not equal to the source data.\n");
+	          out << "object data is not equal to the source data.\n"; 
+	          ++error_count;
+			}
+		  } else {
+		  	printf("failed to retrieve the field data.\n");
+		  	out << "failed to retrieve the field data.\n";
+		  	++error_count;
+		  }
+		  printf("\t\t\t\t_slots field test: ");
+		  out << "\t\t\t\t_slots field test: ";
+		  if (!table_buffer._equipment[i]._slots.empty()) {
+            if (table_buffer._equipment[i]._slots == source_table._equipment[i]._slots) {
+              printf("OK.\n");
+              out << "OK.\n";
+			} else {
+              printf("object data is not equal to the source data.\n");
+              out << "object data is not equal to the source data.\n";
+              ++error_count;
+			}
+		  } else {
+            printf("failed to retrieve the field data.\n");
+            out << "failed to retrieve the field data.\n";
+            ++error_count;
+		  }
+		  printf("\t\t\t\t_is_players field test: ");
+		  out << "\t\t\t\t_is_players field test: ";
+		  if (table_buffer._equipment[i]._is_players == source_table._equipment[i]._is_players) {
+            printf("OK.\n");
+            out << "OK.\n";
+		  } else {
+	        printf("object data is not equal to the source data.\n");
+	        out << "object data is not equal to the source data.\n";
+	        ++error_count;
+		  }
+		}
+	  } else {
+        printf("\t\t\tobject data is not equal to the source data.\n");
+        out << "\t\t\tobject data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	} else {
+      printf("\t\t\tfailed to retrieve the field.\n");
+      out << "\t\t\tfailed to retrieve the field.\n";
+      ++error_count;
+	}
+	printf("\t\t_age field test: ");
+	out << "\t\t_age field test: ";
+	if (table_buffer._age != SIZE_T_DEFAULT_VALUE) {
+      if (table_buffer._age == source_table._age) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+	    printf("object data is not equal to the source data.\n");
+	    out << "object data is not equal to the source data.\n";
+		++error_count; 
+	  }
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\t\t_house_id field test: ");
+	out << "\t\t_house_id field test: ";
+	if (table_buffer._house_id != SSIZE_T_DEFAULT_VALUE) {
+      if (table_buffer._house_id == source_table._house_id) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\t\t_profession_id field test: ");
+	out << "\t\t_profession_id field test: ";
+	if (table_buffer._profession_id != SSIZE_T_DEFAULT_VALUE) {
+      if (table_buffer._profession_id == source_table._profession_id) {
+        printf("OK.\n");
+        out << "OK.\n";
+	  } else {
+        printf("object data is not equal to the source data.\n");
+        out << "object data is not equal to the source data.\n";
+        ++error_count;
+	  }
+	} else {
+      printf("failed to retrieve the field data.\n");
+      out << "failed to retrieve the field data.\n";
+      ++error_count;
+	}
+	printf("\t\t_gender field test: ");
+	out << "\t\t_gender field test: ";
+	if (table_buffer._gender == source_table._gender) {
+      printf("OK.\n");
+      out << "OK.\n";
+	} else {
+      printf("object data is not equal to the source data.\n");
+      out << "object data is not equal to the source data.\n";
+      ++error_count;
+	}
   } else {
     printf("failed to create an object.\n");
     out << "failed to create an object.\n";
@@ -2251,6 +2926,22 @@ int main()
     printf("test %d:\n\n", i);
     out << "test " << i << ":\n\n";
     make_type_building_test(errors, out);
+    printf("<==============================>\n\n");
+    out << "<==============================>\n\n";
+  }
+  printf("\ntotal errors: %d\n", errors);
+  out << "\n\ntotal errors: " << errors << "\n";
+  printf("\n\n\n");
+  out << "\n\n\n";
+  printf("Human class testing:\n\n");
+  out << "Human class testing:\n\n";  
+  tests_count = rand() % 150 + 300;
+  for (size_t i = 0; i < tests_count; ++i) {
+    printf("<==============================>\n");
+    out << "<==============================>\n";
+    printf("test %d:\n\n", i);
+    out << "test " << i << ":\n\n";
+    make_human_test(errors, out);
     printf("<==============================>\n\n");
     out << "<==============================>\n\n";
   }

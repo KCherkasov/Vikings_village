@@ -203,6 +203,8 @@ size_t Human::get_save_data(prototypes::HumanTable& result) {
     result._saga.clear();
   }
   result._saga = _saga;
+  result._age = _age;
+  result._house_id = _house_id;
   _profession.get_id(result._profession_id);
   _inventory.get_save_data(result._equipment);
   result._gender = _gender;
