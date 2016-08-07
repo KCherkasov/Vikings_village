@@ -4,8 +4,8 @@
 CPP      = g++.exe -D__DEBUG__
 CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
-OBJ      = main.o Item.o Inventory.o Human.o TypeObjects.o
-LINKOBJ  = main.o Item.o Inventory.o Human.o TypeObjects.o
+OBJ      = main.o Item.o Inventory.o Human.o TypeObjects.o Building.o
+LINKOBJ  = main.o Item.o Inventory.o Human.o TypeObjects.o Building.o
 LIBS     = -L"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib32" -static-libgcc -m32 -g3
 INCS     = -I"C:/Program Files/Dev-Cpp/MinGW64/include" -I"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include"
 CXXINCS  = -I"C:/Program Files/Dev-Cpp/MinGW64/include" -I"C:/Program Files/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++"
@@ -38,3 +38,6 @@ Human.o: Human.cpp
 
 TypeObjects.o: TypeObjects.cpp
 	$(CPP) -c TypeObjects.cpp -o TypeObjects.o $(CXXFLAGS)
+
+Building.o: Building.cpp
+	$(CPP) -c Building.cpp -o Building.o $(CXXFLAGS)

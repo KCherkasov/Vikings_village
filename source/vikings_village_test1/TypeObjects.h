@@ -27,23 +27,25 @@ class TypeBuilding: public TypeObject {
     TypeBuilding();
     TypeBuilding(prototypes::TypeBuildingTable data);
     virtual ~TypeBuilding() {}
-    size_t get_max_employees(std::vector<size_t>& result);
-    size_t get_max_employees(size_t index, size_t& result);
+    size_t get_max_employees(size_t& result);
     size_t get_resources(std::vector<size_t>& result);
     size_t get_resources(size_t index, size_t& result);
     size_t get_cost(std::vector<size_t>& result);
     size_t get_cost(size_t index, size_t& result);
     size_t get_building_time(size_t& result);
+    size_t get_living_space(size_t& result);
+    size_t get_id(size_t& result);
     size_t get_producable(std::vector<bool>& result);
     size_t get_producable(size_t index, bool& result);
     size_t get_save_data(prototypes::TypeBuildingTable& result);
-    size_t set_max_employees(std::vector<size_t> value);
-    size_t set_max_employees(size_t index, size_t value);
+    size_t set_max_employees(size_t value);
     size_t set_resources(std::vector<size_t> value);
     size_t set_resources(size_t index, size_t value);
     size_t set_cost(std::vector<size_t> value);
     size_t set_cost(size_t index, size_t value);
     size_t set_building_time(size_t value);
+    size_t set_living_space(size_t value);
+    size_t set_id(size_t value);
     size_t set_producable(std::vector<bool> value);
     size_t set_producable(size_t index, bool value);
     size_t what(std::string& out);
@@ -58,10 +60,6 @@ class TypeBuilding: public TypeObject {
         _description.clear();
       }
       _description = rhs._description;
-      if (!_max_employees.empty()) {
-        _max_employees.clear();
-      }
-      _max_employees = rhs._max_employees;
       if (!_resources.empty()) {
         _resources.clear();
       }
@@ -70,7 +68,10 @@ class TypeBuilding: public TypeObject {
         _cost.clear();
       }
       _cost = rhs._cost;
+      _max_employees = rhs._max_employees;
       _building_time = rhs._building_time;
+      _living_space = rhs._living_space;
+      _id = rhs._id;
       if (!_producable.empty()) {
         _producable.clear();
       }
@@ -79,10 +80,12 @@ class TypeBuilding: public TypeObject {
     }
 
   protected:
-    std::vector<size_t> _max_employees;
     std::vector<size_t> _resources;
     std::vector<size_t> _cost;
+    size_t _max_employees;
     size_t _building_time;
+    size_t _living_space;
+    size_t _id;
     std::vector<bool> _producable;
 };
 

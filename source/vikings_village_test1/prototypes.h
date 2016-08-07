@@ -10,6 +10,10 @@ const size_t SIZE_T_DEFAULT_VALUE = 0;
 const ssize_t SSIZE_T_DEFAULT_VALUE = -1;
 const bool BOOL_DEFAULT_VALUE = false;
 
+const size_t BUILD_DONE = 0;
+
+const size_t MAX_PRODUCTION_QUEUE_SIZE = 15;
+
 const ssize_t FREE_INDEX = -1;
 
 const size_t DIGIT_STRING_SIZE = 3;
@@ -57,9 +61,11 @@ namespace prototypes {
       size_t _description_size;
       std::string _description;
       std::vector<size_t> _cost;
-      std::vector<size_t> _max_employees;
       std::vector<size_t> _resources;
+      size_t _max_employees;
       size_t _building_time;
+      size_t _living_space;
+      size_t _id;
       std::vector<bool> _producable;
 
       TypeBuildingTable& operator = (const TypeBuildingTable& rhs) {
@@ -77,15 +83,14 @@ namespace prototypes {
           _cost.clear();
         }
         _cost = rhs._cost;
-        if(!_max_employees.empty()) {
-          _max_employees.clear();
-        }
-        _max_employees = rhs._max_employees;
         if (!_resources.empty()) {
           _resources.clear();
         }
         _resources = rhs._resources;
+        _max_employees = rhs._max_employees;
         _building_time = rhs._building_time;
+        _living_space = rhs._living_space;
+        _id = rhs._id;
         if (!_producable.empty()) {
           _producable.clear();
         }
@@ -217,6 +222,50 @@ namespace prototypes {
         _gender = rhs._gender;
         return *this;
       }
+  };
+  
+  struct BuildingTable{
+    size_t _kind_id;
+  	size_t _employees_count;
+    std::vector<size_t> _employees_id;
+    size_t _inhabitants_count;
+    std::vector<size_t> _inhabitants;
+    size_t _queue_size;
+    std::vector<size_t> _production_queue;
+    size_t _building_time;
+    
+    BuildingTable& operator = (const BuildingTable& rhs) {
+      _kind_id = rhs._kind_id;
+      _employees_count = rhs._employees_count;
+      if (!_employees_id.empty()) {
+      	_employees_id.clear();
+	  }
+	  _employees_id = rhs._employees_id;
+	  _inhabitants_count = rhs._inhabitants_count;
+	  if (!_inhabitants.empty()) {
+        _inhabitants.clear();
+	  }
+	  _inhabitants = rhs._inhabitants;
+	  _queue_size = rhs._queue_size;
+	  if (!_production_queue.empty()) {
+        _production_queue.clear();
+	  }
+	  _production_queue = rhs._production_queue;
+	  _building_time = rhs._building_time;
+	  return *this;
+	}
+  };
+  
+  struct VillageTable {
+    size_t _name_size;
+    std::string _name;
+    std::vector<size_t> _resources;
+    size_t _villagers_count;
+    std::vector<HumanTable> _villagers;
+    size_t _buildings_count;
+    std::vector<BuildingTable> _buildings;
+    size_t _items_count;
+    std::vector<ItemTable> _items;
   };
 }
 

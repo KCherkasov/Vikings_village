@@ -50,6 +50,7 @@ TypeBuilding::TypeBuilding(prototypes::TypeBuildingTable data): TypeObject() {
   _cost = data._cost;
   _producable = data._producable;
   _building_time = data._building_time;
+  _living_space = data._living_space;
 }
 
 size_t TypeBuilding::get_max_employees(std::vector<size_t>& result) {
@@ -105,6 +106,16 @@ size_t TypeBuilding::get_building_time(size_t& result) {
   return 0;
 }
 
+size_t TypeBuilding::get_living_space(size_t& result) {
+  result = _living_space;
+  return 0;
+}
+
+size_t TypeBuilding::get_id(size_t& result) {
+  result = _id;
+  return 0;
+}
+
 size_t TypeBuilding::get_save_data(prototypes::TypeBuildingTable& result) {
   result._name_size = _name.size();
   if (!result._name.empty()) {
@@ -128,7 +139,9 @@ size_t TypeBuilding::get_save_data(prototypes::TypeBuildingTable& result) {
     result._resources.clear();
   }
   result._resources = _resources;
-  result._building_time;
+  result._building_time = _building_time;
+  result._living_space = _living_space;
+  result._id = _id;
   if (!result._producable.empty()) {
     result._producable.clear();
   }
@@ -185,6 +198,16 @@ size_t TypeBuilding::set_producable(size_t index, bool value) {
 
 size_t TypeBuilding::set_building_time(size_t value) {
   _building_time = value;
+  return 0;
+}
+
+size_t TypeBuilding::set_living_space(size_t value) {
+  _living_space = value;
+  return 0;
+}
+
+size_t TypeBuilding::set_id(size_t value) {
+  _id = value;
   return 0;
 }
 
