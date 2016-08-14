@@ -9,8 +9,8 @@ class Item {
   public:
     Item();
     Item(prototypes::ItemTable data);
-    Item(prototypes::ItemTable data, bool quality);
-    Item(prototypes::ItemTable data, bool quality, bool is_players);
+    Item(prototypes::ItemTable data, size_t quality);
+    Item(prototypes::ItemTable data, size_t quality, bool is_players);
     ~Item() {}
     size_t get_name(std::string& result);
     size_t get_description(std::string& result);

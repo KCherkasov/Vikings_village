@@ -14,7 +14,7 @@
 
 class Human {
   public:
-    Human(TypeProfession& profession, bool gender, ssize_t house_id, std::string& name);
+    Human(TypeProfession& profession, bool gender, bool is_slave, ssize_t house_id, std::string& name);
     Human(prototypes::HumanTable data, TypeProfession& profession);
     ~Human() {}
     size_t get_name(std::string& result);
@@ -35,6 +35,7 @@ class Human {
     size_t get_inventory(std::vector<prototypes::ItemTable>& result);
     size_t get_inventory(size_t index, prototypes::ItemTable& result);
     size_t get_gender(bool& result);
+    size_t get_is_slave(bool& result);
     size_t get_save_data(prototypes::HumanTable& result);
     size_t set_name(std::string value);
     size_t set_combat_stats(std::vector<size_t> value);
@@ -53,8 +54,9 @@ class Human {
     size_t set_inventory(size_t index, prototypes::ItemTable value);
     size_t set_inventory(size_t index, Item* value);
     size_t set_gender(bool value);
+    size_t set_is_slave(bool value);
     size_t what(std::string& out);
-    size_t consume(); //add there argument - either std::vector<size_t> or Village class
+    size_t consume(std::vector<size_t>& storage); //add there argument - either std::vector<size_t> or Village class
     size_t add_to_saga(size_t index, size_t value);
     size_t wound();
     size_t increase_combat_stat(size_t index);
@@ -97,6 +99,7 @@ class Human {
       _profession = rhs._profession;
       _inventory = rhs._inventory;
       _gender = rhs._gender;
+      _is_slave = rhs._is_slave;
       return *this;
     }
 
@@ -111,6 +114,7 @@ class Human {
     TypeProfession& _profession;
     Inventory _inventory;
     bool _gender;
+    bool _is_slave;
 };
 
 #endif

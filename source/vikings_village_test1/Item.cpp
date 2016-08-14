@@ -42,7 +42,7 @@ Item::Item(prototypes::ItemTable data) {
   _is_players = data._is_players;
 }
 
-Item::Item(prototypes::ItemTable data, bool quality) {
+Item::Item(prototypes::ItemTable data, size_t quality) {
   _name.clear();
   _description.clear();
   _cost.clear();
@@ -59,7 +59,7 @@ Item::Item(prototypes::ItemTable data, bool quality) {
   _is_players = true;
 }
 
-Item::Item(prototypes::ItemTable data, bool quality, bool is_players) {
+Item::Item(prototypes::ItemTable data, size_t quality, bool is_players) {
   _name.clear();
   _description.clear();
   _cost.clear();

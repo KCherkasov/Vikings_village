@@ -19,13 +19,12 @@ class IngameStorage {
     size_t load_storage();
     size_t unload_storage();
     size_t get_item_table(size_t index, prototypes::ItemTable& result);
+    prototypes::ItemTable& get_item_table(size_t index);
     size_t get_building_kind(size_t index, TypeBuilding& result);
+    TypeBuilding& get_building_kind(size_t index);
     size_t get_profession(size_t index, TypeProfession& result);
+    TypeProfession& get_profession (size_t index);
     size_t form_name(bool gender, std::string& result);
-
-    std::vector<TypeBuilding> _building_kinds;
-    std::vector<TypeProfession> _professions;
-    std::vector<prototypes::ItemTable> _items;
 
   protected:
     sqlite3* _database;
@@ -42,6 +41,10 @@ class IngameStorage {
     size_t form_item_record(size_t query_id, struct prototypes::ItemTable& data);
 
     size_t get_nameparts(size_t query_id, bool gender);
+
+    std::vector<TypeBuilding> _building_kinds;
+    std::vector<TypeProfession> _professions;
+    std::vector<prototypes::ItemTable> _items;
 };
 
 #endif

@@ -54,6 +54,15 @@ size_t Building::get_employees_id(size_t index, size_t& result) {
   return 0;
 }
 
+size_t Building::get_employees_count(size_t& result) {
+  result = _employees_id.size();
+  return 0;
+}
+
+size_t Building::get_employees_count() {
+  return _employees_id.size();
+}
+
 size_t Building::get_inhabitants(std::vector<size_t>& result) {
   if (!result.empty()) {
     result.clear();
@@ -233,11 +242,25 @@ size_t Building::what(std::string& out) {
   return 0;
 }
 
-size_t Building::turn(/*args will be added here*/) {
+size_t Building::turn(std::vector<size_t>& storage, std::vector<Item*>& items, const IngameStorage& database) {
   if (_building_time > BUILD_DONE) {
     --_building_time;
   } else {
-    //code here describing what will building do during the turn. Possibly needs derivative classes, or some more tinkering on Type Object pattern.
+    if (storage.empty()) {
+      storage.resize(RI_SIZE);
+	}
+	for (size_t i = 0; i < storage.size(); ++i) {
+      size_t production_i = SIZE_T_DEFAULT_VALUE;
+      _kind.get_resources(i, production_i);
+      storage[i] += (production_i * _employees_id.size());
+	}
+	for (size_t i = 0; i < _employees_id.size(); ++i) {
+      prototypes::ItemTable item_table;
+      Item* item = new Item(database.get_item_table(_production_queue.back()));
+      items.push_back(item);
+      item = NULL;
+      _production_queue.pop_back();
+	}
   }
   return 0;
 }

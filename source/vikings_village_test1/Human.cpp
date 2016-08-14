@@ -1,6 +1,6 @@
 #include "Human.h"
 
-Human::Human(TypeProfession& profession, bool gender, ssize_t house_id, std::string& name): _inventory(), _profession(profession) {
+Human::Human(TypeProfession& profession, bool gender, bool is_slave, ssize_t house_id, std::string& name): _inventory(), _profession(profession) {
   srand(static_cast<unsigned int>(time(0)));
   _name.clear();
   _name = name;
@@ -40,6 +40,7 @@ Human::Human(TypeProfession& profession, bool gender, ssize_t house_id, std::str
   }
   _house_id = house_id;
   _gender = gender;
+  _is_slave = is_slave;
 }
 
 Human::Human(prototypes::HumanTable data, TypeProfession& profession): _inventory(data._equipment), _profession(profession) {
@@ -56,6 +57,7 @@ Human::Human(prototypes::HumanTable data, TypeProfession& profession): _inventor
   _age = data._age;
   _house_id = data._house_id;
   _gender = data._gender;
+  _is_slave = data._is_slave;
 }
 
 size_t Human::get_name(std::string& result) {
@@ -181,6 +183,11 @@ size_t Human::get_gender(bool& result) {
   return 0;
 }
 
+size_t Human::get_is_slave(bool& result) {
+  result = _is_slave;
+  return 0;
+}
+
 size_t Human::get_save_data(prototypes::HumanTable& result) {
   result._name_size = _name.size();
   if (!result._name.empty()) {
@@ -208,6 +215,7 @@ size_t Human::get_save_data(prototypes::HumanTable& result) {
   _profession.get_id(result._profession_id);
   _inventory.get_save_data(result._equipment);
   result._gender = _gender;
+  result._is_slave = _is_slave;
   return 0;
 }
 
@@ -314,6 +322,11 @@ size_t Human::set_gender(bool value) {
   return 0;
 }
 
+size_t Human::set_is_slave(bool value) {
+  _is_slave = value;
+  return 0;
+}
+
 size_t Human::what(std::string& out) {
   if (!out.empty()) {
     out.clear();
@@ -322,8 +335,33 @@ size_t Human::what(std::string& out) {
   return 0;
 }
 
-size_t Human::consume() {
-  //to be realized
+size_t Human::consume(std::vector<size_t>& storage) {
+  if (storage.empty()) {
+    for (size_t i = 0; i < RI_SIZE; ++i) {
+      storage.push_back(SIZE_T_DEFAULT_VALUE);
+	}
+  }
+  std::vector<size_t> consumation;
+  consumation.clear();
+  _profession.get_consumation(consumation);
+  if (consumation.size() == storage.size()) {
+    for (size_t i = 0; i < storage.size(); ++i) {
+      if (storage[i] >= consumation[i]) {
+        storage[i] -= consumation[i];
+        _misc_stats[MI_LOYALTY] += consumation[i];
+        if (_misc_stats[MI_LOYALTY] > MAX_STAT_VALUE) {
+          _misc_stats[MI_LOYALTY] = MAX_STAT_VALUE;
+		}
+	  } else {
+	  	if (_misc_stats[MI_LOYALTY] >= (consumation[i] - storage[i])) {
+	  	  _misc_stats[MI_LOYALTY] -= (consumation[i] - storage[i]);	
+		} else {
+          _misc_stats[MI_LOYALTY] = SIZE_T_DEFAULT_VALUE;
+		}
+        storage[i] = SIZE_T_DEFAULT_VALUE;
+	  }
+	}
+  }
   return 0;
 }
 

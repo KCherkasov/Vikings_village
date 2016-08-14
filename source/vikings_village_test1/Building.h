@@ -7,6 +7,8 @@
 
 #include "prototypes.h"
 #include "TypeObjects.h"
+#include "IngameStorage.h"
+#include "Item.h"
 
 class Building {
   public:
@@ -18,6 +20,8 @@ class Building {
 	size_t get_description(std::string& result);
 	size_t get_employees_id(std::vector<size_t>& result);
 	size_t get_employees_id(size_t index, size_t& result);
+	size_t get_employees_count(size_t& result);
+	size_t get_employees_count();
 	size_t get_inhabitants(std::vector<size_t>& result);
 	size_t get_inhabitants(size_t index, size_t& result);
 	size_t get_production_queue(std::vector<size_t>& result);
@@ -41,7 +45,7 @@ class Building {
 	size_t remove_employee();
 	size_t remove_employee(size_t index);
 	size_t what(std::string& out);
-	size_t turn(/*args will be added here*/); //remake after writing Village class
+	size_t turn(std::storage<size_t>& storage, std::vector<Item*>& items, const IngameStorage& database);
   protected:
   	TypeBuilding& _kind;
     std::vector<size_t> _employees_id;

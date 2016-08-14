@@ -10,6 +10,14 @@ const size_t SIZE_T_DEFAULT_VALUE = 0;
 const ssize_t SSIZE_T_DEFAULT_VALUE = -1;
 const bool BOOL_DEFAULT_VALUE = false;
 
+const size_t NAMEPARTS_COUNT = 2;
+
+const size_t COMMON_CHANCE = 75;
+const size_t GOOD_CHANCE = 25;
+const size_t RARE_CHANCE = 13;
+const size_t EPIC_CHANCE = 6;
+const size_t LEGENDARY_CHANCE = 3;
+
 const size_t BUILD_DONE = 0;
 
 const size_t MAX_PRODUCTION_QUEUE_SIZE = 15;
@@ -39,6 +47,9 @@ const size_t ITEMS_COUNT = 23;
 
 const bool MALE_GENDER = true;
 const bool FEMALE_GENDER = false;
+
+const bool FREEMEN_STATE = true;
+const bool SLAVE_STATE = false;
 
 const size_t MALE_GENDER_CHANCE = 50;
 
@@ -189,6 +200,7 @@ namespace prototypes {
       ssize_t _house_id;
       ssize_t _profession_id;
       bool _gender;
+      bool _is_slave;
 
       HumanTable& operator = (const HumanTable& rhs) {
         _name_size = rhs._name_size;
@@ -220,52 +232,78 @@ namespace prototypes {
         _house_id = rhs._house_id;
         _profession_id = rhs._profession_id;
         _gender = rhs._gender;
+        _is_slave = rhs._is_slave;
         return *this;
       }
   };
   
   struct BuildingTable{
-    size_t _kind_id;
-  	size_t _employees_count;
-    std::vector<size_t> _employees_id;
-    size_t _inhabitants_count;
-    std::vector<size_t> _inhabitants;
-    size_t _queue_size;
-    std::vector<size_t> _production_queue;
-    size_t _building_time;
+  	public:
+      size_t _kind_id;
+  	  size_t _employees_count;
+      std::vector<size_t> _employees_id;
+      size_t _inhabitants_count;
+      std::vector<size_t> _inhabitants;
+      size_t _queue_size;
+      std::vector<size_t> _production_queue;
+      size_t _building_time;
     
-    BuildingTable& operator = (const BuildingTable& rhs) {
-      _kind_id = rhs._kind_id;
-      _employees_count = rhs._employees_count;
-      if (!_employees_id.empty()) {
-      	_employees_id.clear();
+      BuildingTable& operator = (const BuildingTable& rhs) {
+        _kind_id = rhs._kind_id;
+        _employees_count = rhs._employees_count;
+        if (!_employees_id.empty()) {
+       	  _employees_id.clear();
+	    }
+	    _employees_id = rhs._employees_id;
+	    _inhabitants_count = rhs._inhabitants_count;
+	    if (!_inhabitants.empty()) {
+          _inhabitants.clear();
+	    }
+	    _inhabitants = rhs._inhabitants;
+	    _queue_size = rhs._queue_size;
+	    if (!_production_queue.empty()) {
+          _production_queue.clear();
+	    }
+	    _production_queue = rhs._production_queue;
+	    _building_time = rhs._building_time;
+	    return *this;
 	  }
-	  _employees_id = rhs._employees_id;
-	  _inhabitants_count = rhs._inhabitants_count;
-	  if (!_inhabitants.empty()) {
-        _inhabitants.clear();
-	  }
-	  _inhabitants = rhs._inhabitants;
-	  _queue_size = rhs._queue_size;
-	  if (!_production_queue.empty()) {
-        _production_queue.clear();
-	  }
-	  _production_queue = rhs._production_queue;
-	  _building_time = rhs._building_time;
-	  return *this;
-	}
   };
   
   struct VillageTable {
-    size_t _name_size;
-    std::string _name;
-    std::vector<size_t> _resources;
-    size_t _villagers_count;
-    std::vector<HumanTable> _villagers;
-    size_t _buildings_count;
-    std::vector<BuildingTable> _buildings;
-    size_t _items_count;
-    std::vector<ItemTable> _items;
+  	public:
+      size_t _name_size;
+      std::string _name;
+      std::vector<size_t> _resources;
+      size_t _villagers_count;
+      std::vector<HumanTable> _villagers;
+      size_t _buildings_count;
+      std::vector<BuildingTable> _buildings;
+      size_t _items_count;
+      std::vector<ItemTable> _items;
+      
+      VillageTable& operator = (const VillageTable& rhs) {
+        _name_size = rhs._name_size;
+        if (!_name.empty()) {
+          _name.clear();
+		}
+		_name = rhs._name;
+		if (!_resources.empty()) {
+          _resources.clear();
+		}
+		_resources = rhs._resources;
+		_villagers_count = rhs._villagers_count;
+		if (!_villagers.empty()) {
+	      _villagers.clear();
+		}
+		_villagers = rhs._villagers;
+		_items_count = rhs._items_count;
+		if(!_items.empty()) {
+          _items.clear();
+		}
+		_items = rhs._items;
+		return *this;
+	  }
   };
 }
 

@@ -531,7 +531,8 @@ works in &gt;</panel_attributes>
       <w>270</w>
       <h>210</h>
     </coordinates>
-    <panel_attributes>Village
+    <panel_attributes>bg=cyan
+Village
 --
 #villagers: std::vector&lt;Human*&gt;
 #buildings: std::vector&lt;Building*&gt;

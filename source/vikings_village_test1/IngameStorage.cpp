@@ -198,3 +198,66 @@ size_t IngameStorage::unload_storage() {
   _professions.clear();
   return response;
 }
+
+size_t IngameStorage::get_item_table(size_t index, prototypes::ItemTable& result) {
+  if (index < _items.size()) {
+    result = _items[index];
+  }
+  return 0;
+}
+
+prototypes::ItemTable& IngameStorage::get_item_table(size_t index) {
+  return _items[index];
+}
+
+size_t IngameStorage::get_building_kind(size_t index, TypeBuilding& result) {
+  if (index < _building_kinds.size()) {
+    result = _building_kind[index];
+  }
+  return 0;
+}
+
+TypeBuilding& IngameStorage::get_building_kind(size_t index) {
+  return _building_kinds[index];
+}
+
+size_t IngameStorage::get_profession(size_t index, TypeProfession& result) {
+  if (index < _professions.size()) {
+    result = _professions[index];
+  }
+  return 0;
+}
+
+TypeProfession& IngameStorage::get_profession(size_t index) {
+  return _professions[index];
+}
+
+size_t IngameStorage::form_name(bool gender, std::string& result) {
+  srand(static_cast<unsigned int>(time(0)));
+  if (!result.empty()) {
+    result.clear();
+  }
+  size_t index = SIZE_T_DEFAULT_VALUE;
+  if (gender == MALE_GENDER) {
+    index = rand() % _male_nameparts_one.size();
+	result += _male_nameparts_one[index];
+	index = rand() % _male_nameparts_two.size();
+	result += _male_nameparts_two[index];  
+  } else {
+    size_t index = rand() % _female_nameparts_one.size();
+    result += _female_nameparts_one[index];
+    index = rand() % _female_nameparts_two.size();
+    result += _female_nameparts_two[index];
+  }
+  result.append(" ");
+  index = rand() % _male_nameparts_one.size();
+  result += _male_nameparts_one[index];
+  index = rand() % _male_nameparts_two.size();
+  result += _male_nameparts_two[index];
+  if (gender == MALE_GENDER) {
+    result.append("son");
+  } else {
+    result.append("dottir");
+  }
+  return 0;
+}
