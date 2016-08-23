@@ -45,7 +45,7 @@ size_t make_item_table(prototypes::ItemTable& table) {
     bool rnd = (rand() % 2) == 0;
     table._slots[i] = rnd;
   }
-  table._is_players = true;
+  table._owner_id = FREE_INDEX;
   return 0;
 }
 
@@ -264,10 +264,11 @@ size_t make_item_test(prototypes::ItemTable table, size_t& error_count, std::ofs
       ++error_count;
     }
   }
-  printf("\tget_is_players() method test: ");
-  out << "\tget_is_players() method test: ";
-  test_item->get_is_players(bool_elem_buffer);
-  if (bool_elem_buffer == table._is_players) {
+  ssize_t selem_buffer;
+  printf("\tget_owner_id() method test: ");
+  out << "\tget_owner_id() method test: ";
+  test_item->get_owner_id(selem_buffer);
+  if (selem_buffer == table._owner_id) {
     printf("OK.\n");
     out << "OK.\n";
   } else {
@@ -423,9 +424,9 @@ size_t make_item_test(prototypes::ItemTable table, size_t& error_count, std::ofs
     out << "failed to retrieve the field data.\n";
     ++error_count;
   }
-  printf("\t\t_is_players field: ");
-  out << "\t\t_is_players field: ";
-  if (table_buffer._is_players == table._is_players) {
+  printf("\t\t_owner_id field: ");
+  out << "\t\t_owner_id field: ";
+  if (table_buffer._owner_id == table._owner_id) {
     printf("OK.\n");
     out << "OK.\n";
   } else {

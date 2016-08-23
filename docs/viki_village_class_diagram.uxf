@@ -4,7 +4,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>675</x>
+      <x>1720</x>
       <y>180</y>
       <w>140</w>
       <h>105</h>
@@ -29,7 +29,7 @@
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>805</x>
+      <x>1850</x>
       <y>340</y>
       <w>190</w>
       <h>240</h>
@@ -70,7 +70,7 @@ TypeBuilding
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>735</x>
+      <x>1780</x>
       <y>280</y>
       <w>185</w>
       <h>70</h>
@@ -81,7 +81,7 @@ TypeBuilding
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>530</x>
+      <x>1575</x>
       <y>340</y>
       <w>175</w>
       <h>105</h>
@@ -106,7 +106,7 @@ TypeProfession
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>610</x>
+      <x>1655</x>
       <y>310</y>
       <w>140</w>
       <h>40</h>
@@ -117,7 +117,7 @@ TypeProfession
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>790</x>
+      <x>1835</x>
       <y>610</y>
       <w>220</w>
       <h>205</h>
@@ -154,7 +154,7 @@ Building
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>895</x>
+      <x>1940</x>
       <y>575</y>
       <w>15</w>
       <h>45</h>
@@ -167,7 +167,7 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>350</x>
+      <x>1395</x>
       <y>645</y>
       <w>85</w>
       <h>50</h>
@@ -184,7 +184,7 @@ PersonalSaga
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>510</x>
+      <x>1555</x>
       <y>500</y>
       <w>220</w>
       <h>475</h>
@@ -256,7 +256,7 @@ Human
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>325</x>
+      <x>1370</x>
       <y>580</y>
       <w>110</w>
       <h>55</h>
@@ -274,7 +274,7 @@ CombatStats
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
+      <x>1475</x>
       <y>605</y>
       <w>90</w>
       <h>80</h>
@@ -287,7 +287,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
+      <x>1475</x>
       <y>665</y>
       <w>35</w>
       <h>20</h>
@@ -299,7 +299,7 @@ m1=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>250</x>
+      <x>1295</x>
       <y>705</y>
       <w>185</w>
       <h>110</h>
@@ -324,7 +324,7 @@ Inventory
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>430</x>
+      <x>1475</x>
       <y>665</y>
       <w>35</w>
       <h>110</h>
@@ -336,7 +336,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>610</x>
+      <x>1655</x>
       <y>440</y>
       <w>15</w>
       <h>70</h>
@@ -349,7 +349,7 @@ m2=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>0</x>
+      <x>1045</x>
       <y>635</y>
       <w>150</w>
       <h>235</h>
@@ -390,7 +390,7 @@ Item
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>120</x>
+      <x>1165</x>
       <y>600</y>
       <w>215</w>
       <h>45</h>
@@ -403,7 +403,7 @@ m2=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
+      <x>1385</x>
       <y>810</y>
       <w>180</w>
       <h>45</h>
@@ -415,7 +415,7 @@ provides stat bonuses &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>175</x>
+      <x>1220</x>
       <y>310</y>
       <w>200</w>
       <h>140</h>
@@ -444,7 +444,7 @@ IngameStorage
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>370</x>
+      <x>1415</x>
       <y>370</y>
       <w>170</w>
       <h>25</h>
@@ -458,7 +458,7 @@ contains &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>350</x>
+      <x>1395</x>
       <y>105</y>
       <w>600</w>
       <h>245</h>
@@ -472,7 +472,7 @@ contains &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>340</x>
+      <x>1385</x>
       <y>445</y>
       <w>180</w>
       <h>110</h>
@@ -484,7 +484,7 @@ provides profession data &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>325</x>
+      <x>1370</x>
       <y>80</y>
       <w>905</w>
       <h>665</h>
@@ -498,7 +498,7 @@ provides building kind data &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>725</x>
+      <x>1770</x>
       <y>670</y>
       <w>75</w>
       <h>25</h>
@@ -512,7 +512,7 @@ lives in &gt;</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>725</x>
+      <x>1770</x>
       <y>725</y>
       <w>75</w>
       <h>25</h>
@@ -526,10 +526,10 @@ works in &gt;</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>860</x>
+      <x>1905</x>
       <y>940</y>
       <w>270</w>
-      <h>210</h>
+      <h>255</h>
     </coordinates>
     <panel_attributes>bg=cyan
 Village
@@ -538,7 +538,8 @@ Village
 #buildings: std::vector&lt;Building*&gt;
 #construction: std::vector&lt;ConstructionSite*&gt;  
 #resources: std::vector&lt;size_t&gt;
-#items: std::vector&lt;size_t&gt;
+#items: std::vector&lt;Item*&gt;
+#raid: Raid*;
 --
 +Village()
 +~Village()
@@ -550,6 +551,10 @@ Village
 +get_buildings(result: std::vector&lt;Building*&gt;&amp;): size_t
 +get_construction(result: std::vector&lt;ConstructionSite*&gt;&amp;): size_t
 +get_resources(result: std::vector&lt;size_t&gt;&amp;): size_t
++get_raid(result: Raid*&amp;): size_t
++get_raid(): Raid&amp;
++start_raid(terms: std::vector&lt;size_t&gt;): size_t
++end_raid();
 +add_villager(if_male: bool): size_t
 +add_slave(if_male: bool): size_t
 +remove_villager(index: signed size_t): size_t
@@ -564,7 +569,7 @@ Village
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>975</x>
+      <x>2020</x>
       <y>855</y>
       <w>15</w>
       <h>95</h>
@@ -576,7 +581,7 @@ m1=1</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>725</x>
+      <x>1770</x>
       <y>820</y>
       <w>265</w>
       <h>50</h>
@@ -588,7 +593,7 @@ m1=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>885</x>
+      <x>1930</x>
       <y>810</y>
       <w>15</w>
       <h>60</h>
@@ -600,7 +605,7 @@ m1=*</panel_attributes>
   <element>
     <id>Relation</id>
     <coordinates>
-      <x>145</x>
+      <x>1190</x>
       <y>750</y>
       <w>115</w>
       <h>20</h>
@@ -613,7 +618,7 @@ m2=0..*</panel_attributes>
   <element>
     <id>UMLNote</id>
     <coordinates>
-      <x>170</x>
+      <x>1105</x>
       <y>0</y>
       <w>145</w>
       <h>75</h>
@@ -627,7 +632,7 @@ group=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
+      <x>1105</x>
       <y>15</y>
       <w>145</w>
       <h>15</h>
@@ -640,7 +645,7 @@ group=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
+      <x>1105</x>
       <y>30</y>
       <w>145</w>
       <h>15</h>
@@ -653,7 +658,7 @@ group=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
+      <x>1105</x>
       <y>45</y>
       <w>145</w>
       <h>15</h>
@@ -666,7 +671,7 @@ group=1</panel_attributes>
   <element>
     <id>UMLClass</id>
     <coordinates>
-      <x>170</x>
+      <x>1105</x>
       <y>60</y>
       <w>145</w>
       <h>15</h>
@@ -674,5 +679,410 @@ group=1</panel_attributes>
     <panel_attributes>Not written, not tested
 group=1</panel_attributes>
     <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1320</x>
+      <y>1070</y>
+      <w>445</w>
+      <h>365</h>
+    </coordinates>
+    <panel_attributes>bg=yellow
+Raid
+--
+#participants: std::vector&lt;Human*&gt;
+#slaves: std::vector&lt;Human*&gt;
+#resources: std::vector&lt;size_t&gt;
+#loot: std::vector&lt;Item*&gt;
+#turns_left: size_t
+#terms: std::vector&lt;size_t&gt;
+--
++Raid();
++Raid(data: prototypes::RaidTable);
++~Raid();
++get_participants(result: std::vector&lt;Human*&gt;&amp;): size_t
++get_participants(index: size_t, result: Human*&amp;): size_t
++get_participants(index: size_t): Human&amp;
++get_participants(): std::vector&lt;Human*&gt;&amp;
++get_participants_count(result: size_t&amp;): size_t
++get_participants_count(): size_t
++get_slaves(result: std::vector&lt;Human*&gt;&amp;): size_t
++get_slaves(index: size_t, result: Human*&amp;): size_t
++get_slaves(index: size_t): Human&amp;
++get_slaves(): std::vector&lt;Human*&gt;&amp;
++get_resources(result: std:vector&lt;size_t&gt;&amp;): size_t
++get_resources(index: size_t&lt; result: size_t&amp;): size_t
++get_loot(result: std::vector&lt;Item*&gt;&amp;): size_t
++get_loot(index: size_t, result: Item*&amp;): size_t
++get_loot(index: size_t): Item&amp;
++get_loot(): std::vector&lt;Item*&gt;&amp;
++get_loot(index: size_t, result: std::vector&lt;Item*&gt;&amp;): size_t
++get_turns_left(result: size_t&amp;): size_t
++get_turns_left(): size_t&amp;
++get_terms(result: std::vector&lt;size_t&gt;&amp;): size_t
++get_terms(index: size_t, result: size_t&amp;): size_t
++set_participants(value: std::vector&lt;Human*&gt;): size_t 
++set_participants(index: size_t, value: Human*): size_t
++set_slaves(value: std::vector&lt;Human*&gt;): size_t
++set_slaves(index: size_t, value: Human*): size_t
++set_resources(value: std::vector&lt;size_t&gt;): size_t
++set_resources(index: size_t, value: size_t): size_t
++set_loot(value: std::vector&lt;Item*&gt;): size_t
++set_loot(index: size_t, value: Item*): size_t
++set_turns_left(value: size_t): size_t
++set_terms(value: std:::vector&lt;size_t&gt;): size_t
++set_terms(index: size_t, value: size_t): size_t
++what(out: std::string&amp;): size_t
++distribute_loot(village_resources: std::vector&lt;size_t&gt;&amp;, village_items: std::vector&lt;Item*&gt;&amp;, village_people: std::vector&lt;Human*&gt;&amp;): size_t
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1635</x>
+      <y>970</y>
+      <w>55</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=-
+participates in
+         v</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1760</x>
+      <y>1100</y>
+      <w>155</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-
+&lt; starts</panel_attributes>
+    <additional_attributes>290.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1760</x>
+      <y>1130</y>
+      <w>155</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>lt=-
+ends in (provides items and resources) &gt;</panel_attributes>
+    <additional_attributes>290.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>615</x>
+      <y>1070</y>
+      <w>630</w>
+      <h>235</h>
+    </coordinates>
+    <panel_attributes>group=1
+/RaidEvent/
+--
+#name: std::string
+#description: std::string
+#difficulty: size_t
+#skill_id: size_t
+#raid_turns: size_t&amp;
+#raid_resources: std::vector&lt;size_t&gt;&amp;
+#raid_participants: std::vector&lt;Human*&gt;&amp;
+#raid_loot: std::vector&lt;Item*&gt;&amp;
+--
++RaidEvent()
++RaidEvent(name: std::string, description: std::string, difficulty: size_t, raid_turns: size_t&amp;, raid_resources: std::vector&lt;size_t&gt;&amp;, raid_participants: std::vector&lt;Humann*&gt;&amp;, raid_loot: std::vector&lt;Item*&gt;&amp;)
+/+~RaidEvent()/
++get_name(result: std::string&amp;): size_t
++get_description(result: std::string&amp;): size_t
++get_difficulty(result: size_t&amp;): size_t
++get_total_misc_stat(result: size_t&amp;): size_t
++get_total_misc_stat(): size_t
++get_save_data(result: prototypes::RaidEventTable&amp;): size_t
++set_name(value: std::string): size_t
++set_description(value: std::string): size_t
++set_difficulty(value: std::string): size_t
++what(out: std::string&amp;): size_t
+/+execute()/
++make_roll(): size_t
++make_roll(result: size_t&amp;): size_t
++make_roll(die: size_t): size_t
++make_roll(die: size_t, result: size_t&amp;): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1240</x>
+      <y>1165</y>
+      <w>90</w>
+      <h>25</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+one per turn
+m1=1
+m2=1</panel_attributes>
+    <additional_attributes>160.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1020</y>
+      <w>490</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>group=1
+NoWindEvent
+--
++NoWindEvent()
++NoWindEvent(name: std::string, description: std::string, raid_turns: size_t&amp;, raid_participants: std::vector&lt;Human*&gt;&amp;, raid_loot: std::vector&lt;Item*&gt;&amp;)
+/+~NoWindEvent()/
++execute(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1100</y>
+      <w>490</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>group=1
+StormEvent
+--
++StormEvent()
++StormEvent(name: std::string, description: std::string, raid_turns: size_t&amp;, raid_participants: std::vector&lt;Human*&gt;&amp;, raid_loot: std::vector&lt;Item*&gt;&amp;)
+/+~StormEvent()/
++execute(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1180</y>
+      <w>490</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>group=1
+BattleEvent
+--
++BattleEvent()
++BattleEvent(name: std::string, description: std::string, raid_turns: size_t&amp;, raid_participants: std::vector&lt;Human*&gt;&amp;, raid_loot: std::vector&lt;Item*&gt;&amp;)
+/+~BattleEvent()/
++execute(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1260</y>
+      <w>490</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>group=1
+RobbedVillageEvent
+--
++RobbedVillageEvent()
++RobbedVillageEvent(name: std::string, description: std::string, raid_turns: size_t&amp;, raid_participants: std::vector&lt;Human*&gt;&amp;, raid_loot: std::vector&lt;Item*&gt;&amp;)
+/+~RobbedVillageEvent()/
++execute(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1340</y>
+      <w>490</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>group=1
+MonasteryEvent
+--
++MonasteryEvent()
++MonasteryEvent(name: std::string, description: std::string, raid_turns: size_t&amp;, raid_participants: std::vector&lt;Human*&gt;&amp;, raid_loot: std::vector&lt;Item*&gt;&amp;)
+/+~MonasteryEvent()/
++execute(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>940</y>
+      <w>490</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>group=1
+GoodHuntEvent
+--
++GoodHuntEvent()
++GoodHuntEvent(name: std::string, description: std::string, raid_turns: size_t&amp;, raid_participants: std::vector&lt;Human*&gt;&amp;, raid_loot: std::vector&lt;Item*&gt;&amp;)
+/+~GoodHuntEvent()/
++execute(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>875</y>
+      <w>15</w>
+      <h>580</h>
+    </coordinates>
+    <panel_attributes>lt=-
+group=1</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;1140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>855</y>
+      <w>490</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>group=1
+DiseaseEvent
+--
++DiseaseEvent()
++DiseaseEvent(name: std::string, description: std::string, raid_turns: size_t&amp;, raid_participants: std::vector&lt;Human*&gt;&amp;, raid_loot: std::vector&lt;Item*&gt;&amp;)
+/+~DiseaseEvent()/
++execute(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>1420</y>
+      <w>490</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>group=1
+SunkenSailorEvent
+--
++SunkenSailorEvent()
++SunkenSailorEvent(name: std::string, description: std::string, raid_turns: size_t&amp;, raid_participants: std::vector&lt;Human*&gt;&amp;, raid_loot: std::vector&lt;Item*&gt;&amp;)
+/+~SunkenSailorEvent()/
++execute(): size_t</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>525</x>
+      <y>1160</y>
+      <w>100</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+group=1</panel_attributes>
+    <additional_attributes>180.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>485</x>
+      <y>875</y>
+      <w>55</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+group=1</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>485</x>
+      <y>960</y>
+      <w>55</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+group=1</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>485</x>
+      <y>1035</y>
+      <w>55</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+group=1</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>485</x>
+      <y>1120</y>
+      <w>55</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+group=1</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>485</x>
+      <y>1200</y>
+      <w>55</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+group=1</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>485</x>
+      <y>1275</y>
+      <w>55</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+group=1</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>485</x>
+      <y>1360</y>
+      <w>55</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+group=1</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>485</x>
+      <y>1440</y>
+      <w>55</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=-
+group=1</panel_attributes>
+    <additional_attributes>90.0;10.0;10.0;10.0</additional_attributes>
   </element>
 </diagram>

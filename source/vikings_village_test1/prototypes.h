@@ -19,6 +19,7 @@ const size_t EPIC_CHANCE = 6;
 const size_t LEGENDARY_CHANCE = 3;
 
 const size_t BUILD_DONE = 0;
+const size_t RAID_END = 0;
 
 const size_t MAX_PRODUCTION_QUEUE_SIZE = 15;
 
@@ -34,6 +35,14 @@ const size_t BASE_FEMALE_COMBAT_STAT = 15;
 
 const size_t BASE_MISC_STAT = 30;
 const size_t BASE_SKILL = 10;
+
+const size_t SHIP_SLOT_FOOD_CAPACITY = 50;
+const size_t SHIP_SLOT_GOLD_CAPACITY = 100;
+const size_t SHIP_SLOT_IRON_CAPACITY = 50;
+const size_t SHIP_SLOT_LEATHER_CAPACITY = 25;
+const size_t SHIP_SLOT_WOOD_CAPACITY = 10;
+const size_t SHIP_SLOT_HUMAN_CAPACITY = 1;
+const size_t SHIP_SLOT_ITEM_CAPACITY = 10;
 
 const size_t BASE_SEED = 15;
 
@@ -62,6 +71,8 @@ enum ProfessionIndexes { PI_UNEMPLOYED, PI_LUMBERJACK, PI_BLACKSMITH, PI_BUILDER
 enum InventorySlots { IS_HEAD, IS_BODY, IS_ARMS, IS_LEGS, IS_RIGHT_HAND, IS_LEFT_HAND, IS_RANGED, IS_SIZE };
 
 enum ResourcesIndexes { RI_GOLD, RI_FOOD, RI_WOOD, RI_IRON, RI_LEATHER, RI_SIZE };
+
+enum TermsIndexes { TI_PAYMENT, TI_SHARE, TI_SHIP_COST, TI_FOOD_COST, TI_SIZE };
 
 namespace prototypes {
 
@@ -152,7 +163,7 @@ namespace prototypes {
       std::vector<size_t> _penalties;
       size_t _quality;
       std::vector<bool> _slots;
-      bool _is_players;
+      ssize_t _owner_id;
 
       ItemTable& operator = (const ItemTable& rhs) {
         _name_size = rhs._name_size;
@@ -182,7 +193,7 @@ namespace prototypes {
           _slots.clear();
         }
         _slots = rhs._slots;
-        _is_players = rhs._is_players;
+        _owner_id = rhs._owner_id;
         return *this;
       }
   };
@@ -267,6 +278,47 @@ namespace prototypes {
 	    _production_queue = rhs._production_queue;
 	    _building_time = rhs._building_time;
 	    return *this;
+	  }
+  };
+
+  struct RaidTable {
+    public:
+      size_t _turns_left;
+      std::vector<size_t> _terms;
+      std::vector<size_t> _resources;
+      size_t _participants_count;
+      std::vector<size_t> _participants;
+      size_t _slaves_count;
+      std::vector<HumanTable> _slaves;
+      size_t _loot_count;
+      std::vector<ItemTable> _loot;
+      
+      RaidTable& operator = (const RaidTable& rhs) {
+        _turns_lef = rhs._turns_left;
+        if (!_terms.empty()) {
+          _terms.clear();
+		}
+		_terms = rhs._terms;
+		if (!_resources.empty()) {
+          _resources.clear();
+		}
+		_resources = rhs._resources;
+		_participants_count = rhs._participants_count;
+		if (!_participants.empty()) {
+          _participants.clear();
+		}
+		_participants = rhs._participants;
+		_slaves_count = rhs._slaves_count;
+		if (_slaves.empty()) {
+          _slaves.clear();
+		}
+		_slaves = rhs._slaves;
+		_loot_count = rhs._loot_count;
+		if (!_loot.empty()) {
+          _loot.clear();
+		}
+		_loot = rhs._loot;
+		return *this;
 	  }
   };
   

@@ -716,7 +716,10 @@ size_t Village::consume() {
   if (!_villagers.empty()) {
     for (size_t i = 0; i < _villagers.size(); ++i) {
       if (_villagers[i] != NULL) {
-        _villagers[i]->consume(_resources);
+        if (!_villagers[i]->get_has_consumed()) {
+          _villagers[i]->consume(_resources);
+          _villagers[i]->switch_has_consumed();
+		}
 	  }
 	}
   }
@@ -901,3 +904,4 @@ size_t Village::clear_buildings() {
 size_t Village::clear_items() {
   return 0;
 }
+

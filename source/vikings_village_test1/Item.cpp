@@ -39,7 +39,7 @@ Item::Item(prototypes::ItemTable data) {
   _bonuses = data._bonuses;
   _penalties = data._penalties;
   _quality = data._quality;
-  _is_players = data._is_players;
+  _owner_id = data._owner_id;
 }
 
 Item::Item(prototypes::ItemTable data, size_t quality) {
@@ -56,10 +56,10 @@ Item::Item(prototypes::ItemTable data, size_t quality) {
   _bonuses = data._bonuses;
   _penalties = data._penalties;
   _quality = quality;
-  _is_players = true;
+  _owner_id = FREE_INDEX;
 }
 
-Item::Item(prototypes::ItemTable data, size_t quality, bool is_players) {
+Item::Item(prototypes::ItemTable data, size_t quality, ssize_t owner_id) {
   _name.clear();
   _description.clear();
   _cost.clear();
@@ -73,7 +73,7 @@ Item::Item(prototypes::ItemTable data, size_t quality, bool is_players) {
   _bonuses = data._bonuses;
   _penalties = data._penalties;
   _quality = quality;
-  _is_players = is_players;
+  _owner_id = owner_id;
 }
 
 size_t Item::get_name(std::string& result) {
@@ -139,7 +139,7 @@ size_t Item::get_slots(size_t index, bool& result) {
   return 0;
 }
 
-size_t Item::get_is_players(bool& result) {
+size_t Item::get_owner_id(ssize_t& result) {
   result = _is_players;
   return 0;
 }
@@ -172,7 +172,7 @@ size_t Item::get_save_data(prototypes::ItemTable& result) {
     result._slots.clear();
   }
   result._slots = _slots;
-  result._is_players = _is_players;
+  result._owner_id = _owner_id;
   return 0;
 }
 
@@ -251,7 +251,7 @@ size_t Item::set_slots(size_t index, bool value) {
   return 0;
 }
 
-size_t Item::set_is_players(bool value) {
+size_t Item::set_owner_id(ssize_t value) {
   _is_players = value;
   return 0;
 }
@@ -303,7 +303,7 @@ size_t Item::what(std::string& out) {
   }
   out.append("--\n");
   out.append("Belongs to player: ");
-  if (_is_players) {
+  if (_owner_id == FREE_INDEX) {
     out.append("Yes\n");
   } else {
     out.append("No\n");
@@ -321,5 +321,7 @@ size_t Item::import_from_table(prototypes::ItemTable data) {
   response = set_penalties(data._penalties);
   response = set_slots(data._slots);
   response = set_cost(data._cost);
+  response = set_quality(data._quality);
+  response = set_owner_id(data._owner_id);
   return response;
 }

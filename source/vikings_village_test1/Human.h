@@ -36,6 +36,8 @@ class Human {
     size_t get_inventory(size_t index, prototypes::ItemTable& result);
     size_t get_gender(bool& result);
     size_t get_is_slave(bool& result);
+    size_t get_has_consumed(bool& result);
+    bool get_has_consumed() { return _has_consumed; }
     size_t get_save_data(prototypes::HumanTable& result);
     size_t set_name(std::string value);
     size_t set_combat_stats(std::vector<size_t> value);
@@ -56,8 +58,9 @@ class Human {
     size_t set_gender(bool value);
     size_t set_is_slave(bool value);
     size_t what(std::string& out);
-    size_t consume(std::vector<size_t>& storage); //add there argument - either std::vector<size_t> or Village class
+    size_t consume(std::vector<size_t>& storage);
     size_t add_to_saga(size_t index, size_t value);
+    size_t remove_to_saga(size_t index, size_t value);
     size_t wound();
     size_t increase_combat_stat(size_t index);
     size_t increase_combat_stat(size_t index, size_t value);
@@ -72,6 +75,7 @@ class Human {
     size_t decrease_misc_stat(size_t index, size_t value);
     size_t decrease_skill(size_t index);
     size_t decrease_skill(size_t index, size_t value);
+    size_t switch_has_consumed();
 
     Human& operator = (const Human& rhs) {
       if (!_name.empty()) {
@@ -100,6 +104,7 @@ class Human {
       _inventory = rhs._inventory;
       _gender = rhs._gender;
       _is_slave = rhs._is_slave;
+      _has_consumed = rhs._has_consumed;
       return *this;
     }
 
@@ -115,6 +120,7 @@ class Human {
     Inventory _inventory;
     bool _gender;
     bool _is_slave;
+    bool _has_consumed;
 };
 
 #endif

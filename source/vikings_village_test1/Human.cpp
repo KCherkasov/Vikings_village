@@ -41,6 +41,7 @@ Human::Human(TypeProfession& profession, bool gender, bool is_slave, ssize_t hou
   _house_id = house_id;
   _gender = gender;
   _is_slave = is_slave;
+  _has_consumed = false;
 }
 
 Human::Human(prototypes::HumanTable data, TypeProfession& profession): _inventory(data._equipment), _profession(profession) {
@@ -58,6 +59,7 @@ Human::Human(prototypes::HumanTable data, TypeProfession& profession): _inventor
   _house_id = data._house_id;
   _gender = data._gender;
   _is_slave = data._is_slave;
+  _has_consumed = false;
 }
 
 size_t Human::get_name(std::string& result) {
@@ -185,6 +187,11 @@ size_t Human::get_gender(bool& result) {
 
 size_t Human::get_is_slave(bool& result) {
   result = _is_slave;
+  return 0;
+}
+
+size_t Human::get_has_consumed(bool& result) {
+  result = _has_consumed;
   return 0;
 }
 
@@ -481,5 +488,10 @@ size_t Human::decrease_skill(size_t index, size_t value) {
       _skills[index] = SIZE_T_DEFAULT_VALUE;
     }
   }
+  return 0;
+}
+
+size_t Human::switch_has_consumed() {
+  _has_consumed = !_has_consumed;
   return 0;
 }

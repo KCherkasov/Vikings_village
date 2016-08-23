@@ -3,6 +3,8 @@
 
 #include <cmath>
 #include <cstdlib>
+#include <stdint.h>
+
 #include "prototypes.h"
 
 class Item {
@@ -10,7 +12,7 @@ class Item {
     Item();
     Item(prototypes::ItemTable data);
     Item(prototypes::ItemTable data, size_t quality);
-    Item(prototypes::ItemTable data, size_t quality, bool is_players);
+    Item(prototypes::ItemTable data, size_t quality, ssize_t owner_id);
     ~Item() {}
     size_t get_name(std::string& result);
     size_t get_description(std::string& result);
@@ -23,7 +25,7 @@ class Item {
     size_t get_quality(size_t& result);
     size_t get_slots(std::vector<bool>& result);
     size_t get_slots(size_t index, bool& result);
-    size_t get_is_players(bool& result);
+    size_t get_owner_id(ssize_t& result);
     size_t get_save_data(prototypes::ItemTable& result);
     size_t set_name(std::string value);
     size_t set_description(std::string value);
@@ -36,7 +38,7 @@ class Item {
     size_t set_quality(size_t value);
     size_t set_slots(std::vector<bool> value);
     size_t set_slots(size_t index, bool value);
-    size_t set_is_players(bool value);
+    size_t set_owner_id(ssize_t value);
     size_t what(std::string& out);
     size_t import_from_table(prototypes::ItemTable data);
 
@@ -66,7 +68,7 @@ class Item {
         _slots.clear();
       }
       _slots = rhs._slots;
-      _is_players =rhs._is_players;
+      _owner_id =rhs._owner_id;
       return *this;
     }
 
@@ -78,7 +80,7 @@ class Item {
     std::vector<size_t> _penalties;
     size_t _quality;
     std::vector<bool> _slots;
-    bool _is_players;
+    ssize_t _owner_id;
 };
 
 #endif // ITEM_H
