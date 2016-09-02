@@ -17,6 +17,7 @@ class Human {
     Human(TypeProfession& profession, bool gender, bool is_slave, ssize_t house_id, std::string& name);
     Human(prototypes::HumanTable data, TypeProfession& profession);
     ~Human() {}
+    static size_t get_count() { return _count; }
     size_t get_name(std::string& result);
     size_t get_combat_stats(bool with_items, std::vector<size_t>& result);
     size_t get_combat_stats(bool with_items, size_t index, size_t& result);
@@ -27,6 +28,7 @@ class Human {
     size_t get_saga(std::vector<size_t>& result);
     size_t get_saga(size_t index, size_t& result);
     size_t get_age(size_t& result);
+    size_t get_own_id(size_t& result);
     size_t get_house_id(ssize_t& result);
     size_t get_profession(TypeProfession& result);
     TypeProfession& get_profession() { return _profession; }
@@ -39,6 +41,7 @@ class Human {
     size_t get_has_consumed(bool& result);
     bool get_has_consumed() { return _has_consumed; }
     size_t get_save_data(prototypes::HumanTable& result);
+    static size_t set_count(size_t value) { _count = value; return 0 }
     size_t set_name(std::string value);
     size_t set_combat_stats(std::vector<size_t> value);
     size_t set_combat_stats(size_t index, size_t value);
@@ -49,6 +52,7 @@ class Human {
     size_t set_saga(std::vector<size_t> value);
     size_t set_saga(size_t index, size_t value);
     size_t set_age(size_t value);
+    size_t set_own_id(size_t value);
     size_t set_house_id(ssize_t value);
     size_t set_profession(TypeProfession& value);
     size_t set_inventory(Inventory& value);
@@ -99,6 +103,7 @@ class Human {
       }
       _saga = rhs._saga;
       _age = rhs._age;
+      _own_id = rhs._own_id;
       _house_id = rhs._house_id;
       _profession = rhs._profession;
       _inventory = rhs._inventory;
@@ -115,6 +120,8 @@ class Human {
     std::vector<size_t> _skills;
     std::vector<size_t> _saga;
     size_t _age;
+    static size_t _count;
+    size_t _own_id;
     ssize_t _house_id;
     TypeProfession& _profession;
     Inventory _inventory;
@@ -122,5 +129,7 @@ class Human {
     bool _is_slave;
     bool _has_consumed;
 };
+
+size_t Human::_count = SIZE_T_DEFAULT_VALUE;
 
 #endif

@@ -21,6 +21,7 @@ const size_t LEGENDARY_CHANCE = 3;
 const size_t BUILD_DONE = 0;
 const size_t RAID_END = 0;
 
+const size_t MAX_BUILDINGS = 100;
 const size_t MAX_PRODUCTION_QUEUE_SIZE = 15;
 
 const ssize_t FREE_INDEX = -1;
@@ -35,6 +36,12 @@ const size_t BASE_FEMALE_COMBAT_STAT = 15;
 
 const size_t BASE_MISC_STAT = 30;
 const size_t BASE_SKILL = 10;
+
+const size_t BASE_AGE = 12;
+const size_t AGE_SEED = 25;
+
+const size_t YOUNG_STEP = 13;
+const size_t OLD_STEP = 40;
 
 const size_t SHIP_SLOT_FOOD_CAPACITY = 50;
 const size_t SHIP_SLOT_GOLD_CAPACITY = 100;
@@ -62,6 +69,8 @@ const bool SLAVE_STATE = false;
 
 const size_t MALE_GENDER_CHANCE = 50;
 
+const size_t SUCCESS_FAIL_RANGE = 15;
+
 enum ItemQuality { IQ_THRASH, IQ_COMMON, IQ_GOOD, IQ_RARE, IQ_EPIC, IQ_LEGENDARY, IQ_SIZE };
 
 enum PersonalSaga { PS_RAIDS, PS_KILLED, PS_LOOTED, PS_ENSLAVED, PS_SIZE };
@@ -73,6 +82,10 @@ enum InventorySlots { IS_HEAD, IS_BODY, IS_ARMS, IS_LEGS, IS_RIGHT_HAND, IS_LEFT
 enum ResourcesIndexes { RI_GOLD, RI_FOOD, RI_WOOD, RI_IRON, RI_LEATHER, RI_SIZE };
 
 enum TermsIndexes { TI_PAYMENT, TI_SHARE, TI_SHIP_COST, TI_FOOD_COST, TI_SIZE };
+enum RaidStages { RS_THERE, RS_LAND, RS_BACK, RS_SIZE };
+
+enum EventDescriptions { ED_DESCRIPTION, ED_SUCCESS, ED_NORMAL, ED_FAILURE, ED_SIZE };
+enum EventOutcomes { EO_SUCCESS, EO_NORMAL, EO_FAILURE, EO_SIZE };
 
 namespace prototypes {
 
@@ -208,6 +221,7 @@ namespace prototypes {
       std::vector<size_t> _saga;
       std::vector<ItemTable> _equipment;
       size_t _age;
+      size_t _own_id;
       ssize_t _house_id;
       ssize_t _profession_id;
       bool _gender;
@@ -239,6 +253,7 @@ namespace prototypes {
           _equipment.clear();
         }
         _age = rhs._age;
+        _own_id = rhs._own_id;
         _equipment = rhs._equipment;
         _house_id = rhs._house_id;
         _profession_id = rhs._profession_id;
@@ -283,18 +298,23 @@ namespace prototypes {
 
   struct RaidTable {
     public:
-      size_t _turns_left;
+      size_t _stage;
+      std::vector<size_t> _turns_left;
       std::vector<size_t> _terms;
       std::vector<size_t> _resources;
       size_t _participants_count;
-      std::vector<size_t> _participants;
+      std::vector<HumanTable> _participants;
       size_t _slaves_count;
       std::vector<HumanTable> _slaves;
       size_t _loot_count;
       std::vector<ItemTable> _loot;
       
       RaidTable& operator = (const RaidTable& rhs) {
-        _turns_lef = rhs._turns_left;
+        _stage = rhs._stage;
+        if (!_turns_left.empty()) {
+          _turns_left.clear();
+		}
+		_turns_left = rhs._turns_left;
         if (!_terms.empty()) {
           _terms.clear();
 		}

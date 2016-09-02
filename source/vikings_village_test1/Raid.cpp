@@ -1,7 +1,14 @@
 #include "Raid.h"
 
 Raid::Raid(IngameStorage& storage): _storage(storage) {
-  _turns_left = SIZE_T_DEFAULT_VALUE;
+  _stage = RS_THERE;
+  if (!_turns_left.empty()) {
+    _turns_left.clear();
+    _turns_left.resize(RS_SIZE);
+    for (size_t i = 0; i < _turns_left.size(); ++i) {
+      _turns_left[i] = SIZE_T_DEFAULT_VALUE;
+	}
+  }
   if (!_terms.empty()) {
     _terms.clear();
     _terms.resize(TI_SIZE);
@@ -35,7 +42,23 @@ Raid::Raid(IngameStorage& storage): _storage(storage) {
 }
 
 Raid::Raid(size_t turns_left, std::vector<size_t> terms, size_t food, std::vector<Human*> participants, IngameStorage& storage): _storage(storage) {
-  _turns_left = turns_left;
+  _stage = RS_THERE;
+  size_t whole_turns = turns_left;
+  if (!_turns_left.empty()) {
+    _turns_left.clear();
+  }
+  _turns_left.resize(RS_SIZE);
+  for (size_t i = 0; i < _turns_left.size(); ++i) {
+    _turns_left[i] = whole_turns / RS_SIZE;
+  }
+  whole_turns -= (whole_turns / RS_SIZE * RS_SIZE);
+  if (whole_turns > 0) {
+  	size_t i = 0;
+    while (whole_turns > 0) {
+      ++_turns_left[i++ % _turns_left.size()];
+      --whole_turns;
+	}
+  }
   if (!_terms.empty()) {
     _terms.clear();
     _terms.resize(TI_SIZE);
@@ -77,7 +100,11 @@ Raid::Raid(size_t turns_left, std::vector<size_t> terms, size_t food, std::vecto
   }
 }
 
-Raid::Raid(prototypes::RaidTable data, std::vector<Human*> population, IngameStorage& storage): _storage(storage) {
+Raid::Raid(prototypes::RaidTable data, IngameStorage& storage): _storage(storage) {
+  _stage = data._stage;
+  if (!_turns_left.empty()) {
+    _turns_left.clear();
+  }
   _turns_left = data._turns_left;
   if (!_terms.empty()) {
     _terms.clear();
@@ -112,9 +139,9 @@ Raid::Raid(prototypes::RaidTable data, std::vector<Human*> population, IngameSto
 	_participants.clear();
   }
   for (size_t i = 0; i < data._participants.size(); ++i) {
-    if (data._participants[i] < population.size()) {
-      _participants.push_back(population[data._participants[i]]);
-	}
+    Human* to_add = new Human(data._participants[i], _storage.get_profession(data._participants[i]._profession_id));
+    _participants.push_back(to_add);
+    to_add = NULL;
   }
   if (!_loot.empty()) {
     for (size_t i = 0; i < _loot.size(); ++i) {
@@ -150,8 +177,20 @@ Raid::~Raid() {
   }
 }
 
-size_t Raid::get_turns_left(size_t& result) {
+size_t Raid::get_turns_left(std::vector<size_t>& result) {
   result = _turns_left;
+  return 0;
+}
+
+size_t Raid::get_turns_left(size_t index, size_t& result) {
+  if (index < _turns_left.size()) {
+    result = _turns_left;
+  }
+  return 0;
+}
+
+size_t Raid::get_stage(size_t& result) {
+  result = _stage;
   return 0;
 }
 
@@ -255,7 +294,7 @@ size_t Raid::get_loot_count(size_t& result) {
   return 0;
 }
 
-size_t Raid::get_save_data(prototypes::RaidTable& result, const std::vector<Human*>& population) {
+size_t Raid::get_save_data(prototypes::RaidTable& result) {
   result._turns_left = _turns_left;
   if (!result._terms.empty()) {
     result._terms.clear();
@@ -270,12 +309,9 @@ size_t Raid::get_save_data(prototypes::RaidTable& result, const std::vector<Huma
   }
   for (size_t i = _participants.size(); ++i) {
     if (_participants[i] != NULL) {
-      for (size_t j = 0; j < population.size(); ++j) {
-        if (population[j] == _participants[i]) {
-          result._participants.push_back(j);
-          break;
-		}
-	  }
+      prototypes::HumanTable to_add;
+      _participants[i]->get_save_data(to_add);
+      result._participants.push_back(to_add);
 	}
   }
   result._participants_count = result._participants.size();
@@ -541,12 +577,31 @@ size_t Raid::add_slave(prototypes::HumanTable value) {
 }
 
 size_t Raid::add_loot(Item* value) {
+  srand(static_cast<unsigned int>(time(0)));
+  if (!_participants.empty()) {
+    size_t looter_id;
+    while (true) {
+      if (_participants[rand() % _participants.size()] != NULL) {
+        _participants[rand() % _participants.size()]->get_own_id(looter_id);
+        break;
+	  }
+	}
+	if (value != NULL) {
+      value->set_owner_id(looter_id);
+	}
+  }
   _loot.push_back(value);
   return 0;
 }
 
 size_t Raid::add_loot(prototypes::ItemTable value) {
-  Item* to_add = new Item(value);
+  srand(static_cast<unsigned int>(time(0)));
+  Item* to_add = NULL;
+  if (!_participants.empty()) {
+  	to_add = new Item(value, value._quality, rand() % _participants.size());
+  } else {
+  	to_add = new Item(value);
+  }
   _loot.push_back(to_add);
   to_add = NULL;
   return 0;
@@ -570,7 +625,7 @@ size_t Raid::remove_resources(size_t index, size_t amount) {
     if (_resources[index] >= amount) {
       _resources[index] -= amount;
 	} else {
-      _resources[index] = SIZE_T_DEFAULT_VALUE;
+      _resources[index] = SIZE_T_DEFAULT_VALU/E;
 	}
   }
   return 0;

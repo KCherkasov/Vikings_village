@@ -15,11 +15,14 @@ class Raid {
   public:
     Raid(IngameStorage& storage);
     Raid(size_t turns_left, std::vector<size_t> terms, size_t food, std::vector<Human*> participants, IngameStorage& storage);
-    Raid(prototypes::RaidTable data, std::vector<Human*> population, IngameStorage& storage);
+    Raid(prototypes::RaidTable data, IngameStorage& storage);
     ~Raid();
-    size_t get_turns_left(size_t& result);
-    size_t get_turns_left() { return _turns_left; }
-    size_t& get_turns_left_rel() { return _turns_left; }
+    size_t get_turns_left(std::vector<size_t>& result);
+    size_t get_turns_left(size_t index, size_t& result);
+    std::vector<size_t> get_turns_left() { return _turns_left; }
+    std::vector<size_t>& get_turns_left_rel() { return _turns_left; }
+    size_t get_stage(size_t& result);
+    size_t get_stage() { return _stage; }
     size_t get_terms(std::vector<size_t>& result);
     size_t get_terms(size_t index, size_t& result);
     size_t get_terms(size_t index);
@@ -45,7 +48,7 @@ class Raid {
     std::vector<Item*>& get_loot() { return _loot; }
     size_t get_loot_count(size_t& result);
     size_t get_loot_count() { return _loot.size(); }
-    size_t get_save_data(prototypes::RaidTable& result, const std::vector<Human*>& population);
+    size_t get_save_data(prototypes::RaidTable& result);
     size_t set_turns_left(size_t value);
     size_t set_terms(std::vector<size_t> value);
     size_t set_terms(size_t index, size_t value);
@@ -77,6 +80,10 @@ class Raid {
     
     Raid& operator = (const Raid& rhs) {
       _storage = rhs._storage;
+      _stage = rhs._stage;
+      if (!_turns_left.empty()) {
+        _turns_left.clear();
+	  }
       _turns_left = rhs._turns_left;
       if (!_terms.empty()) {
         _terms.clear();
@@ -113,7 +120,8 @@ class Raid {
     
   protected:
   	IngameStorage& _storage;
-    size_t _turns_left;
+  	size_t _stage;
+    std::vector<size_t> _turns_left;
     std::vector<size_t> _terms;
     std::vector<size_t> _resources;
     std::vector<Human*> _participants;

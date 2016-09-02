@@ -38,6 +38,8 @@ Human::Human(TypeProfession& profession, bool gender, bool is_slave, ssize_t hou
   for (size_t i = 0; i < _saga.size(); ++i) {
     _saga[i] = SIZE_T_DEFAULT_VALUE;
   }
+  _age = BASE_AGE + rand() % AGE_SEED;
+  _own_id = _count++;
   _house_id = house_id;
   _gender = gender;
   _is_slave = is_slave;
@@ -55,6 +57,7 @@ Human::Human(prototypes::HumanTable data, TypeProfession& profession): _inventor
   _skills = data._skills;
   _saga.clear();
   _saga = data._saga;
+  _own_id = data._own_id;
   _age = data._age;
   _house_id = data._house_id;
   _gender = data._gender;
@@ -148,6 +151,11 @@ size_t Human::get_age(size_t& result) {
   return 0;
 }
 
+size_t Human::get_own_id(size_t& result) {
+  result = _own_id;
+  return 0;
+}
+
 size_t Human::get_house_id(ssize_t& result) {
   result = _house_id;
   return 0;
@@ -218,6 +226,7 @@ size_t Human::get_save_data(prototypes::HumanTable& result) {
   }
   result._saga = _saga;
   result._age = _age;
+  result._own_id = _own_id;
   result._house_id = _house_id;
   _profession.get_id(result._profession_id);
   _inventory.get_save_data(result._equipment);
@@ -291,6 +300,11 @@ size_t Human::set_saga(size_t index, size_t value) {
 
 size_t Human::set_age(size_t value) {
   _age = value;
+  return 0;
+}
+
+size_t Human::set_own_id(size_t value) {
+  _own_id = value;
   return 0;
 }
 

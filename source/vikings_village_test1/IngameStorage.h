@@ -20,10 +20,13 @@ class IngameStorage {
     size_t unload_storage();
     size_t get_item_table(size_t index, prototypes::ItemTable& result);
     prototypes::ItemTable& get_item_table(size_t index);
+    size_t get_items_count() { return _items.size(); }
     size_t get_building_kind(size_t index, TypeBuilding& result);
     TypeBuilding& get_building_kind(size_t index);
+    size_t get_building_kinds_count() { return _building_kinds.size(); }
     size_t get_profession(size_t index, TypeProfession& result);
     TypeProfession& get_profession (size_t index);
+    size_t get_professions_count() { return _professions.size(); }
     size_t form_name(bool gender, std::string& result);
 
   protected:

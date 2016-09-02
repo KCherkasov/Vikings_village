@@ -773,7 +773,9 @@ size_t Village::add_villager(size_t profession_id, bool is_slave) {
 	    }
 	  }
 	  Human* villager = new Human(_storage.get_profession(profession_id), gender, is_slave, house, name);
-	  _building[house]->add_inhabitant(_villagers.size());
+	  size_t new_id = SIZE_T_DEFAULT_VALUE;
+	  villager->get_own_id(new_id);
+	  _building[house]->add_inhabitant(new_id);
 	  _villagers.push_back(villager);
 	  villager = NULL;
     }

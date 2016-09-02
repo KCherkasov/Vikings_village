@@ -784,6 +784,7 @@ ends in (provides items and resources) &gt;</panel_attributes>
       <h>235</h>
     </coordinates>
     <panel_attributes>group=1
+bg=cyan
 /RaidEvent/
 --
 #name: std::string
@@ -838,6 +839,7 @@ m2=1</panel_attributes>
       <h>50</h>
     </coordinates>
     <panel_attributes>group=1
+bg=cyan
 NoWindEvent
 --
 +NoWindEvent()
@@ -855,6 +857,7 @@ NoWindEvent
       <h>50</h>
     </coordinates>
     <panel_attributes>group=1
+bg=cyan
 StormEvent
 --
 +StormEvent()
