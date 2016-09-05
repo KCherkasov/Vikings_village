@@ -449,3 +449,38 @@ size_t RaidEvent::decrease_phase_duration(size_t amount) {
   return 0;
 }
 
+size_t RaidEvent::increase_misc_stat(size_t index, size_t value) {
+  for (size_t i = 0; i < _raid_participants.size(); ++i) {
+    if (_raid_participants[i] != NULL) {
+      _raid_participants[i]->increase_misc_stat(index, value);
+	}
+  }
+  return 0;
+}
+
+size_t RaidEvent::decrease_misc_stat(size_t index, size_t value) {
+  for (size_t i = 0; i < _raid_participants.size(); ++i) {
+    if (_raid_participants[i] != NULL) {
+      _raid_participants[i]->decrease_misc_stat(index, value);
+	}
+  }
+  return 0;
+}
+
+size_t RaidEvent::increase_combat_stat(size_t index, size_t value) {
+  for (size_t i = 0; i < _raid_participants.size(); ++i) {
+    if (_raid_participants[i] != NULL) {
+      _raid_participants[i]->increase_combat_stat(index, value);
+	}
+  }
+  return 0;
+}
+
+size_t RaidEvent::decrease_combat_stat(size_t index, size_t value) {
+  for (size_t i = 0; i < _raid_participants.size(); ++i) {
+    if (_raid_participants[i] != NULL) {
+      _raid_participants[i]->decrease_combat_stat(index, value);
+	}
+  }
+  return 0;
+}

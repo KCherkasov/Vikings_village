@@ -70,6 +70,12 @@ class RaidEvent {
 
     size_t increase_phase_duration(size_t amount);
     size_t decrease_phase_duration(size_t amount);
+    
+    size_t increase_misc_stat(size_t index, size_t amount);
+    size_t decrease_misc_stat(size_t index, size_t amount);
+    
+    size_t increase_combat_stat(size_t index, size_t amount);
+    size_t decrease_combat_stat(size_t index, size_t amount);
 };
 
 #endif
