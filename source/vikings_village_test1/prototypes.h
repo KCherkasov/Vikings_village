@@ -4,6 +4,7 @@
 #include <stdint.h>
 #include <vector>
 #include <string>
+#include <sstream>
 
 
 const size_t SIZE_T_DEFAULT_VALUE = 0;
@@ -377,6 +378,21 @@ namespace prototypes {
 		return *this;
 	  }
   };
+}
+
+template<class T>
+size_t convert_to_string(const T& value, std::string& result) {
+  std::ostringstream converter;
+  converter << value;
+  result += converter.str();
+  return 0;
+}
+
+template<class T>
+size_t convert_from_string(const std::string& source, T& result) {
+  std::istringstream converter(source);
+  converter >> result;
+  return 0;
 }
 
 using namespace prototypes;

@@ -559,9 +559,9 @@ size_t make_item_quick_test(prototypes::ItemTable source, Item* item, size_t& er
       out << "failed to retrieve the field data.\n";
       ++total_errors;
 	}
-	printf("\t\t_is_players field test: ");
-	out << "\t\t_is_players field test: ";
-	if (table_buffer._is_players == source._is_players) {
+	printf("\t\t_owner_id field test: ");
+	out << "\t\t_owner_id field test: ";
+	if (table_buffer._owner_id == source._owner_id) {
       printf("OK.\n");
       out << "OK.\n";
 	} else {
@@ -878,9 +878,9 @@ size_t make_inventory_test(size_t& error_count, std::ofstream& out) {
             out << "failed to retrieve the field data.\n";
             ++error_count;
 		  }
-		  printf("\t\t\t_is_players field test: ");
-		  out << "\t\t\t_is_players field test: ";
-		  if (table_buffer[i]._is_players == table_vector[i]._is_players) {
+		  printf("\t\t\t_owner_id field test: ");
+		  out << "\t\t\t_owner_id field test: ";
+		  if (table_buffer[i]._owner_id == table_vector[i]._owner_id) {
             printf("OK.\n");
             out << "OK.\n";
 		  } else {
@@ -2134,9 +2134,9 @@ size_t make_human_test(size_t& error_count, std::ofstream& out) {
             out << "failed to retrieve the field data.\n";
             ++error_count;
 		  }
-		  printf("\t\t\t_is_players field test: ");
-		  out << "\t\t\t_is_players field test: ";
-		  if (inv_buffer[i]._is_players == source_table._equipment[i]._is_players) {
+		  printf("\t\t\t_owner_id field test: ");
+		  out << "\t\t\t_owner_id field test: ";
+		  if (inv_buffer[i]._owner_id == source_table._equipment[i]._owner_id) {
             printf("OK.\n");
             out << "OK.\n";
 		  } else {
@@ -2308,9 +2308,9 @@ size_t make_human_test(size_t& error_count, std::ofstream& out) {
             out << "failed to retrieve the field data.\n";
             ++error_count;
 	   	  }
-		  printf("\t\t\t_is_players field test: ");
-		  out << "\t\t\t_is_players field test: ";
-		  if (inv_buffer[i]._is_players == source_table._equipment[i]._is_players) {
+		  printf("\t\t\t_owner_id field test: ");
+		  out << "\t\t\t_owner_id field test: ";
+		  if (inv_buffer[i]._owner_id == source_table._equipment[i]._owner_id) {
             printf("OK.\n");
             out << "OK.\n";
 		  } else {
@@ -2481,9 +2481,9 @@ size_t make_human_test(size_t& error_count, std::ofstream& out) {
         out << "failed to retrieve the field data.\n";
         ++error_count;
 	  }
-	  printf("\t\t\t_is_players field test: ");
-	  out << "\t\t\t_is_players field test: ";
-	  if (table_buffer._is_players == source_table._equipment[i]._is_players) {
+	  printf("\t\t\t_owner_id field test: ");
+	  out << "\t\t\t_owner_id field test: ";
+	  if (table_buffer._owner_id == source_table._equipment[i]._owner_id) {
         printf("OK.\n");
         out << "OK.\n";
 	  } else {
@@ -2755,9 +2755,9 @@ size_t make_human_test(size_t& error_count, std::ofstream& out) {
             out << "failed to retrieve the field data.\n";
             ++error_count;
 		  }
-		  printf("\t\t\t\t_is_players field test: ");
-		  out << "\t\t\t\t_is_players field test: ";
-		  if (table_buffer._equipment[i]._is_players == source_table._equipment[i]._is_players) {
+		  printf("\t\t\t\t_owner_id field test: ");
+		  out << "\t\t\t\t_owner_id field test: ";
+		  if (table_buffer._equipment[i]._owner_id == source_table._equipment[i]._owner_id) {
             printf("OK.\n");
             out << "OK.\n";
 		  } else {

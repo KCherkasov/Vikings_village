@@ -22,7 +22,7 @@ Item::Item() {
     _penalties[i] = SIZE_T_DEFAULT_VALUE;
   }
   _quality = IQ_COMMON;
-  _is_players = true;
+  _owner_id = FREE_INDEX;
 }
 
 Item::Item(prototypes::ItemTable data) {
@@ -140,7 +140,7 @@ size_t Item::get_slots(size_t index, bool& result) {
 }
 
 size_t Item::get_owner_id(ssize_t& result) {
-  result = _is_players;
+  result = _owner_id;
   return 0;
 }
 
@@ -252,7 +252,7 @@ size_t Item::set_slots(size_t index, bool value) {
 }
 
 size_t Item::set_owner_id(ssize_t value) {
-  _is_players = value;
+  _owner_id = value;
   return 0;
 }
 
@@ -273,21 +273,21 @@ size_t Item::what(std::string& out) {
   out.append("Cost:\n");
   for (size_t i = 0; i < RI_SIZE; ++i) {
     out += resource_names[i];
-    out.append(itoa(_cost[i], digit, 10));
+    convert_to_string<size_t>(_cost[i], out);
     out.append("\n");
   }
   out.append("--\n");
   out.append("Wielder bonuses:\n");
   for (size_t i = 0; i < SI_SIZE; ++i) {
     out += combat_stat_names[i];
-    out.append(itoa(_bonuses[i], digit, 10));
+    convert_to_string<size_t>(_bonuses[i], out);
     out.append("\n");
   }
   out.append("--\n");
   out.append("Target penalties:\n");
   for (size_t i = 0; i < SI_SIZE; ++i) {
     out += combat_stat_names[i];
-    out.append(itoa(_penalties[i], digit, 10));
+    convert_to_string<size_t>(_penalties[i], out);
     out.append("\n");
   }
   out.append("--\n");

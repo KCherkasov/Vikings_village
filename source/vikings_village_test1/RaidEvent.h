@@ -33,19 +33,19 @@ class RaidEvent {
   protected:
   	IngameStorage& _storage;
     std::string _name;
-	std::vector<std::string> _descriptions;
-	size_t& _raid_turns;
-	std::vector<size_t>& _raid_resources;
-	std::vector<Human*>& _raid_participants;
-	std::vector<Human*>& _raid_slaves;
-	std::vector<Item*>& _raid_loot;
+	  std::vector<std::string> _descriptions;
+	  size_t& _raid_turns;
+	  std::vector<size_t>& _raid_resources;
+	  std::vector<Human*>& _raid_participants;
+	  std::vector<Human*>& _raid_slaves;
+	  std::vector<Item*>& _raid_loot;
 	
-	size_t get_difficulty(size_t& result);
-	virtual size_t success() = 0;
-	virtual size_t normal() = 0;
-	virtual size_t failure() = 0;  
+	  size_t get_difficulty(size_t& result);
+	  virtual size_t success() = 0;
+	  virtual size_t normal() = 0;
+	  virtual size_t failure() = 0;  
 	
-	size_t event_outcome(size_t stat);
+	  size_t event_outcome(size_t stat);
 
     size_t add_random_item();
     size_t destroy_random_item();

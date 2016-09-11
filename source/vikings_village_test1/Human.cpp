@@ -1,5 +1,7 @@
 #include "Human.h"
 
+size_t Human::_count = SIZE_T_DEFAULT_VALUE;
+
 Human::Human(TypeProfession& profession, bool gender, bool is_slave, ssize_t house_id, std::string& name): _inventory(), _profession(profession) {
   srand(static_cast<unsigned int>(time(0)));
   _name.clear();

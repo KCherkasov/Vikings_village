@@ -41,7 +41,7 @@ class Human {
     size_t get_has_consumed(bool& result);
     bool get_has_consumed() { return _has_consumed; }
     size_t get_save_data(prototypes::HumanTable& result);
-    static size_t set_count(size_t value) { _count = value; return 0 }
+    static size_t set_count(size_t value) { _count = value; return 0; }
     size_t set_name(std::string value);
     size_t set_combat_stats(std::vector<size_t> value);
     size_t set_combat_stats(size_t index, size_t value);
@@ -129,7 +129,5 @@ class Human {
     bool _is_slave;
     bool _has_consumed;
 };
-
-size_t Human::_count = SIZE_T_DEFAULT_VALUE;
 
 #endif

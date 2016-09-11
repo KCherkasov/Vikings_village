@@ -3,7 +3,7 @@
 
 #include <cstdlib>
 #include <ctime>
-#include <direct.h>
+//#include <direct.h>
 
 #include "sqlite3.h"
 #include "prototypes.h"
@@ -19,7 +19,7 @@ class IngameStorage {
     size_t load_storage();
     size_t unload_storage();
     size_t get_item_table(size_t index, prototypes::ItemTable& result);
-    prototypes::ItemTable& get_item_table(size_t index);
+    prototypes::ItemTable get_item_table(size_t index);
     size_t get_items_count() { return _items.size(); }
     size_t get_building_kind(size_t index, TypeBuilding& result);
     TypeBuilding& get_building_kind(size_t index);

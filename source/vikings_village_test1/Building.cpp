@@ -242,7 +242,7 @@ size_t Building::what(std::string& out) {
   return 0;
 }
 
-size_t Building::turn(std::vector<size_t>& storage, std::vector<Item*>& items, const IngameStorage& database) {
+size_t Building::turn(std::vector<size_t>& storage, std::vector<Item*>& items, IngameStorage& database) {
   if (_building_time > BUILD_DONE) {
     --_building_time;
   } else {
@@ -255,10 +255,10 @@ size_t Building::turn(std::vector<size_t>& storage, std::vector<Item*>& items, c
       storage[i] += (production_i * _employees_id.size());
 	}
 	for (size_t i = 0; i < _employees_id.size(); ++i) {
-      prototypes::ItemTable item_table;
-      Item* item = new Item(database.get_item_table(_production_queue.back()));
-      items.push_back(item);
-      item = NULL;
+      //prototypes::ItemTable item_table;
+      //Item* item = new Item(database.get_item_table(_production_queue.back()));
+      //items.push_back(item);
+      //item = NULL;
       _production_queue.pop_back();
 	}
   }

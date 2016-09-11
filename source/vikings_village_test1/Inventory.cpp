@@ -118,7 +118,7 @@ size_t Inventory::get_save_data(std::vector<prototypes::ItemTable>& result) {
 	for (size_t j = 0; j < table._slots.size(); ++j) {
       table._slots[j] = false;
 	}
-	table._is_players = true;
+	table._owner_id = SSIZE_T_DEFAULT_VALUE;
     if (_equipped[i] != NULL) {
       _equipped[i]->get_save_data(table);
 	}
