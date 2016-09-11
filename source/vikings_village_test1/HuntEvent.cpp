@@ -1,13 +1,15 @@
 #include "HuntEvent.h"
 
 size_t HuntEvent::success() {
-  const size_t FOOD_AMOUNT = 10;
+  const size_t FOOD_AMOUNT = 20;
+  const size_t MORALE_BOOST = 5;
   add_resource(RI_FOOD, FOOD_AMOUNT);
+  increase_misc_stat(MI_MORALE, MORALE_BOOST);
   return EO_SUCCESS;
 }
 
 size_t HuntEvent::normal() {
-  const size_t FOOD_AMOUNT = 5;
+  const size_t FOOD_AMOUNT = 10;
   add_resource(RI_FOOD, FOOD_AMOUNT);
   return EO_NORMAL;
 }
