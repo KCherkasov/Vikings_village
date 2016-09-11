@@ -51,3 +51,4 @@ size_t StolenTrophiesEvent::execute() {
   }
   return outcome;
 }
+

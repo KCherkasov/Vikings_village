@@ -1,5 +1,5 @@
-#ifndef HUNT_EVENT_H
-#define HUNT_EVENT_H
+#ifndef STOLEN_TROPHIES_EVENT_H
+#define STOLEN_TROPHIES_EVENT_H
 
 #include <string>
 #include <vector>
