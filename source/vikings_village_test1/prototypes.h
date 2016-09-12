@@ -23,6 +23,7 @@ const size_t BUILD_DONE = 0;
 const size_t RAID_END = 0;
 
 const size_t MAX_BUILDINGS = 100;
+const size_t MAX_PEOPLE_ID = 99999;
 const size_t MAX_PRODUCTION_QUEUE_SIZE = 15;
 
 const ssize_t FREE_INDEX = -1;
