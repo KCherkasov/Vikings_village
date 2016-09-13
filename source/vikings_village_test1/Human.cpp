@@ -392,6 +392,18 @@ size_t Human::add_to_saga(size_t index, size_t value) {
   if (index < _saga.size()) {
     _saga[index] += value;
   }
+  return 0;
+}
+
+size_t Human::remove_from_saga(size_t index, size_t value) {
+  if (index < _saga.size()) {
+    if (_saga[index] > value) {
+      _saga[index] -= value;
+    } else {
+      _saga[index] = SIZE_T_DEFAULT_VALUE;
+    }
+  }
+  return 0;
 }
 
 size_t Human::wound() {
@@ -510,4 +522,10 @@ size_t Human::decrease_skill(size_t index, size_t value) {
 size_t Human::switch_has_consumed() {
   _has_consumed = !_has_consumed;
   return 0;
+}
+
+bool Human::can_shoot() {
+  Item* ranged_slot;
+  _inventory->get_equipped(IS_RANGED, ranged_slot);
+  return ranged_slot != NULL;
 }

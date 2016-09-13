@@ -64,7 +64,7 @@ class Human {
     size_t what(std::string& out);
     size_t consume(std::vector<size_t>& storage);
     size_t add_to_saga(size_t index, size_t value);
-    size_t remove_to_saga(size_t index, size_t value);
+    size_t remove_from_saga(size_t index, size_t value);
     size_t wound();
     size_t increase_combat_stat(size_t index);
     size_t increase_combat_stat(size_t index, size_t value);
@@ -80,6 +80,7 @@ class Human {
     size_t decrease_skill(size_t index);
     size_t decrease_skill(size_t index, size_t value);
     size_t switch_has_consumed();
+    bool can_shoot();
 
     Human& operator = (const Human& rhs) {
       if (!_name.empty()) {

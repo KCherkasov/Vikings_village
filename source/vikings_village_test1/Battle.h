@@ -11,10 +11,6 @@
 #include "Human.h"
 #include "Item.h"
 
-enum BattleOutcome { BO_RAIDERS_WON, BO_LOCALS_WON, BO_SIZE };
-enum BattlePair { BP_RAIDER_ID, BP_LOCAL_ID, BP_SIZE };
-enum BattleStage { BS_RANGED, BS_THROWING, BS_MELEE, BS_SIZE };
-
 class Battle {
   public:
     Battle(std::vector<Human*>& raiders, std::vector<Human*>& slaves, std::vector<size_t>& resources, std::vector<Item*>& _loot): _raiders(raiders), _slaves(slaves), _resources(resources), _loot(loot), _turn(0) {}
@@ -27,10 +23,12 @@ class Battle {
     Human& get_locals(size_t index) { return *(_locals[index]); }
     size_t get_locals_count() { return _locals.size(); }
     size_t get_loot(size_t index, Item*& result);
-    Item& get_loot index(size_t index) {return *(_loot_pool[index]); }
+    Item& get_loot(size_t index) {return *(_loot_pool[index]); }
     size_t get_loot_count() { return _loot_pool.size(); }
     size_t get_wounded_count() { return _wounded_pool.size(); }
     size_t get_enslaved_count() { return _slaves_pool.size(); }
+    size_t get_killed_raiders_count() { return _killed_raiders.size(); }
+    size_t get_killed_locals_count() { return _killed_locals.size(); }
     size_t get_turn(size_t& result);
     size_t get_turn() { return _turn; }
     size_t set_turn(size_t value);
@@ -39,16 +37,19 @@ class Battle {
   protected:
     std::vector<Human*>& _raiders;
     std::vector<Human*>& _slaves;
-    std::vector<size_t> _resources;
+    std::vector<size_t>& _resources;
     std::vector<Item*>& _loot;
     std::vector<Human*> _locals;
     std::vector<Human*> _wounded_pool;
+    std::vector<Human*> _killed_raiders;
     std::vector<Human*> _slaves_pool;
+    std::vector<Human*> _killed_locals;
     std::vector<Item*> _loot_pool;
     std::vector<size_t> _resources_pool;
     size_t _turn;
 
     size_t roll_dice(size_t& result);
+    size_t stats_test(size_t raider_stat, size_t local_stat, bool raider_strikes);
     size_t is_end();
     size_t get_own_id(std::vector<Human*> from, size_t& result);
     size_t get_own_id(std::vector<Human*> from, std::vector<size_t> keys, size_t& result);

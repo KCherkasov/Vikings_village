@@ -23,7 +23,7 @@ const size_t BUILD_DONE = 0;
 const size_t RAID_END = 0;
 
 const size_t MAX_BUILDINGS = 100;
-const size_t MAX_PEOPLE_ID = 99999;
+const size_t MAX_PEOPLE_ID = 9999999;
 const size_t MAX_PRODUCTION_QUEUE_SIZE = 15;
 
 const ssize_t FREE_INDEX = -1;
@@ -58,6 +58,13 @@ const size_t BASE_SEED = 15;
 const size_t MIN_STAT_VALUE = 0;
 const size_t MAX_STAT_VALUE = 100;
 
+const size_t MAX_PLANK_VALUE = 90;
+const size_t BASE_PLANK_VALUE = 50;
+const size_t MIN_PLANK_VALUE = 10;
+
+const size_t BASE_DEATH_CHANCE = 80;
+const size_t BASE_DROP_CHANCE = 40;
+
 const size_t CHANCE_UPPER_CAP = 100;
 const size_t CHANCE_LOWER_CAP = 0;
 
@@ -88,6 +95,10 @@ enum RaidStages { RS_THERE, RS_LAND, RS_BACK, RS_SIZE };
 
 enum EventDescriptions { ED_DESCRIPTION, ED_SUCCESS, ED_NORMAL, ED_FAILURE, ED_SIZE };
 enum EventOutcomes { EO_SUCCESS, EO_NORMAL, EO_FAILURE, EO_SIZE };
+
+enum BattleOutcome { BO_RAIDERS_WON, BO_LOCALS_WON, BO_SIZE };
+enum FightOutcome {FO_RAIDER_WON, FO_LOCAL_WON, FO_SIZE};
+enum BattleStage { BS_RANGED, BS_THROWING, BS_MELEE, BS_SIZE };
 
 namespace prototypes {
 
