@@ -94,6 +94,49 @@ size_t Battle::get_own_id(std::vector<Human*> from, std::vector<size_t> keys, si
   return 0;
 }
 
+size_t Battle::drop_items(std::vector<Human*> from, size_t chance) {
+  if (!from.empty()) {
+    for (size_t i = 0; i < from.size(); ++i) {
+      if (from[i] != NULL) {
+        std::vector<prototype::ItemTable> equipment;
+        equipment.clear();
+        from[i]->get_inventory(equipment);
+        for (size_t j = 0; j < equipment.size(); ++j) {
+          equipment[j]._own_id = SSIZE_T_DEFAULT_VALUE;
+          size_t roll;
+          roll_dice(roll);
+          if (roll < chance) {
+            Item* new_loot = new Item(equipment[j]);
+            _loot_pull.push_back(new_loot);
+            new_loot = NULL;
+          }
+        }
+      }
+    }
+  }
+  return 0;
+}
+
+size_t Battle::clean_dead() {
+  if (!_killed_locals.empty()) {
+    for (size_t i = 0; i < _killed_locals.size(); ++i) {
+      if (_killed_locals[i] != NULL) {
+        delete _killed_locals[i];
+      }
+    }
+  }
+  _killed_locals.clear();
+  if (!_killed_raiders.empty()) {
+    for (size_t i = 0; i < _killed_raiders.size(); ++i) {
+      if (_killed_raiders[i] != NULL) {
+        delete _killed_raiders[i];
+      }
+    }
+  }
+  _killed_raiders.clear();
+  return 0;
+}
+
 size_t Battle::set_pairs(std::vector<size_t>& raiders_queue, std::vector<size_t>& locals_queue) {
   if (!raiders_queue.empty()) {
     raiders_queue.clear();
@@ -348,9 +391,30 @@ size_t Battle::enslave_local(size_t index) {
 
 size_t Battle::afterfight() {
   if (!_raiders.empty()) {
-    for (size_t i = 0; i < _killed_locals.size(); ++i) {
-      
+    drop_items(_killed_locals, BASE_DROP_CHANCE);
+    drop_items(_killed_raiders, BASE_DROP_CHANCE);
+    for (size_t i = 0; i < _slaves_pool.size(); ++i) {
+      if (_slaves_pool[i] != NULL) {
+        Human* buf = _slaves_pool[i];
+        _slaves_pool[i] = NULL;
+        _slaves.push_back(buf);
+        buf = NULL;
+      }
     }
+    _slaves_pool.clear();
+    for (size_t i = 0; i < _wounded_pool.size(); ++i) {
+      if (_wounded_pool[i] != NULL) {
+        Human* buf = _wounded_pool[i];
+        _wounded_pool[i] = NULL;
+        _raiders.push_back(buf);
+        buf = NULL;
+      }
+    }
+    _wounded_pool.clear();
+  } else {
+
   }
+  clean_dead();
   return 0;
 }
+

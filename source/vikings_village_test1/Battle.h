@@ -53,6 +53,8 @@ class Battle {
     size_t is_end();
     size_t get_own_id(std::vector<Human*> from, size_t& result);
     size_t get_own_id(std::vector<Human*> from, std::vector<size_t> keys, size_t& result);
+    size_t drop_items(std::vector<Human*> from, size_t chance);
+    size_t clean_dead();
     size_t set_pairs(std::vector<size_t>& raiders_queue, std::vector<size_t>& locals_queue);
     size_t fight_round(size_t raider_id, size_t local_id);
     size_t kill_raider(size_t index);
