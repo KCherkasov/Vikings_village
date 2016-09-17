@@ -497,7 +497,9 @@ size_t Battle::play() {
   while (is_end() == BO_SIZE) {
     turn();
   }
+  size_t outcome = is_end();
   afterfight();
+  return outcome;
 }
 
 size_t Battle::get_raiders(size_t index, Human*& result) {

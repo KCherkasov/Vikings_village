@@ -13,7 +13,7 @@
 
 class Battle {
   public:
-    Battle(IngameStorage& storage, std::vector<Human*>& raiders, std::vector<Human*>& slaves, std::vector<size_t>& resources, std::vector<Item*>& _loot): _storage(storage), _raiders(raiders), _slaves(slaves), _resources(resources), _loot(loot), _turn(0) {}
+    Battle(IngameStorage& storage, std::vector<Human*>& raiders, std::vector<Human*>& slaves, std::vector<size_t>& resources, std::vector<Item*>& loot): _storage(storage), _raiders(raiders), _slaves(slaves), _resources(resources), _loot(loot), _turn(0) {}
     ~Battle() {}
     size_t generate_enemies(size_t battle_scale);
     size_t play();
@@ -67,3 +67,4 @@ class Battle {
 };
 
 #endif
+

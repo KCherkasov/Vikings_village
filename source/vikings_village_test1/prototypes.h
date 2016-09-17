@@ -70,6 +70,8 @@ const size_t CHANCE_LOWER_CAP = 0;
 
 const size_t ITEMS_COUNT = 23;
 
+const size_t BATTLE_MORALE_BOOST = 10;
+
 const bool MALE_GENDER = true;
 const bool FEMALE_GENDER = false;
 
