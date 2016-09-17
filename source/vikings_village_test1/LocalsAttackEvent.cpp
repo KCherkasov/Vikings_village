@@ -36,3 +36,4 @@ size_t LocalsAttackEvent::execute() {
     return EO_FAILURE;
   }
 }
+
