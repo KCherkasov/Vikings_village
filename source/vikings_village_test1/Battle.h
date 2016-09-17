@@ -13,9 +13,10 @@
 
 class Battle {
   public:
-    Battle(std::vector<Human*>& raiders, std::vector<Human*>& slaves, std::vector<size_t>& resources, std::vector<Item*>& _loot): _raiders(raiders), _slaves(slaves), _resources(resources), _loot(loot), _turn(0) {}
+    Battle(IngameStorage& storage, std::vector<Human*>& raiders, std::vector<Human*>& slaves, std::vector<size_t>& resources, std::vector<Item*>& _loot): _storage(storage), _raiders(raiders), _slaves(slaves), _resources(resources), _loot(loot), _turn(0) {}
     ~Battle() {}
     size_t generate_enemies(size_t battle_scale);
+    size_t play();
     size_t get_raiders(size_t index, Human*& result);
     Human& get_raiders(size_t index) { return *(_raiders[index]); }
     size_t get_raiders_count() { return _raiders.size(); }
@@ -32,9 +33,9 @@ class Battle {
     size_t get_turn(size_t& result);
     size_t get_turn() { return _turn; }
     size_t set_turn(size_t value);
-    size_t turn();
     size_t what(std::string& out);
   protected:
+    IngameStorage& _storage;
     std::vector<Human*>& _raiders;
     std::vector<Human*>& _slaves;
     std::vector<size_t>& _resources;
@@ -62,6 +63,7 @@ class Battle {
     size_t kill_local(size_t index);
     size_t enslave_local(size_t index);
     size_t afterfight();
+    size_t turn();
 };
 
 #endif

@@ -402,19 +402,127 @@ size_t Battle::afterfight() {
       }
     }
     _slaves_pool.clear();
-    for (size_t i = 0; i < _wounded_pool.size(); ++i) {
-      if (_wounded_pool[i] != NULL) {
-        Human* buf = _wounded_pool[i];
-        _wounded_pool[i] = NULL;
-        _raiders.push_back(buf);
+    for (size_t i = 0; i < _loot_pool.size(); ++i {
+      if (_loot_pool[i] != NULL) {
+        Item* buf = _loot_pool[i];
+        _loot.push_back(buf);
+        _loot_pool[i] = NULL;
         buf = NULL;
       }
     }
-    _wounded_pool.clear();
+    _loot_pool.clear();
   } else {
-
+      for (size_t i = 0; i < _loot_pool.size(); ++i) {
+        if (_loot_pool[i] != NULL) {
+          delete _loot_pool[i];
+        }
+      }
+      _loot_pool.clear();
+      for (size_t i = 0; i < _slaves_pool.size(); ++i) {
+        if (_slaves_pool[i] != NULL) {
+          delete _slaves_pool[i];
+        }
+      }
+      _slaves_pool.clear();
+    }
+    for (size_t i = 0; i < _locals.size(); ++i) {
+      if (_locals[i] != NULL) {
+        delete _locals[i];
+      }
+    }
+    _locals.clear();
   }
+  for (size_t i = 0; i < _wounded_pool; ++i) {
+    if (_wounded_pool[i] != NULL) {
+      Human* buf = _wounded_pool[i];
+      _wounded_pool[i] = NULL;
+      _raiders.push_back(buf);
+      buf = NULL;
+    }
+  }
+  _wounded_pool.clear();
   clean_dead();
+  return 0;
+}
+
+size_t Battle::turn() {
+  ++_turn;
+  std::vector<size_t> raiders_queue;
+  raiders_queue.clear();
+  std::vector<size_t> locals_queue;
+  locals_queue.clear();
+  set_pairs(raiders_queue, locals_queue);
+  if (raiders_queue.size() == locals_queue.size()) {
+    for (size_t i = 0; i < raiders_queue.size(); ++i) {
+      fight_round(raiders_queue[i], locals_queue[i]);
+    }
+  }
+  return 0;
+}
+
+size_t Battle::generate_enemies(size_t battle_scale) {
+  srand(static_cast<unsigned int>(time(0)));
+  // following constants may be tweaked to change the number of generated enemies in each case
+  const size_t SMALL_COUNT = 6;
+  const size_t MEDIUM_COUNT = 12;
+  const size_t BIG_COUNT = 24;
+  size_t scale = SMALL_COUNT;
+  if (battle_scale == FS_MEDIUM) {
+    scale = MEDIUM_COUNT;
+  } else {
+    if (battle_scale == FS_BIG) {
+      scale = BIG_COUNT;
+    }
+  }
+  size_t locals_count = rand() % (scale / 2) + scale / 2 + 1;
+  if (!_locals.empty()) {
+    for (size_t i = 0; i < _locals.size(); ++i) {
+      if (_locals[i] != NULL) {
+        delete _locals[i];
+      }
+    }
+    _locals.clear();
+  }
+  for (size_t i = 0; i < locals_count; ++i) {
+    std::string name;
+    _storage.form_name(MALE_GENDER, name);
+    Human* to_add = new Human(_storage.get_profession(PI_UNEMPLOYED), MALE_GENDER, false, name);
+    _locals.push_back(to_add);
+    to_add = NULL;
+  }
+  return 0;
+}
+
+size_t Battle::play() {
+  while (is_end() == BO_SIZE) {
+    turn();
+  }
+  afterfight();
+}
+
+size_t Battle::get_raiders(size_t index, Human*& result) {
+  if (index < _raiders.size()) {
+    result = _raiders[index];
+  }
+  return 0;
+}
+
+size_t Battle::get_locals(size_t index, Human*& result) {
+  if (index < _locals.size()) {
+    result = _locals[index];
+  }
+  return 0;
+}
+
+size_t Battle::get_loot(size_t index, Item*& result) {
+  if (index < _loot_pool.size()) {
+    result = _loot_pool[index];
+  }
+  return 0;
+}
+
+size_t Battle::get_turn(size_t& result) {
+  result = _turn;
   return 0;
 }
 

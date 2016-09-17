@@ -96,6 +96,7 @@ enum RaidStages { RS_THERE, RS_LAND, RS_BACK, RS_SIZE };
 enum EventDescriptions { ED_DESCRIPTION, ED_SUCCESS, ED_NORMAL, ED_FAILURE, ED_SIZE };
 enum EventOutcomes { EO_SUCCESS, EO_NORMAL, EO_FAILURE, EO_SIZE };
 
+enum FightScale {FS_SMALL, FS_MEDIUM, FS_BIG, FS_SIZE };
 enum BattleOutcome { BO_RAIDERS_WON, BO_LOCALS_WON, BO_SIZE };
 enum FightOutcome {FO_RAIDER_WON, FO_LOCAL_WON, FO_SIZE};
 enum BattleStage { BS_RANGED, BS_THROWING, BS_MELEE, BS_SIZE };
