@@ -27,8 +27,8 @@ class Village {
     size_t get_resources(size_t index, size_t& result);
     size_t get_villagers(size_t index, Human& result);
     Human& get_villagers(size_t index);
-	size_t get_villagers(std::vector<Human*>& result);
-	size_t get_villagers(std::vector<prototypes::HumanTable>& result);
+    size_t get_villagers(std::vector<Human*>& result);
+    size_t get_villagers(std::vector<prototypes::HumanTable>& result);
     size_t get_villagers_count(size_t& result);
     size_t get_villagers_count();
     size_t get_slaves_count(size_t& result);
@@ -39,8 +39,8 @@ class Village {
     size_t get_gender_count(bool freemen, bool gender);
     size_t get_gender_count(bool gender, size_t& result);
     size_t get_gender_count(bool gender);
-	size_t get_consumation(size_t index, size_t& result);
-	size_t get_consumation(size_t index);
+    size_t get_consumation(size_t index, size_t& result);
+    size_t get_consumation(size_t index);
     size_t get_consumation(std::vector<size_t>& result);
     size_t get_buildings(size_t index, Building& result);
     Building& get_buildings(size_t index);

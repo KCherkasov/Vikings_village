@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_layout_file>
+	<FileVersion major="1" minor="0" />
+	<ActiveTarget name="Debug" />
+	<File name="IngameStorage.h" open="1" top="0" tabpos="10" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="TypeObjects.h" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Human.h" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Human.cpp" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Inventory.cpp" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Item.h" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="main.cpp" open="1" top="1" tabpos="12" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="4245" topLine="135" />
+		</Cursor>
+	</File>
+	<File name="Inventory.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="Item.cpp" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="TypeObjects.cpp" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="prototypes.h" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="105" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="IngameStorage.cpp" open="1" top="0" tabpos="11" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+</CodeBlocks_layout_file>
+[Editors]
+Order=0,3,2,1,5,4,7,6,9,8,11,10
+Focused=-1
+[Editor_0]
+CursorCol=27
+CursorRow=3179
+TopLine=3163
+LeftChar=1
+[Editor_2]
+CursorCol=18
+CursorRow=5
+TopLine=1
+LeftChar=1
+[Editor_3]
+CursorCol=35
+CursorRow=268
+TopLine=246
+LeftChar=1
+[Editor_1]
+CursorCol=39
+CursorRow=261
+TopLine=249
+LeftChar=1
+[Editor_4]
+CursorCol=26
+CursorRow=115
+TopLine=103
+LeftChar=1
+[Editor_5]
+CursorCol=53
+CursorRow=17
+TopLine=8
+LeftChar=1
+[Editor_6]
+CursorCol=12
+CursorRow=210
+TopLine=190
+LeftChar=1
+[Editor_7]
+CursorCol=12
+CursorRow=35
+TopLine=11
+LeftChar=1
+[Editor_8]
+CursorCol=35
+CursorRow=145
+TopLine=120
+LeftChar=1
+[Editor_9]
+CursorCol=13
+CursorRow=124
+TopLine=92
+LeftChar=1
+[Editor_10]
+CursorCol=2
+CursorRow=243
+TopLine=218
+LeftChar=1
+[Editor_11]
+CursorCol=16
+CursorRow=15
+TopLine=15
+LeftChar=1
